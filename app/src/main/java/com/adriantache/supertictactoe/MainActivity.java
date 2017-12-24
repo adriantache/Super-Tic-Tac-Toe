@@ -195,501 +195,1561 @@ public class MainActivity extends AppCompatActivity {
 
     //declare variables
     int currentPlayer = 1;
+    int currentGame = 0;
 
     //todo remove test tag
     private static final String TAG = "MainActivity";
 
     public void reset(View view) {
         //todo implement reset functionality
-        return;
+
+        // reset all highlighting
+        resetAllButtons();
+
+        // reenable all buttons
+        button11.setEnabled(true);
+        button12.setEnabled(true);
+        button13.setEnabled(true);
+        button14.setEnabled(true);
+        button15.setEnabled(true);
+        button16.setEnabled(true);
+        button17.setEnabled(true);
+        button18.setEnabled(true);
+        button19.setEnabled(true);
+        button21.setEnabled(true);
+        button22.setEnabled(true);
+        button23.setEnabled(true);
+        button24.setEnabled(true);
+        button25.setEnabled(true);
+        button26.setEnabled(true);
+        button27.setEnabled(true);
+        button28.setEnabled(true);
+        button29.setEnabled(true);
+        button31.setEnabled(true);
+        button32.setEnabled(true);
+        button33.setEnabled(true);
+        button34.setEnabled(true);
+        button35.setEnabled(true);
+        button36.setEnabled(true);
+        button37.setEnabled(true);
+        button38.setEnabled(true);
+        button39.setEnabled(true);
+        button41.setEnabled(true);
+        button42.setEnabled(true);
+        button43.setEnabled(true);
+        button44.setEnabled(true);
+        button45.setEnabled(true);
+        button46.setEnabled(true);
+        button47.setEnabled(true);
+        button48.setEnabled(true);
+        button49.setEnabled(true);
+        button51.setEnabled(true);
+        button52.setEnabled(true);
+        button53.setEnabled(true);
+        button54.setEnabled(true);
+        button55.setEnabled(true);
+        button56.setEnabled(true);
+        button57.setEnabled(true);
+        button58.setEnabled(true);
+        button59.setEnabled(true);
+        button61.setEnabled(true);
+        button62.setEnabled(true);
+        button63.setEnabled(true);
+        button64.setEnabled(true);
+        button65.setEnabled(true);
+        button66.setEnabled(true);
+        button67.setEnabled(true);
+        button68.setEnabled(true);
+        button69.setEnabled(true);
+        button71.setEnabled(true);
+        button72.setEnabled(true);
+        button73.setEnabled(true);
+        button74.setEnabled(true);
+        button75.setEnabled(true);
+        button76.setEnabled(true);
+        button77.setEnabled(true);
+        button78.setEnabled(true);
+        button79.setEnabled(true);
+        button81.setEnabled(true);
+        button82.setEnabled(true);
+        button83.setEnabled(true);
+        button84.setEnabled(true);
+        button85.setEnabled(true);
+        button86.setEnabled(true);
+        button87.setEnabled(true);
+        button88.setEnabled(true);
+        button89.setEnabled(true);
+        button91.setEnabled(true);
+        button92.setEnabled(true);
+        button93.setEnabled(true);
+        button94.setEnabled(true);
+        button95.setEnabled(true);
+        button96.setEnabled(true);
+        button97.setEnabled(true);
+        button98.setEnabled(true);
+        button99.setEnabled(true);
+
     }
 
     //all 81 methods for the individual buttons
     public void button11(View view) {
-        game1[1][1] = currentPlayer;
-        button11.setEnabled(false);
-        activeGame1();
+        if (currentGame == 0) currentGame = 1;
+        if (currentGame != 1) return;
+        else {
+            game1[1][1] = currentPlayer;
+            currentGame = 1;
+            button11.setEnabled(false);
+            activeGame1();
+            if (currentPlayer == 1) {
+                button11.setText("X");
+                currentPlayer = 2;
+            } else {
+                button11.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button12(View view) {
-        game1[1][2] = currentPlayer;
-        button12.setEnabled(false);
-        activeGame2();
+        if (currentGame == 0) currentGame = 2;
+        if (currentGame != 1) return;
+        else {
+            game1[1][2] = currentPlayer;
+            currentGame = 2;
+            button12.setEnabled(false);
+            activeGame2();
+            if (currentPlayer == 1) {
+                button12.setText("X");
+                currentPlayer = 2;
+            } else {
+                button12.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button13(View view) {
-        game1[1][3] = currentPlayer;
-        button13.setEnabled(false);
-        activeGame3();
+        if (currentGame == 0) currentGame = 3;
+        if (currentGame != 1) return;
+        else {
+            game1[1][3] = currentPlayer;
+            currentGame = 3;
+            button13.setEnabled(false);
+            activeGame3();
+            if (currentPlayer == 1) {
+                button13.setText("X");
+                currentPlayer = 2;
+            } else {
+                button13.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button14(View view) {
-        game2[1][1] = currentPlayer;
-        button14.setEnabled(false);
-        activeGame1();
+        if (currentGame == 0) currentGame = 1;
+        if (currentGame != 2) return;
+        else {
+            game2[1][1] = currentPlayer;
+            currentGame = 1;
+            button14.setEnabled(false);
+            activeGame1();
+            if (currentPlayer == 1) {
+                button14.setText("X");
+                currentPlayer = 2;
+            } else {
+                button14.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button15(View view) {
-        game2[1][2] = currentPlayer;
-        button15.setEnabled(false);
-        activeGame2();
+        if (currentGame == 0) currentGame = 2;
+        if (currentGame != 2) return;
+        else {
+            game2[1][2] = currentPlayer;
+            currentGame = 2;
+            button15.setEnabled(false);
+            activeGame2();
+            if (currentPlayer == 1) {
+                button15.setText("X");
+                currentPlayer = 2;
+            } else {
+                button15.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button16(View view) {
-        game2[1][3] = currentPlayer;
-        button16.setEnabled(false);
-        activeGame3();
+        if (currentGame == 0) currentGame = 3;
+        if (currentGame != 2) return;
+        else {
+            game2[1][3] = currentPlayer;
+            currentGame = 3;
+            button16.setEnabled(false);
+            activeGame3();
+            if (currentPlayer == 1) {
+                button16.setText("X");
+                currentPlayer = 2;
+            } else {
+                button16.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button17(View view) {
-        game3[1][1] = currentPlayer;
-        button17.setEnabled(false);
-        activeGame1();
+        if (currentGame == 0) currentGame = 1;
+        if (currentGame != 3) return;
+        else {
+            game3[1][1] = currentPlayer;
+            currentGame = 1;
+            button17.setEnabled(false);
+            activeGame1();
+            if (currentPlayer == 1) {
+                button17.setText("X");
+                currentPlayer = 2;
+            } else {
+                button17.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button18(View view) {
-        game3[1][2] = currentPlayer;
-        button18.setEnabled(false);
-        activeGame2();
+        if (currentGame == 0) currentGame = 2;
+        if (currentGame != 3) return;
+        else {
+            game3[1][2] = currentPlayer;
+            currentGame = 2;
+            button18.setEnabled(false);
+            activeGame2();
+            if (currentPlayer == 1) {
+                button18.setText("X");
+                currentPlayer = 2;
+            } else {
+                button18.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button19(View view) {
-        game3[1][3] = currentPlayer;
-        button19.setEnabled(false);
-        activeGame3();
+        if (currentGame == 0) currentGame = 3;
+        if (currentGame != 3) return;
+        else {
+            game3[1][3] = currentPlayer;
+            currentGame = 3;
+            button19.setEnabled(false);
+            activeGame3();
+            if (currentPlayer == 1) {
+                button19.setText("X");
+                currentPlayer = 2;
+            } else {
+                button19.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button21(View view) {
-        game1[2][1] = currentPlayer;
-        button21.setEnabled(false);
-        activeGame4();
+        if (currentGame == 0) currentGame = 4;
+        if (currentGame != 1) return;
+        else {
+            game1[2][1] = currentPlayer;
+            currentGame = 4;
+            button21.setEnabled(false);
+            activeGame4();
+            if (currentPlayer == 1) {
+                button21.setText("X");
+                currentPlayer = 2;
+            } else {
+                button21.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button22(View view) {
-        game1[2][2] = currentPlayer;
-        button22.setEnabled(false);
-        activeGame5();
+        if (currentGame == 0) currentGame = 5;
+        if (currentGame != 1) return;
+        else {
+            game1[2][2] = currentPlayer;
+            currentGame = 5;
+            button22.setEnabled(false);
+            activeGame5();
+            if (currentPlayer == 1) {
+                button22.setText("X");
+                currentPlayer = 2;
+            } else {
+                button22.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button23(View view) {
-        game1[2][3] = currentPlayer;
-        button23.setEnabled(false);
-        activeGame6();
+        if (currentGame == 0) currentGame = 6;
+        if (currentGame != 1) return;
+        else {
+            game1[2][3] = currentPlayer;
+            currentGame = 6;
+            button23.setEnabled(false);
+            activeGame6();
+            if (currentPlayer == 1) {
+                button23.setText("X");
+                currentPlayer = 2;
+            } else {
+                button23.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button24(View view) {
-        game2[2][1] = currentPlayer;
-        button24.setEnabled(false);
-        activeGame4();
+        if (currentGame == 0) currentGame = 4;
+        if (currentGame != 2) return;
+        else {
+            game2[2][1] = currentPlayer;
+            currentGame = 4;
+            button24.setEnabled(false);
+            activeGame4();
+            if (currentPlayer == 1) {
+                button24.setText("X");
+                currentPlayer = 2;
+            } else {
+                button24.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button25(View view) {
-        game2[2][2] = currentPlayer;
-        button25.setEnabled(false);
-        activeGame5();
+        if (currentGame == 0) currentGame = 5;
+        if (currentGame != 2) return;
+        else {
+            game2[2][2] = currentPlayer;
+            currentGame = 5;
+            button25.setEnabled(false);
+            activeGame5();
+            if (currentPlayer == 1) {
+                button25.setText("X");
+                currentPlayer = 2;
+            } else {
+                button25.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button26(View view) {
-        game2[2][3] = currentPlayer;
-        button26.setEnabled(false);
-        activeGame6();
+        if (currentGame == 0) currentGame = 6;
+        if (currentGame != 2) return;
+        else {
+            game2[2][3] = currentPlayer;
+            currentGame = 6;
+            button26.setEnabled(false);
+            activeGame6();
+            if (currentPlayer == 1) {
+                button26.setText("X");
+                currentPlayer = 2;
+            } else {
+                button26.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button27(View view) {
-        game3[2][1] = currentPlayer;
-        button27.setEnabled(false);
-        activeGame4();
+        if (currentGame == 0) currentGame = 4;
+        if (currentGame != 3) return;
+        else {
+            game3[2][1] = currentPlayer;
+            currentGame = 4;
+            button27.setEnabled(false);
+            activeGame4();
+            if (currentPlayer == 1) {
+                button27.setText("X");
+                currentPlayer = 2;
+            } else {
+                button27.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button28(View view) {
-        game3[2][2] = currentPlayer;
-        button28.setEnabled(false);
-        activeGame5();
+        if (currentGame == 0) currentGame = 5;
+        if (currentGame != 3) return;
+        else {
+            game3[2][2] = currentPlayer;
+            currentGame = 5;
+            button28.setEnabled(false);
+            activeGame5();
+            if (currentPlayer == 1) {
+                button28.setText("X");
+                currentPlayer = 2;
+            } else {
+                button28.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button29(View view) {
-        game3[2][3] = currentPlayer;
-        button29.setEnabled(false);
-        activeGame6();
+        if (currentGame == 0) currentGame = 6;
+        if (currentGame != 3) return;
+        else {
+            game3[2][3] = currentPlayer;
+            currentGame = 6;
+            button29.setEnabled(false);
+            activeGame6();
+            if (currentPlayer == 1) {
+                button29.setText("X");
+                currentPlayer = 2;
+            } else {
+                button29.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button31(View view) {
-        game1[3][1] = currentPlayer;
-        button31.setEnabled(false);
-        activeGame7();
+        if (currentGame == 0) currentGame = 7;
+        if (currentGame != 1) return;
+        else {
+            game1[3][1] = currentPlayer;
+            currentGame = 7;
+            button31.setEnabled(false);
+            activeGame7();
+            if (currentPlayer == 1) {
+                button31.setText("X");
+                currentPlayer = 2;
+            } else {
+                button31.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button32(View view) {
-        game1[3][2] = currentPlayer;
-        button32.setEnabled(false);
-        activeGame8();
+        if (currentGame == 0) currentGame = 8;
+        if (currentGame != 1) return;
+        else {
+            game1[3][2] = currentPlayer;
+            currentGame = 8;
+            button32.setEnabled(false);
+            activeGame8();
+            if (currentPlayer == 1) {
+                button32.setText("X");
+                currentPlayer = 2;
+            } else {
+                button32.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button33(View view) {
-        game1[3][3] = currentPlayer;
-        button33.setEnabled(false);
-        activeGame9();
+        if (currentGame == 0) currentGame = 9;
+        if (currentGame != 1) return;
+        else {
+            game1[3][3] = currentPlayer;
+            currentGame = 9;
+            button33.setEnabled(false);
+            activeGame9();
+            if (currentPlayer == 1) {
+                button33.setText("X");
+                currentPlayer = 2;
+            } else {
+                button33.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button34(View view) {
-        game2[3][1] = currentPlayer;
-        button34.setEnabled(false);
-        activeGame7();
+        if (currentGame == 0) currentGame = 7;
+        if (currentGame != 2) return;
+        else {
+            game2[3][1] = currentPlayer;
+            currentGame = 7;
+            button34.setEnabled(false);
+            activeGame7();
+            if (currentPlayer == 1) {
+                button34.setText("X");
+                currentPlayer = 2;
+            } else {
+                button34.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button35(View view) {
-        game2[3][2] = currentPlayer;
-        button35.setEnabled(false);
-        activeGame8();
+        if (currentGame == 0) currentGame = 8;
+        if (currentGame != 2) return;
+        else {
+            game2[3][2] = currentPlayer;
+            currentGame = 8;
+            button35.setEnabled(false);
+            activeGame8();
+            if (currentPlayer == 1) {
+                button35.setText("X");
+                currentPlayer = 2;
+            } else {
+                button35.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button36(View view) {
-        game2[3][3] = currentPlayer;
-        button36.setEnabled(false);
-        activeGame9();
+        if (currentGame == 0) currentGame = 9;
+        if (currentGame != 2) return;
+        else {
+            game2[3][3] = currentPlayer;
+            currentGame = 9;
+            button36.setEnabled(false);
+            activeGame9();
+            if (currentPlayer == 1) {
+                button36.setText("X");
+                currentPlayer = 2;
+            } else {
+                button36.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button37(View view) {
-        game3[3][1] = currentPlayer;
-        button37.setEnabled(false);
-        activeGame7();
+        if (currentGame == 0) currentGame = 7;
+        if (currentGame != 3) return;
+        else {
+            game3[3][1] = currentPlayer;
+            currentGame = 7;
+            button37.setEnabled(false);
+            activeGame7();
+            if (currentPlayer == 1) {
+                button37.setText("X");
+                currentPlayer = 2;
+            } else {
+                button37.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button38(View view) {
-        game3[3][2] = currentPlayer;
-        button38.setEnabled(false);
-        activeGame8();
+        if (currentGame == 0) currentGame = 8;
+        if (currentGame != 3) return;
+        else {
+            game3[3][2] = currentPlayer;
+            currentGame = 8;
+            button38.setEnabled(false);
+            activeGame8();
+            if (currentPlayer == 1) {
+                button38.setText("X");
+                currentPlayer = 2;
+            } else {
+                button38.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button39(View view) {
-        game3[3][3] = currentPlayer;
-        button39.setEnabled(false);
-        activeGame9();
+        if (currentGame == 0) currentGame = 9;
+        if (currentGame != 3) return;
+        else {
+            game3[3][3] = currentPlayer;
+            currentGame = 9;
+            button39.setEnabled(false);
+            activeGame9();
+            if (currentPlayer == 1) {
+                button39.setText("X");
+                currentPlayer = 2;
+            } else {
+                button39.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button41(View view) {
-        game4[1][1] = currentPlayer;
-        button41.setEnabled(false);
-        activeGame1();
+        if (currentGame == 0) currentGame = 1;
+        if (currentGame != 4) return;
+        else {
+            game4[1][1] = currentPlayer;
+            currentGame = 1;
+            button41.setEnabled(false);
+            activeGame1();
+            if (currentPlayer == 1) {
+                button41.setText("X");
+                currentPlayer = 2;
+            } else {
+                button41.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button42(View view) {
-        game4[1][2] = currentPlayer;
-        button42.setEnabled(false);
-        activeGame2();
+        if (currentGame == 0) currentGame = 2;
+        if (currentGame != 4) return;
+        else {
+            game4[1][2] = currentPlayer;
+            currentGame = 2;
+            button42.setEnabled(false);
+            activeGame2();
+            if (currentPlayer == 1) {
+                button42.setText("X");
+                currentPlayer = 2;
+            } else {
+                button42.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button43(View view) {
-        game4[1][3] = currentPlayer;
-        button43.setEnabled(false);
-        activeGame3();
+        if (currentGame == 0) currentGame = 3;
+        if (currentGame != 4) return;
+        else {
+            game4[1][3] = currentPlayer;
+            currentGame = 3;
+            button43.setEnabled(false);
+            activeGame3();
+            if (currentPlayer == 1) {
+                button43.setText("X");
+                currentPlayer = 2;
+            } else {
+                button43.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button44(View view) {
-        game5[1][1] = currentPlayer;
-        button44.setEnabled(false);
-        activeGame1();
+        if (currentGame == 0) currentGame = 1;
+        if (currentGame != 5) return;
+        else {
+            game5[1][1] = currentPlayer;
+            currentGame = 1;
+            button44.setEnabled(false);
+            activeGame1();
+            if (currentPlayer == 1) {
+                button44.setText("X");
+                currentPlayer = 2;
+            } else {
+                button44.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button45(View view) {
-        game5[1][2] = currentPlayer;
-        button45.setEnabled(false);
-        activeGame2();
+        if (currentGame == 0) currentGame = 2;
+        if (currentGame != 5) return;
+        else {
+            game5[1][2] = currentPlayer;
+            currentGame = 2;
+            button45.setEnabled(false);
+            activeGame2();
+            if (currentPlayer == 1) {
+                button45.setText("X");
+                currentPlayer = 2;
+            } else {
+                button45.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button46(View view) {
-        game5[1][3] = currentPlayer;
-        button46.setEnabled(false);
-        activeGame3();
+        if (currentGame == 0) currentGame = 3;
+        if (currentGame != 5) return;
+        else {
+            game5[1][3] = currentPlayer;
+            currentGame = 3;
+            button46.setEnabled(false);
+            activeGame3();
+            if (currentPlayer == 1) {
+                button46.setText("X");
+                currentPlayer = 2;
+            } else {
+                button46.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button47(View view) {
-        game6[1][1] = currentPlayer;
-        button47.setEnabled(false);
-        activeGame1();
+        if (currentGame == 0) currentGame = 1;
+        if (currentGame != 6) return;
+        else {
+            game6[1][1] = currentPlayer;
+            currentGame = 1;
+            button47.setEnabled(false);
+            activeGame1();
+            if (currentPlayer == 1) {
+                button47.setText("X");
+                currentPlayer = 2;
+            } else {
+                button47.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button48(View view) {
-        game6[1][2] = currentPlayer;
-        button48.setEnabled(false);
-        activeGame2();
+        if (currentGame == 0) currentGame = 2;
+        if (currentGame != 6) return;
+        else {
+            game6[1][2] = currentPlayer;
+            currentGame = 2;
+            button48.setEnabled(false);
+            activeGame2();
+            if (currentPlayer == 1) {
+                button48.setText("X");
+                currentPlayer = 2;
+            } else {
+                button48.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button49(View view) {
-        game6[1][3] = currentPlayer;
-        button49.setEnabled(false);
-        activeGame3();
+        if (currentGame == 0) currentGame = 3;
+        if (currentGame != 6) return;
+        else {
+            game6[1][3] = currentPlayer;
+            currentGame = 3;
+            button49.setEnabled(false);
+            activeGame3();
+            if (currentPlayer == 1) {
+                button49.setText("X");
+                currentPlayer = 2;
+            } else {
+                button49.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button51(View view) {
-        game4[2][1] = currentPlayer;
-        button51.setEnabled(false);
-        activeGame4();
+        if (currentGame == 0) currentGame = 4;
+        if (currentGame != 4) return;
+        else {
+            game4[2][1] = currentPlayer;
+            currentGame = 4;
+            button51.setEnabled(false);
+            activeGame4();
+            if (currentPlayer == 1) {
+                button51.setText("X");
+                currentPlayer = 2;
+            } else {
+                button51.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button52(View view) {
-        game4[2][2] = currentPlayer;
-        button52.setEnabled(false);
-        activeGame5();
+        if (currentGame == 0) currentGame = 5;
+        if (currentGame != 4) return;
+        else {
+            game4[2][2] = currentPlayer;
+            currentGame = 5;
+            button52.setEnabled(false);
+            activeGame5();
+            if (currentPlayer == 1) {
+                button52.setText("X");
+                currentPlayer = 2;
+            } else {
+                button52.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button53(View view) {
-        game4[2][3] = currentPlayer;
-        button53.setEnabled(false);
-        activeGame6();
+        if (currentGame == 0) currentGame = 6;
+        if (currentGame != 4) return;
+        else {
+            game4[2][3] = currentPlayer;
+            currentGame = 6;
+            button53.setEnabled(false);
+            activeGame6();
+            if (currentPlayer == 1) {
+                button53.setText("X");
+                currentPlayer = 2;
+            } else {
+                button53.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button54(View view) {
-        game5[2][1] = currentPlayer;
-        button54.setEnabled(false);
-        activeGame4();
+        if (currentGame == 0) currentGame = 4;
+        if (currentGame != 5) return;
+        else {
+            game5[2][1] = currentPlayer;
+            currentGame = 4;
+            button54.setEnabled(false);
+            activeGame4();
+            if (currentPlayer == 1) {
+                button54.setText("X");
+                currentPlayer = 2;
+            } else {
+                button54.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button55(View view) {
-        game5[2][2] = currentPlayer;
-        button55.setEnabled(false);
-        activeGame5();
+        if (currentGame == 0) currentGame = 5;
+        if (currentGame != 5) return;
+        else {
+            game5[2][2] = currentPlayer;
+            currentGame = 5;
+            button55.setEnabled(false);
+            activeGame5();
+            if (currentPlayer == 1) {
+                button55.setText("X");
+                currentPlayer = 2;
+            } else {
+                button55.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button56(View view) {
-        game5[2][3] = currentPlayer;
-        button56.setEnabled(false);
-        activeGame6();
+        if (currentGame == 0) currentGame = 6;
+        if (currentGame != 5) return;
+        else {
+            game5[2][3] = currentPlayer;
+            currentGame = 6;
+            button56.setEnabled(false);
+            activeGame6();
+            if (currentPlayer == 1) {
+                button56.setText("X");
+                currentPlayer = 2;
+            } else {
+                button56.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button57(View view) {
-        game6[2][1] = currentPlayer;
-        button57.setEnabled(false);
-        activeGame4();
+        if (currentGame == 0) currentGame = 4;
+        if (currentGame != 6) return;
+        else {
+            game6[2][1] = currentPlayer;
+            currentGame = 4;
+            button57.setEnabled(false);
+            activeGame4();
+            if (currentPlayer == 1) {
+                button57.setText("X");
+                currentPlayer = 2;
+            } else {
+                button57.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button58(View view) {
-        game6[2][2] = currentPlayer;
-        button58.setEnabled(false);
-        activeGame5();
+        if (currentGame == 0) currentGame = 5;
+        if (currentGame != 6) return;
+        else {
+            game6[2][2] = currentPlayer;
+            currentGame = 5;
+            button58.setEnabled(false);
+            activeGame5();
+            if (currentPlayer == 1) {
+                button58.setText("X");
+                currentPlayer = 2;
+            } else {
+                button58.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button59(View view) {
-        game6[2][3] = currentPlayer;
-        button59.setEnabled(false);
-        activeGame6();
+        if (currentGame == 0) currentGame = 6;
+        if (currentGame != 6) return;
+        else {
+            game6[2][3] = currentPlayer;
+            currentGame = 6;
+            button59.setEnabled(false);
+            activeGame6();
+            if (currentPlayer == 1) {
+                button59.setText("X");
+                currentPlayer = 2;
+            } else {
+                button59.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button61(View view) {
-        game4[3][1] = currentPlayer;
-        button61.setEnabled(false);
-        activeGame7();
+        if (currentGame == 0) currentGame = 7;
+        if (currentGame != 4) return;
+        else {
+            game4[3][1] = currentPlayer;
+            currentGame = 7;
+            button61.setEnabled(false);
+            activeGame7();
+            if (currentPlayer == 1) {
+                button61.setText("X");
+                currentPlayer = 2;
+            } else {
+                button61.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button62(View view) {
-        game4[3][2] = currentPlayer;
-        button62.setEnabled(false);
-        activeGame8();
+        if (currentGame == 0) currentGame = 8;
+        if (currentGame != 4) return;
+        else {
+            game4[3][2] = currentPlayer;
+            currentGame = 8;
+            button62.setEnabled(false);
+            activeGame8();
+            if (currentPlayer == 1) {
+                button62.setText("X");
+                currentPlayer = 2;
+            } else {
+                button62.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button63(View view) {
-        game4[3][3] = currentPlayer;
-        button63.setEnabled(false);
-        activeGame9();
+        if (currentGame == 0) currentGame = 9;
+        if (currentGame != 4) return;
+        else {
+            game4[3][3] = currentPlayer;
+            currentGame = 9;
+            button63.setEnabled(false);
+            activeGame9();
+            if (currentPlayer == 1) {
+                button63.setText("X");
+                currentPlayer = 2;
+            } else {
+                button63.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button64(View view) {
-        game5[3][1] = currentPlayer;
-        button64.setEnabled(false);
-        activeGame7();
+        if (currentGame == 0) currentGame = 7;
+        if (currentGame != 5) return;
+        else {
+            game5[3][1] = currentPlayer;
+            currentGame = 7;
+            button64.setEnabled(false);
+            activeGame7();
+            if (currentPlayer == 1) {
+                button64.setText("X");
+                currentPlayer = 2;
+            } else {
+                button64.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button65(View view) {
-        game5[3][2] = currentPlayer;
-        button65.setEnabled(false);
-        activeGame8();
+        if (currentGame == 0) currentGame = 8;
+        if (currentGame != 5) return;
+        else {
+            game5[3][2] = currentPlayer;
+            currentGame = 8;
+            button65.setEnabled(false);
+            activeGame8();
+            if (currentPlayer == 1) {
+                button65.setText("X");
+                currentPlayer = 2;
+            } else {
+                button65.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button66(View view) {
-        game5[3][3] = currentPlayer;
-        button66.setEnabled(false);
-        activeGame9();
+        if (currentGame == 0) currentGame = 9;
+        if (currentGame != 5) return;
+        else {
+            game5[3][3] = currentPlayer;
+            currentGame = 9;
+            button66.setEnabled(false);
+            activeGame9();
+            if (currentPlayer == 1) {
+                button66.setText("X");
+                currentPlayer = 2;
+            } else {
+                button66.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button67(View view) {
-        game6[3][1] = currentPlayer;
-        button67.setEnabled(false);
-        activeGame7();
+        if (currentGame == 0) currentGame = 7;
+        if (currentGame != 6) return;
+        else {
+            game6[3][1] = currentPlayer;
+            currentGame = 7;
+            button67.setEnabled(false);
+            activeGame7();
+            if (currentPlayer == 1) {
+                button67.setText("X");
+                currentPlayer = 2;
+            } else {
+                button67.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button68(View view) {
-        game6[3][2] = currentPlayer;
-        button68.setEnabled(false);
-        activeGame8();
+        if (currentGame == 0) currentGame = 8;
+        if (currentGame != 6) return;
+        else {
+            game6[3][2] = currentPlayer;
+            currentGame = 8;
+            button68.setEnabled(false);
+            activeGame8();
+            if (currentPlayer == 1) {
+                button68.setText("X");
+                currentPlayer = 2;
+            } else {
+                button68.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button69(View view) {
-        game6[3][3] = currentPlayer;
-        button69.setEnabled(false);
-        activeGame9();
+        if (currentGame == 0) currentGame = 9;
+        if (currentGame != 6) return;
+        else {
+            game6[3][3] = currentPlayer;
+            currentGame = 9;
+            button69.setEnabled(false);
+            activeGame9();
+            if (currentPlayer == 1) {
+                button69.setText("X");
+                currentPlayer = 2;
+            } else {
+                button69.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button71(View view) {
-        game7[1][1] = currentPlayer;
-        button71.setEnabled(false);
-        activeGame1();
+        if (currentGame == 0) currentGame = 1;
+        if (currentGame != 7) return;
+        else {
+            game7[1][1] = currentPlayer;
+            currentGame = 1;
+            button71.setEnabled(false);
+            activeGame1();
+            if (currentPlayer == 1) {
+                button71.setText("X");
+                currentPlayer = 2;
+            } else {
+                button71.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button72(View view) {
-        game7[1][2] = currentPlayer;
-        button72.setEnabled(false);
-        activeGame2();
+        if (currentGame == 0) currentGame = 2;
+        if (currentGame != 7) return;
+        else {
+            game7[1][2] = currentPlayer;
+            currentGame = 2;
+            button72.setEnabled(false);
+            activeGame2();
+            if (currentPlayer == 1) {
+                button72.setText("X");
+                currentPlayer = 2;
+            } else {
+                button72.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button73(View view) {
-        game7[1][3] = currentPlayer;
-        button73.setEnabled(false);
-        activeGame3();
+        if (currentGame == 0) currentGame = 3;
+        if (currentGame != 7) return;
+        else {
+            game7[1][3] = currentPlayer;
+            currentGame = 3;
+            button73.setEnabled(false);
+            activeGame3();
+            if (currentPlayer == 1) {
+                button73.setText("X");
+                currentPlayer = 2;
+            } else {
+                button73.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button74(View view) {
-        game8[1][1] = currentPlayer;
-        button74.setEnabled(false);
-        activeGame1();
+        if (currentGame == 0) currentGame = 1;
+        if (currentGame != 8) return;
+        else {
+            game8[1][1] = currentPlayer;
+            currentGame = 1;
+            button74.setEnabled(false);
+            activeGame1();
+            if (currentPlayer == 1) {
+                button74.setText("X");
+                currentPlayer = 2;
+            } else {
+                button74.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button75(View view) {
-        game8[1][2] = currentPlayer;
-        button75.setEnabled(false);
-        activeGame2();
+        if (currentGame == 0) currentGame = 2;
+        if (currentGame != 8) return;
+        else {
+            game8[1][2] = currentPlayer;
+            currentGame = 2;
+            button75.setEnabled(false);
+            activeGame2();
+            if (currentPlayer == 1) {
+                button75.setText("X");
+                currentPlayer = 2;
+            } else {
+                button75.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button76(View view) {
-        game8[1][3] = currentPlayer;
-        button76.setEnabled(false);
-        activeGame3();
+        if (currentGame == 0) currentGame = 3;
+        if (currentGame != 8) return;
+        else {
+            game8[1][3] = currentPlayer;
+            currentGame = 3;
+            button76.setEnabled(false);
+            activeGame3();
+            if (currentPlayer == 1) {
+                button76.setText("X");
+                currentPlayer = 2;
+            } else {
+                button76.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button77(View view) {
-        game9[1][1] = currentPlayer;
-        button77.setEnabled(false);
-        activeGame1();
+        if (currentGame == 0) currentGame = 1;
+        if (currentGame != 9) return;
+        else {
+            game9[1][1] = currentPlayer;
+            currentGame = 1;
+            button77.setEnabled(false);
+            activeGame1();
+            if (currentPlayer == 1) {
+                button77.setText("X");
+                currentPlayer = 2;
+            } else {
+                button77.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button78(View view) {
-        game9[1][2] = currentPlayer;
-        button78.setEnabled(false);
-        activeGame2();
+        if (currentGame == 0) currentGame = 2;
+        if (currentGame != 9) return;
+        else {
+            game9[1][2] = currentPlayer;
+            currentGame = 2;
+            button78.setEnabled(false);
+            activeGame2();
+            if (currentPlayer == 1) {
+                button78.setText("X");
+                currentPlayer = 2;
+            } else {
+                button78.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button79(View view) {
-        game9[1][3] = currentPlayer;
-        button79.setEnabled(false);
-        activeGame3();
+        if (currentGame == 0) currentGame = 3;
+        if (currentGame != 9) return;
+        else {
+            game9[1][3] = currentPlayer;
+            currentGame = 3;
+            button79.setEnabled(false);
+            activeGame3();
+            if (currentPlayer == 1) {
+                button79.setText("X");
+                currentPlayer = 2;
+            } else {
+                button79.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button81(View view) {
-        game7[2][1] = currentPlayer;
-        button81.setEnabled(false);
-        activeGame4();
+        if (currentGame == 0) currentGame = 4;
+        if (currentGame != 7) return;
+        else {
+            game7[2][1] = currentPlayer;
+            currentGame = 4;
+            button81.setEnabled(false);
+            activeGame4();
+            if (currentPlayer == 1) {
+                button81.setText("X");
+                currentPlayer = 2;
+            } else {
+                button81.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button82(View view) {
-        game7[2][2] = currentPlayer;
-        button82.setEnabled(false);
-        activeGame5();
+        if (currentGame == 0) currentGame = 5;
+        if (currentGame != 7) return;
+        else {
+            game7[2][2] = currentPlayer;
+            currentGame = 5;
+            button82.setEnabled(false);
+            activeGame5();
+            if (currentPlayer == 1) {
+                button82.setText("X");
+                currentPlayer = 2;
+            } else {
+                button82.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button83(View view) {
-        game7[2][3] = currentPlayer;
-        button83.setEnabled(false);
-        activeGame6();
+        if (currentGame == 0) currentGame = 6;
+        if (currentGame != 7) return;
+        else {
+            game7[2][3] = currentPlayer;
+            currentGame = 6;
+            button83.setEnabled(false);
+            activeGame6();
+            if (currentPlayer == 1) {
+                button83.setText("X");
+                currentPlayer = 2;
+            } else {
+                button83.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button84(View view) {
-        game8[2][1] = currentPlayer;
-        button84.setEnabled(false);
-        activeGame4();
+        if (currentGame == 0) currentGame = 4;
+        if (currentGame != 8) return;
+        else {
+            game8[2][1] = currentPlayer;
+            currentGame = 4;
+            button84.setEnabled(false);
+            activeGame4();
+            if (currentPlayer == 1) {
+                button84.setText("X");
+                currentPlayer = 2;
+            } else {
+                button84.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button85(View view) {
-        game8[2][2] = currentPlayer;
-        button85.setEnabled(false);
-        activeGame5();
+        if (currentGame == 0) currentGame = 5;
+        if (currentGame != 8) return;
+        else {
+            game8[2][2] = currentPlayer;
+            currentGame = 5;
+            button85.setEnabled(false);
+            activeGame5();
+            if (currentPlayer == 1) {
+                button85.setText("X");
+                currentPlayer = 2;
+            } else {
+                button85.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button86(View view) {
-        game8[2][3] = currentPlayer;
-        button86.setEnabled(false);
-        activeGame6();
+        if (currentGame == 0) currentGame = 6;
+        if (currentGame != 8) return;
+        else {
+            game8[2][3] = currentPlayer;
+            currentGame = 6;
+            button86.setEnabled(false);
+            activeGame6();
+            if (currentPlayer == 1) {
+                button86.setText("X");
+                currentPlayer = 2;
+            } else {
+                button86.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button87(View view) {
-        game9[2][1] = currentPlayer;
-        button87.setEnabled(false);
-        activeGame4();
+        if (currentGame == 0) currentGame = 4;
+        if (currentGame != 9) return;
+        else {
+            game9[2][1] = currentPlayer;
+            currentGame = 4;
+            button87.setEnabled(false);
+            activeGame4();
+            if (currentPlayer == 1) {
+                button87.setText("X");
+                currentPlayer = 2;
+            } else {
+                button87.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button88(View view) {
-        game9[2][2] = currentPlayer;
-        button88.setEnabled(false);
-        activeGame5();
+        if (currentGame == 0) currentGame = 5;
+        if (currentGame != 9) return;
+        else {
+            game9[2][2] = currentPlayer;
+            currentGame = 5;
+            button88.setEnabled(false);
+            activeGame5();
+            if (currentPlayer == 1) {
+                button88.setText("X");
+                currentPlayer = 2;
+            } else {
+                button88.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button89(View view) {
-        game9[2][3] = currentPlayer;
-        button89.setEnabled(false);
-        activeGame6();
+        if (currentGame == 0) currentGame = 6;
+        if (currentGame != 9) return;
+        else {
+            game9[2][3] = currentPlayer;
+            currentGame = 6;
+            button89.setEnabled(false);
+            activeGame6();
+            if (currentPlayer == 1) {
+                button89.setText("X");
+                currentPlayer = 2;
+            } else {
+                button89.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button91(View view) {
-        game7[3][1] = currentPlayer;
-        button91.setEnabled(false);
-        activeGame7();
+        if (currentGame == 0) currentGame = 7;
+        if (currentGame != 7) return;
+        else {
+            game7[3][1] = currentPlayer;
+            currentGame = 7;
+            button91.setEnabled(false);
+            activeGame7();
+            if (currentPlayer == 1) {
+                button91.setText("X");
+                currentPlayer = 2;
+            } else {
+                button91.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button92(View view) {
-        game7[3][2] = currentPlayer;
-        button92.setEnabled(false);
-        activeGame8();
+        if (currentGame == 0) currentGame = 8;
+        if (currentGame != 7) return;
+        else {
+            game7[3][2] = currentPlayer;
+            currentGame = 8;
+            button92.setEnabled(false);
+            activeGame8();
+            if (currentPlayer == 1) {
+                button92.setText("X");
+                currentPlayer = 2;
+            } else {
+                button92.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button93(View view) {
-        game7[3][3] = currentPlayer;
-        button93.setEnabled(false);
-        activeGame9();
+        if (currentGame == 0) currentGame = 9;
+        if (currentGame != 7) return;
+        else {
+            game7[3][3] = currentPlayer;
+            currentGame = 9;
+            button93.setEnabled(false);
+            activeGame9();
+            if (currentPlayer == 1) {
+                button93.setText("X");
+                currentPlayer = 2;
+            } else {
+                button93.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button94(View view) {
-        game8[3][1] = currentPlayer;
-        button94.setEnabled(false);
-        activeGame7();
+        if (currentGame == 0) currentGame = 7;
+        if (currentGame != 8) return;
+        else {
+            game8[3][1] = currentPlayer;
+            currentGame = 7;
+            button94.setEnabled(false);
+            activeGame7();
+            if (currentPlayer == 1) {
+                button94.setText("X");
+                currentPlayer = 2;
+            } else {
+                button94.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button95(View view) {
-        game8[3][2] = currentPlayer;
-        button95.setEnabled(false);
-        activeGame8();
+        if (currentGame == 0) currentGame = 8;
+        if (currentGame != 8) return;
+        else {
+            game8[3][2] = currentPlayer;
+            currentGame = 8;
+            button95.setEnabled(false);
+            activeGame8();
+            if (currentPlayer == 1) {
+                button95.setText("X");
+                currentPlayer = 2;
+            } else {
+                button95.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button96(View view) {
-        game8[3][3] = currentPlayer;
-        button96.setEnabled(false);
-        activeGame9();
+        if (currentGame == 0) currentGame = 9;
+        if (currentGame != 8) return;
+        else {
+            game8[3][3] = currentPlayer;
+            currentGame = 9;
+            button96.setEnabled(false);
+            activeGame9();
+            if (currentPlayer == 1) {
+                button96.setText("X");
+                currentPlayer = 2;
+            } else {
+                button96.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button97(View view) {
-        game9[3][1] = currentPlayer;
-        button97.setEnabled(false);
-        activeGame7();
+        if (currentGame == 0) currentGame = 7;
+        if (currentGame != 9) return;
+        else {
+            game9[3][1] = currentPlayer;
+            currentGame = 7;
+            button97.setEnabled(false);
+            activeGame7();
+            if (currentPlayer == 1) {
+                button97.setText("X");
+                currentPlayer = 2;
+            } else {
+                button97.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button98(View view) {
-        game9[3][2] = currentPlayer;
-        button98.setEnabled(false);
-        activeGame8();
+        if (currentGame == 0) currentGame = 8;
+        if (currentGame != 9) return;
+        else {
+            game9[3][2] = currentPlayer;
+            currentGame = 8;
+            button98.setEnabled(false);
+            activeGame8();
+            if (currentPlayer == 1) {
+                button98.setText("X");
+                currentPlayer = 2;
+            } else {
+                button98.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
 
     public void button99(View view) {
-        game9[3][3] = currentPlayer;
-        button99.setEnabled(false);
-        activeGame9();
+        if (currentGame == 0) currentGame = 9;
+        if (currentGame != 9) return;
+        else {
+            game9[3][3] = currentPlayer;
+            currentGame = 9;
+            button99.setEnabled(false);
+            activeGame9();
+            if (currentPlayer == 1) {
+                button99.setText("X");
+                currentPlayer = 2;
+            } else {
+                button99.setText("O");
+                currentPlayer = 1;
+            }
+        }
     }
+
 
     //method to remove highlighting by setting a null color filters
     public void resetAllButtons() {
@@ -929,6 +1989,8 @@ public class MainActivity extends AppCompatActivity {
         button99.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
 
     }
+
+    //todo method that checks each game is won
 
 
 }

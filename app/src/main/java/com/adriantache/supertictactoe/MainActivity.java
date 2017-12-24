@@ -3,7 +3,6 @@ package com.adriantache.supertictactoe;
 import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -203,6 +202,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void reset(View view) {
         //todo implement reset functionality
+
+        //reset variables
+        game1 = new int[4][4];
+        game2 = new int[4][4];
+        game3 = new int[4][4];
+        game4 = new int[4][4];
+        game5 = new int[4][4];
+        game6 = new int[4][4];
+        game7 = new int[4][4];
+        game8 = new int[4][4];
+        game9 = new int[4][4];
+        mainGame = new int[4][4];
+        currentPlayer = 1;
+        currentGame = 0;
 
         // reset all highlighting
         resetAllButtons();
@@ -1928,8 +1941,6 @@ public class MainActivity extends AppCompatActivity {
         // if there is a win, codify current player into main matrix
         if (allEqual(game1[1][1], game1[1][2], game1[1][3]) || allEqual(game1[2][1], game1[2][2], game1[2][3]) || allEqual(game1[3][1], game1[3][2], game1[3][3]) || allEqual(game1[1][1], game1[2][2], game1[3][3]) || allEqual(game1[1][3], game1[2][2], game1[3][1]) || allEqual(game1[1][1], game1[2][1], game1[3][1]) || allEqual(game1[1][2], game1[2][2], game1[3][2]) || allEqual(game1[1][3], game1[2][3], game1[3][3])) {
             mainGame[1][1] = currentPlayer;
-            Log.i(TAG, "checkGame1Win: " + currentPlayer);
-
             // if cursor points to this board, allow all movement
             if (currentGame == 1) currentGame = 0;
             disableGame1();
@@ -1940,8 +1951,6 @@ public class MainActivity extends AppCompatActivity {
         // if there is a win, codify current player into main matrix
         if (allEqual(game2[1][1], game2[1][2], game2[1][3]) || allEqual(game2[2][1], game2[2][2], game2[2][3]) || allEqual(game2[3][1], game2[3][2], game2[3][3]) || allEqual(game2[1][1], game2[2][2], game2[3][3]) || allEqual(game2[1][3], game2[2][2], game2[3][1]) || allEqual(game2[1][1], game2[2][1], game2[3][1]) || allEqual(game2[1][2], game2[2][2], game2[3][2]) || allEqual(game2[1][3], game2[2][3], game2[3][3])) {
             mainGame[1][2] = currentPlayer;
-            Log.i(TAG, "checkGame2Win: " + currentPlayer);
-
             // if cursor points to this board, allow all movement
             if (currentGame == 2) currentGame = 0;
             disableGame2();
@@ -1952,8 +1961,6 @@ public class MainActivity extends AppCompatActivity {
         // if there is a win, codify current player into main matrix
         if (allEqual(game3[1][1], game3[1][2], game3[1][3]) || allEqual(game3[2][1], game3[2][2], game3[2][3]) || allEqual(game3[3][1], game3[3][2], game3[3][3]) || allEqual(game3[1][1], game3[2][2], game3[3][3]) || allEqual(game3[1][3], game3[2][2], game3[3][1]) || allEqual(game3[1][1], game3[2][1], game3[3][1]) || allEqual(game3[1][2], game3[2][2], game3[3][2]) || allEqual(game3[1][3], game3[2][3], game3[3][3])) {
             mainGame[1][3] = currentPlayer;
-            Log.i(TAG, "checkGame3Win: " + currentPlayer);
-
             // if cursor points to this board, allow all movement
             if (currentGame == 3) currentGame = 0;
             disableGame3();
@@ -1964,8 +1971,6 @@ public class MainActivity extends AppCompatActivity {
         // if there is a win, codify current player into main matrix
         if (allEqual(game4[1][1], game4[1][2], game4[1][3]) || allEqual(game4[2][1], game4[2][2], game4[2][3]) || allEqual(game4[3][1], game4[3][2], game4[3][3]) || allEqual(game4[1][1], game4[2][2], game4[3][3]) || allEqual(game4[1][3], game4[2][2], game4[3][1]) || allEqual(game4[1][1], game4[2][1], game4[3][1]) || allEqual(game4[1][2], game4[2][2], game4[3][2]) || allEqual(game4[1][3], game4[2][3], game4[3][3])) {
             mainGame[2][1] = currentPlayer;
-            Log.i(TAG, "checkGame4Win: " + currentPlayer);
-
             // if cursor points to this board, allow all movement
             if (currentGame == 4) currentGame = 0;
             disableGame4();
@@ -1976,8 +1981,6 @@ public class MainActivity extends AppCompatActivity {
         // if there is a win, codify current player into main matrix
         if (allEqual(game5[1][1], game5[1][2], game5[1][3]) || allEqual(game5[2][1], game5[2][2], game5[2][3]) || allEqual(game5[3][1], game5[3][2], game5[3][3]) || allEqual(game5[1][1], game5[2][2], game5[3][3]) || allEqual(game5[1][3], game5[2][2], game5[3][1]) || allEqual(game5[1][1], game5[2][1], game5[3][1]) || allEqual(game5[1][2], game5[2][2], game5[3][2]) || allEqual(game5[1][3], game5[2][3], game5[3][3])) {
             mainGame[2][2] = currentPlayer;
-            Log.i(TAG, "checkGame5Win: " + currentPlayer);
-
             // if cursor points to this board, allow all movement
             if (currentGame == 5) currentGame = 0;
             disableGame5();
@@ -1988,8 +1991,6 @@ public class MainActivity extends AppCompatActivity {
         // if there is a win, codify current player into main matrix
         if (allEqual(game6[1][1], game6[1][2], game6[1][3]) || allEqual(game6[2][1], game6[2][2], game6[2][3]) || allEqual(game6[3][1], game6[3][2], game6[3][3]) || allEqual(game6[1][1], game6[2][2], game6[3][3]) || allEqual(game6[1][3], game6[2][2], game6[3][1]) || allEqual(game6[1][1], game6[2][1], game6[3][1]) || allEqual(game6[1][2], game6[2][2], game6[3][2]) || allEqual(game6[1][3], game6[2][3], game6[3][3])) {
             mainGame[2][3] = currentPlayer;
-            Log.i(TAG, "checkGame6Win: " + currentPlayer);
-
             // if cursor points to this board, allow all movement
             if (currentGame == 6) currentGame = 0;
             disableGame6();
@@ -2000,8 +2001,6 @@ public class MainActivity extends AppCompatActivity {
         // if there is a win, codify current player into main matrix
         if (allEqual(game7[1][1], game7[1][2], game7[1][3]) || allEqual(game7[2][1], game7[2][2], game7[2][3]) || allEqual(game7[3][1], game7[3][2], game7[3][3]) || allEqual(game7[1][1], game7[2][2], game7[3][3]) || allEqual(game7[1][3], game7[2][2], game7[3][1]) || allEqual(game7[1][1], game7[2][1], game7[3][1]) || allEqual(game7[1][2], game7[2][2], game7[3][2]) || allEqual(game7[1][3], game7[2][3], game7[3][3])) {
             mainGame[3][1] = currentPlayer;
-            Log.i(TAG, "checkGame7Win: " + currentPlayer);
-
             // if cursor points to this board, allow all movement
             if (currentGame == 7) currentGame = 0;
             disableGame7();
@@ -2012,8 +2011,6 @@ public class MainActivity extends AppCompatActivity {
         // if there is a win, codify current player into main matrix
         if (allEqual(game8[1][1], game8[1][2], game8[1][3]) || allEqual(game8[2][1], game8[2][2], game8[2][3]) || allEqual(game8[3][1], game8[3][2], game8[3][3]) || allEqual(game8[1][1], game8[2][2], game8[3][3]) || allEqual(game8[1][3], game8[2][2], game8[3][1]) || allEqual(game8[1][1], game8[2][1], game8[3][1]) || allEqual(game8[1][2], game8[2][2], game8[3][2]) || allEqual(game8[1][3], game8[2][3], game8[3][3])) {
             mainGame[3][2] = currentPlayer;
-            Log.i(TAG, "checkGame8Win: " + currentPlayer);
-
             // if cursor points to this board, allow all movement
             if (currentGame == 8) currentGame = 0;
             disableGame8();
@@ -2024,8 +2021,6 @@ public class MainActivity extends AppCompatActivity {
         // if there is a win, codify current player into main matrix
         if (allEqual(game9[1][1], game9[1][2], game9[1][3]) || allEqual(game9[2][1], game9[2][2], game9[2][3]) || allEqual(game9[3][1], game9[3][2], game9[3][3]) || allEqual(game9[1][1], game9[2][2], game9[3][3]) || allEqual(game9[1][3], game9[2][2], game9[3][1]) || allEqual(game9[1][1], game9[2][1], game9[3][1]) || allEqual(game9[1][2], game9[2][2], game9[3][2]) || allEqual(game9[1][3], game9[2][3], game9[3][3])) {
             mainGame[3][3] = currentPlayer;
-            Log.i(TAG, "checkGame9Win: " + currentPlayer);
-
             // if cursor points to this board, allow all movement
             if (currentGame == 9) currentGame = 0;
             disableGame9();
@@ -2247,17 +2242,128 @@ public class MainActivity extends AppCompatActivity {
         button99.getBackground().setColorFilter(null);
     }
 
+    //methods to reset each game, for more control
+    public void resetGame1() {
+        button11.getBackground().setColorFilter(null);
+        button12.getBackground().setColorFilter(null);
+        button13.getBackground().setColorFilter(null);
+        button21.getBackground().setColorFilter(null);
+        button22.getBackground().setColorFilter(null);
+        button23.getBackground().setColorFilter(null);
+        button31.getBackground().setColorFilter(null);
+        button32.getBackground().setColorFilter(null);
+        button33.getBackground().setColorFilter(null);
+    }
+
+    public void resetGame2() {
+        button14.getBackground().setColorFilter(null);
+        button15.getBackground().setColorFilter(null);
+        button16.getBackground().setColorFilter(null);
+        button24.getBackground().setColorFilter(null);
+        button25.getBackground().setColorFilter(null);
+        button26.getBackground().setColorFilter(null);
+        button34.getBackground().setColorFilter(null);
+        button35.getBackground().setColorFilter(null);
+        button36.getBackground().setColorFilter(null);
+    }
+
+    public void resetGame3() {
+        button17.getBackground().setColorFilter(null);
+        button18.getBackground().setColorFilter(null);
+        button19.getBackground().setColorFilter(null);
+        button27.getBackground().setColorFilter(null);
+        button28.getBackground().setColorFilter(null);
+        button29.getBackground().setColorFilter(null);
+        button37.getBackground().setColorFilter(null);
+        button38.getBackground().setColorFilter(null);
+        button39.getBackground().setColorFilter(null);
+    }
+
+    public void resetGame4() {
+        button41.getBackground().setColorFilter(null);
+        button42.getBackground().setColorFilter(null);
+        button43.getBackground().setColorFilter(null);
+        button51.getBackground().setColorFilter(null);
+        button52.getBackground().setColorFilter(null);
+        button53.getBackground().setColorFilter(null);
+        button61.getBackground().setColorFilter(null);
+        button62.getBackground().setColorFilter(null);
+        button63.getBackground().setColorFilter(null);
+    }
+
+    public void resetGame5() {
+        button44.getBackground().setColorFilter(null);
+        button45.getBackground().setColorFilter(null);
+        button46.getBackground().setColorFilter(null);
+        button54.getBackground().setColorFilter(null);
+        button55.getBackground().setColorFilter(null);
+        button56.getBackground().setColorFilter(null);
+        button64.getBackground().setColorFilter(null);
+        button65.getBackground().setColorFilter(null);
+        button66.getBackground().setColorFilter(null);
+    }
+
+    public void resetGame6() {
+        button47.getBackground().setColorFilter(null);
+        button48.getBackground().setColorFilter(null);
+        button49.getBackground().setColorFilter(null);
+        button57.getBackground().setColorFilter(null);
+        button58.getBackground().setColorFilter(null);
+        button59.getBackground().setColorFilter(null);
+        button67.getBackground().setColorFilter(null);
+        button68.getBackground().setColorFilter(null);
+        button69.getBackground().setColorFilter(null);
+    }
+
+    public void resetGame7() {
+        button71.getBackground().setColorFilter(null);
+        button72.getBackground().setColorFilter(null);
+        button73.getBackground().setColorFilter(null);
+        button81.getBackground().setColorFilter(null);
+        button82.getBackground().setColorFilter(null);
+        button83.getBackground().setColorFilter(null);
+        button91.getBackground().setColorFilter(null);
+        button92.getBackground().setColorFilter(null);
+        button93.getBackground().setColorFilter(null);
+    }
+
+    public void resetGame8() {
+        button74.getBackground().setColorFilter(null);
+        button75.getBackground().setColorFilter(null);
+        button76.getBackground().setColorFilter(null);
+        button84.getBackground().setColorFilter(null);
+        button85.getBackground().setColorFilter(null);
+        button86.getBackground().setColorFilter(null);
+        button94.getBackground().setColorFilter(null);
+        button95.getBackground().setColorFilter(null);
+        button96.getBackground().setColorFilter(null);
+    }
+
+    public void resetGame9() {
+        button77.getBackground().setColorFilter(null);
+        button78.getBackground().setColorFilter(null);
+        button79.getBackground().setColorFilter(null);
+        button87.getBackground().setColorFilter(null);
+        button88.getBackground().setColorFilter(null);
+        button89.getBackground().setColorFilter(null);
+        button97.getBackground().setColorFilter(null);
+        button98.getBackground().setColorFilter(null);
+        button99.getBackground().setColorFilter(null);
+    }
+
+    //todo logic to determine which boards get reset (i.e. all that do not have final scores)
+public void resetHighlighting(){
+        return;
+}
+
     //methods to set active game
     public void activeGame1() {
-
-        //remove all highlighting
-        resetAllButtons();
         //test for already won board and allow movement outside current board
         if (mainGame[1][1] != 0) {
             currentGame = 0;
         } else {
-
-
+            //reset highlighting
+            resetHighlighting();
             //highlight buttons you can click using a color filter
             button11.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
             button12.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));

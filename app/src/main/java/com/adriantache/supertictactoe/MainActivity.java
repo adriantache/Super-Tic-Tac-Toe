@@ -3,6 +3,7 @@ package com.adriantache.supertictactoe;
 import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -302,9 +303,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame1();
             if (currentPlayer == 1) {
                 button11.setText("X");
+                checkGame1Win();
                 currentPlayer = 2;
             } else {
                 button11.setText("O");
+                checkGame1Win();
                 currentPlayer = 1;
             }
         }
@@ -320,9 +323,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame2();
             if (currentPlayer == 1) {
                 button12.setText("X");
+                checkGame1Win();
                 currentPlayer = 2;
             } else {
                 button12.setText("O");
+                checkGame1Win();
                 currentPlayer = 1;
             }
         }
@@ -338,9 +343,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame3();
             if (currentPlayer == 1) {
                 button13.setText("X");
+                checkGame1Win();
                 currentPlayer = 2;
             } else {
                 button13.setText("O");
+                checkGame1Win();
                 currentPlayer = 1;
             }
         }
@@ -356,9 +363,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame1();
             if (currentPlayer == 1) {
                 button14.setText("X");
+                checkGame2Win();
                 currentPlayer = 2;
             } else {
                 button14.setText("O");
+                checkGame2Win();
                 currentPlayer = 1;
             }
         }
@@ -374,9 +383,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame2();
             if (currentPlayer == 1) {
                 button15.setText("X");
+                checkGame2Win();
                 currentPlayer = 2;
             } else {
                 button15.setText("O");
+                checkGame2Win();
                 currentPlayer = 1;
             }
         }
@@ -392,9 +403,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame3();
             if (currentPlayer == 1) {
                 button16.setText("X");
+                checkGame2Win();
                 currentPlayer = 2;
             } else {
                 button16.setText("O");
+                checkGame2Win();
                 currentPlayer = 1;
             }
         }
@@ -410,9 +423,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame1();
             if (currentPlayer == 1) {
                 button17.setText("X");
+                checkGame3Win();
                 currentPlayer = 2;
             } else {
                 button17.setText("O");
+                checkGame3Win();
                 currentPlayer = 1;
             }
         }
@@ -428,9 +443,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame2();
             if (currentPlayer == 1) {
                 button18.setText("X");
+                checkGame3Win();
                 currentPlayer = 2;
             } else {
                 button18.setText("O");
+                checkGame3Win();
                 currentPlayer = 1;
             }
         }
@@ -446,9 +463,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame3();
             if (currentPlayer == 1) {
                 button19.setText("X");
+                checkGame3Win();
                 currentPlayer = 2;
             } else {
                 button19.setText("O");
+                checkGame3Win();
                 currentPlayer = 1;
             }
         }
@@ -464,9 +483,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame4();
             if (currentPlayer == 1) {
                 button21.setText("X");
+                checkGame1Win();
                 currentPlayer = 2;
             } else {
                 button21.setText("O");
+                checkGame1Win();
                 currentPlayer = 1;
             }
         }
@@ -482,9 +503,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame5();
             if (currentPlayer == 1) {
                 button22.setText("X");
+                checkGame1Win();
                 currentPlayer = 2;
             } else {
                 button22.setText("O");
+                checkGame1Win();
                 currentPlayer = 1;
             }
         }
@@ -500,9 +523,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame6();
             if (currentPlayer == 1) {
                 button23.setText("X");
+                checkGame1Win();
                 currentPlayer = 2;
             } else {
                 button23.setText("O");
+                checkGame1Win();
                 currentPlayer = 1;
             }
         }
@@ -518,9 +543,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame4();
             if (currentPlayer == 1) {
                 button24.setText("X");
+                checkGame2Win();
                 currentPlayer = 2;
             } else {
                 button24.setText("O");
+                checkGame2Win();
                 currentPlayer = 1;
             }
         }
@@ -536,9 +563,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame5();
             if (currentPlayer == 1) {
                 button25.setText("X");
+                checkGame2Win();
                 currentPlayer = 2;
             } else {
                 button25.setText("O");
+                checkGame2Win();
                 currentPlayer = 1;
             }
         }
@@ -554,9 +583,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame6();
             if (currentPlayer == 1) {
                 button26.setText("X");
+                checkGame2Win();
                 currentPlayer = 2;
             } else {
                 button26.setText("O");
+                checkGame2Win();
                 currentPlayer = 1;
             }
         }
@@ -572,9 +603,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame4();
             if (currentPlayer == 1) {
                 button27.setText("X");
+                checkGame3Win();
                 currentPlayer = 2;
             } else {
                 button27.setText("O");
+                checkGame3Win();
                 currentPlayer = 1;
             }
         }
@@ -590,9 +623,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame5();
             if (currentPlayer == 1) {
                 button28.setText("X");
+                checkGame3Win();
                 currentPlayer = 2;
             } else {
                 button28.setText("O");
+                checkGame3Win();
                 currentPlayer = 1;
             }
         }
@@ -608,9 +643,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame6();
             if (currentPlayer == 1) {
                 button29.setText("X");
+                checkGame3Win();
                 currentPlayer = 2;
             } else {
                 button29.setText("O");
+                checkGame3Win();
                 currentPlayer = 1;
             }
         }
@@ -626,9 +663,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame7();
             if (currentPlayer == 1) {
                 button31.setText("X");
+                checkGame1Win();
                 currentPlayer = 2;
             } else {
                 button31.setText("O");
+                checkGame1Win();
                 currentPlayer = 1;
             }
         }
@@ -644,9 +683,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame8();
             if (currentPlayer == 1) {
                 button32.setText("X");
+                checkGame1Win();
                 currentPlayer = 2;
             } else {
                 button32.setText("O");
+                checkGame1Win();
                 currentPlayer = 1;
             }
         }
@@ -662,9 +703,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame9();
             if (currentPlayer == 1) {
                 button33.setText("X");
+                checkGame1Win();
                 currentPlayer = 2;
             } else {
                 button33.setText("O");
+                checkGame1Win();
                 currentPlayer = 1;
             }
         }
@@ -680,9 +723,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame7();
             if (currentPlayer == 1) {
                 button34.setText("X");
+                checkGame2Win();
                 currentPlayer = 2;
             } else {
                 button34.setText("O");
+                checkGame2Win();
                 currentPlayer = 1;
             }
         }
@@ -698,9 +743,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame8();
             if (currentPlayer == 1) {
                 button35.setText("X");
+                checkGame2Win();
                 currentPlayer = 2;
             } else {
                 button35.setText("O");
+                checkGame2Win();
                 currentPlayer = 1;
             }
         }
@@ -716,9 +763,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame9();
             if (currentPlayer == 1) {
                 button36.setText("X");
+                checkGame2Win();
                 currentPlayer = 2;
             } else {
                 button36.setText("O");
+                checkGame2Win();
                 currentPlayer = 1;
             }
         }
@@ -734,9 +783,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame7();
             if (currentPlayer == 1) {
                 button37.setText("X");
+                checkGame3Win();
                 currentPlayer = 2;
             } else {
                 button37.setText("O");
+                checkGame3Win();
                 currentPlayer = 1;
             }
         }
@@ -752,9 +803,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame8();
             if (currentPlayer == 1) {
                 button38.setText("X");
+                checkGame3Win();
                 currentPlayer = 2;
             } else {
                 button38.setText("O");
+                checkGame3Win();
                 currentPlayer = 1;
             }
         }
@@ -770,9 +823,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame9();
             if (currentPlayer == 1) {
                 button39.setText("X");
+                checkGame3Win();
                 currentPlayer = 2;
             } else {
                 button39.setText("O");
+                checkGame3Win();
                 currentPlayer = 1;
             }
         }
@@ -788,9 +843,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame1();
             if (currentPlayer == 1) {
                 button41.setText("X");
+                checkGame4Win();
                 currentPlayer = 2;
             } else {
                 button41.setText("O");
+                checkGame4Win();
                 currentPlayer = 1;
             }
         }
@@ -806,9 +863,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame2();
             if (currentPlayer == 1) {
                 button42.setText("X");
+                checkGame4Win();
                 currentPlayer = 2;
             } else {
                 button42.setText("O");
+                checkGame4Win();
                 currentPlayer = 1;
             }
         }
@@ -824,9 +883,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame3();
             if (currentPlayer == 1) {
                 button43.setText("X");
+                checkGame4Win();
                 currentPlayer = 2;
             } else {
                 button43.setText("O");
+                checkGame4Win();
                 currentPlayer = 1;
             }
         }
@@ -842,9 +903,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame1();
             if (currentPlayer == 1) {
                 button44.setText("X");
+                checkGame5Win();
                 currentPlayer = 2;
             } else {
                 button44.setText("O");
+                checkGame5Win();
                 currentPlayer = 1;
             }
         }
@@ -860,9 +923,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame2();
             if (currentPlayer == 1) {
                 button45.setText("X");
+                checkGame5Win();
                 currentPlayer = 2;
             } else {
                 button45.setText("O");
+                checkGame5Win();
                 currentPlayer = 1;
             }
         }
@@ -878,9 +943,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame3();
             if (currentPlayer == 1) {
                 button46.setText("X");
+                checkGame5Win();
                 currentPlayer = 2;
             } else {
                 button46.setText("O");
+                checkGame5Win();
                 currentPlayer = 1;
             }
         }
@@ -896,9 +963,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame1();
             if (currentPlayer == 1) {
                 button47.setText("X");
+                checkGame6Win();
                 currentPlayer = 2;
             } else {
                 button47.setText("O");
+                checkGame6Win();
                 currentPlayer = 1;
             }
         }
@@ -914,9 +983,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame2();
             if (currentPlayer == 1) {
                 button48.setText("X");
+                checkGame6Win();
                 currentPlayer = 2;
             } else {
                 button48.setText("O");
+                checkGame6Win();
                 currentPlayer = 1;
             }
         }
@@ -932,9 +1003,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame3();
             if (currentPlayer == 1) {
                 button49.setText("X");
+                checkGame6Win();
                 currentPlayer = 2;
             } else {
                 button49.setText("O");
+                checkGame6Win();
                 currentPlayer = 1;
             }
         }
@@ -950,9 +1023,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame4();
             if (currentPlayer == 1) {
                 button51.setText("X");
+                checkGame4Win();
                 currentPlayer = 2;
             } else {
                 button51.setText("O");
+                checkGame4Win();
                 currentPlayer = 1;
             }
         }
@@ -968,9 +1043,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame5();
             if (currentPlayer == 1) {
                 button52.setText("X");
+                checkGame4Win();
                 currentPlayer = 2;
             } else {
                 button52.setText("O");
+                checkGame4Win();
                 currentPlayer = 1;
             }
         }
@@ -986,9 +1063,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame6();
             if (currentPlayer == 1) {
                 button53.setText("X");
+                checkGame4Win();
                 currentPlayer = 2;
             } else {
                 button53.setText("O");
+                checkGame4Win();
                 currentPlayer = 1;
             }
         }
@@ -1004,9 +1083,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame4();
             if (currentPlayer == 1) {
                 button54.setText("X");
+                checkGame5Win();
                 currentPlayer = 2;
             } else {
                 button54.setText("O");
+                checkGame5Win();
                 currentPlayer = 1;
             }
         }
@@ -1022,9 +1103,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame5();
             if (currentPlayer == 1) {
                 button55.setText("X");
+                checkGame5Win();
                 currentPlayer = 2;
             } else {
                 button55.setText("O");
+                checkGame5Win();
                 currentPlayer = 1;
             }
         }
@@ -1040,9 +1123,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame6();
             if (currentPlayer == 1) {
                 button56.setText("X");
+                checkGame5Win();
                 currentPlayer = 2;
             } else {
                 button56.setText("O");
+                checkGame5Win();
                 currentPlayer = 1;
             }
         }
@@ -1058,9 +1143,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame4();
             if (currentPlayer == 1) {
                 button57.setText("X");
+                checkGame6Win();
                 currentPlayer = 2;
             } else {
                 button57.setText("O");
+                checkGame6Win();
                 currentPlayer = 1;
             }
         }
@@ -1076,9 +1163,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame5();
             if (currentPlayer == 1) {
                 button58.setText("X");
+                checkGame6Win();
                 currentPlayer = 2;
             } else {
                 button58.setText("O");
+                checkGame6Win();
                 currentPlayer = 1;
             }
         }
@@ -1094,9 +1183,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame6();
             if (currentPlayer == 1) {
                 button59.setText("X");
+                checkGame6Win();
                 currentPlayer = 2;
             } else {
                 button59.setText("O");
+                checkGame6Win();
                 currentPlayer = 1;
             }
         }
@@ -1112,9 +1203,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame7();
             if (currentPlayer == 1) {
                 button61.setText("X");
+                checkGame4Win();
                 currentPlayer = 2;
             } else {
                 button61.setText("O");
+                checkGame4Win();
                 currentPlayer = 1;
             }
         }
@@ -1130,9 +1223,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame8();
             if (currentPlayer == 1) {
                 button62.setText("X");
+                checkGame4Win();
                 currentPlayer = 2;
             } else {
                 button62.setText("O");
+                checkGame4Win();
                 currentPlayer = 1;
             }
         }
@@ -1148,9 +1243,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame9();
             if (currentPlayer == 1) {
                 button63.setText("X");
+                checkGame4Win();
                 currentPlayer = 2;
             } else {
                 button63.setText("O");
+                checkGame4Win();
                 currentPlayer = 1;
             }
         }
@@ -1166,9 +1263,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame7();
             if (currentPlayer == 1) {
                 button64.setText("X");
+                checkGame5Win();
                 currentPlayer = 2;
             } else {
                 button64.setText("O");
+                checkGame5Win();
                 currentPlayer = 1;
             }
         }
@@ -1184,9 +1283,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame8();
             if (currentPlayer == 1) {
                 button65.setText("X");
+                checkGame5Win();
                 currentPlayer = 2;
             } else {
                 button65.setText("O");
+                checkGame5Win();
                 currentPlayer = 1;
             }
         }
@@ -1202,9 +1303,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame9();
             if (currentPlayer == 1) {
                 button66.setText("X");
+                checkGame5Win();
                 currentPlayer = 2;
             } else {
                 button66.setText("O");
+                checkGame5Win();
                 currentPlayer = 1;
             }
         }
@@ -1220,9 +1323,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame7();
             if (currentPlayer == 1) {
                 button67.setText("X");
+                checkGame6Win();
                 currentPlayer = 2;
             } else {
                 button67.setText("O");
+                checkGame6Win();
                 currentPlayer = 1;
             }
         }
@@ -1238,9 +1343,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame8();
             if (currentPlayer == 1) {
                 button68.setText("X");
+                checkGame6Win();
                 currentPlayer = 2;
             } else {
                 button68.setText("O");
+                checkGame6Win();
                 currentPlayer = 1;
             }
         }
@@ -1256,9 +1363,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame9();
             if (currentPlayer == 1) {
                 button69.setText("X");
+                checkGame6Win();
                 currentPlayer = 2;
             } else {
                 button69.setText("O");
+                checkGame6Win();
                 currentPlayer = 1;
             }
         }
@@ -1274,9 +1383,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame1();
             if (currentPlayer == 1) {
                 button71.setText("X");
+                checkGame7Win();
                 currentPlayer = 2;
             } else {
                 button71.setText("O");
+                checkGame7Win();
                 currentPlayer = 1;
             }
         }
@@ -1292,9 +1403,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame2();
             if (currentPlayer == 1) {
                 button72.setText("X");
+                checkGame7Win();
                 currentPlayer = 2;
             } else {
                 button72.setText("O");
+                checkGame7Win();
                 currentPlayer = 1;
             }
         }
@@ -1310,9 +1423,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame3();
             if (currentPlayer == 1) {
                 button73.setText("X");
+                checkGame7Win();
                 currentPlayer = 2;
             } else {
                 button73.setText("O");
+                checkGame7Win();
                 currentPlayer = 1;
             }
         }
@@ -1328,9 +1443,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame1();
             if (currentPlayer == 1) {
                 button74.setText("X");
+                checkGame8Win();
                 currentPlayer = 2;
             } else {
                 button74.setText("O");
+                checkGame8Win();
                 currentPlayer = 1;
             }
         }
@@ -1346,9 +1463,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame2();
             if (currentPlayer == 1) {
                 button75.setText("X");
+                checkGame8Win();
                 currentPlayer = 2;
             } else {
                 button75.setText("O");
+                checkGame8Win();
                 currentPlayer = 1;
             }
         }
@@ -1364,9 +1483,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame3();
             if (currentPlayer == 1) {
                 button76.setText("X");
+                checkGame8Win();
                 currentPlayer = 2;
             } else {
                 button76.setText("O");
+                checkGame8Win();
                 currentPlayer = 1;
             }
         }
@@ -1382,9 +1503,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame1();
             if (currentPlayer == 1) {
                 button77.setText("X");
+                checkGame9Win();
                 currentPlayer = 2;
             } else {
                 button77.setText("O");
+                checkGame9Win();
                 currentPlayer = 1;
             }
         }
@@ -1400,9 +1523,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame2();
             if (currentPlayer == 1) {
                 button78.setText("X");
+                checkGame9Win();
                 currentPlayer = 2;
             } else {
                 button78.setText("O");
+                checkGame9Win();
                 currentPlayer = 1;
             }
         }
@@ -1418,9 +1543,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame3();
             if (currentPlayer == 1) {
                 button79.setText("X");
+                checkGame9Win();
                 currentPlayer = 2;
             } else {
                 button79.setText("O");
+                checkGame9Win();
                 currentPlayer = 1;
             }
         }
@@ -1436,9 +1563,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame4();
             if (currentPlayer == 1) {
                 button81.setText("X");
+                checkGame7Win();
                 currentPlayer = 2;
             } else {
                 button81.setText("O");
+                checkGame7Win();
                 currentPlayer = 1;
             }
         }
@@ -1454,9 +1583,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame5();
             if (currentPlayer == 1) {
                 button82.setText("X");
+                checkGame7Win();
                 currentPlayer = 2;
             } else {
                 button82.setText("O");
+                checkGame7Win();
                 currentPlayer = 1;
             }
         }
@@ -1472,9 +1603,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame6();
             if (currentPlayer == 1) {
                 button83.setText("X");
+                checkGame7Win();
                 currentPlayer = 2;
             } else {
                 button83.setText("O");
+                checkGame7Win();
                 currentPlayer = 1;
             }
         }
@@ -1490,9 +1623,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame4();
             if (currentPlayer == 1) {
                 button84.setText("X");
+                checkGame8Win();
                 currentPlayer = 2;
             } else {
                 button84.setText("O");
+                checkGame8Win();
                 currentPlayer = 1;
             }
         }
@@ -1508,9 +1643,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame5();
             if (currentPlayer == 1) {
                 button85.setText("X");
+                checkGame8Win();
                 currentPlayer = 2;
             } else {
                 button85.setText("O");
+                checkGame8Win();
                 currentPlayer = 1;
             }
         }
@@ -1526,9 +1663,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame6();
             if (currentPlayer == 1) {
                 button86.setText("X");
+                checkGame8Win();
                 currentPlayer = 2;
             } else {
                 button86.setText("O");
+                checkGame8Win();
                 currentPlayer = 1;
             }
         }
@@ -1544,9 +1683,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame4();
             if (currentPlayer == 1) {
                 button87.setText("X");
+                checkGame9Win();
                 currentPlayer = 2;
             } else {
                 button87.setText("O");
+                checkGame9Win();
                 currentPlayer = 1;
             }
         }
@@ -1562,9 +1703,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame5();
             if (currentPlayer == 1) {
                 button88.setText("X");
+                checkGame9Win();
                 currentPlayer = 2;
             } else {
                 button88.setText("O");
+                checkGame9Win();
                 currentPlayer = 1;
             }
         }
@@ -1580,9 +1723,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame6();
             if (currentPlayer == 1) {
                 button89.setText("X");
+                checkGame9Win();
                 currentPlayer = 2;
             } else {
                 button89.setText("O");
+                checkGame9Win();
                 currentPlayer = 1;
             }
         }
@@ -1598,9 +1743,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame7();
             if (currentPlayer == 1) {
                 button91.setText("X");
+                checkGame7Win();
                 currentPlayer = 2;
             } else {
                 button91.setText("O");
+                checkGame7Win();
                 currentPlayer = 1;
             }
         }
@@ -1616,9 +1763,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame8();
             if (currentPlayer == 1) {
                 button92.setText("X");
+                checkGame7Win();
                 currentPlayer = 2;
             } else {
                 button92.setText("O");
+                checkGame7Win();
                 currentPlayer = 1;
             }
         }
@@ -1634,9 +1783,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame9();
             if (currentPlayer == 1) {
                 button93.setText("X");
+                checkGame7Win();
                 currentPlayer = 2;
             } else {
                 button93.setText("O");
+                checkGame7Win();
                 currentPlayer = 1;
             }
         }
@@ -1652,9 +1803,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame7();
             if (currentPlayer == 1) {
                 button94.setText("X");
+                checkGame8Win();
                 currentPlayer = 2;
             } else {
                 button94.setText("O");
+                checkGame8Win();
                 currentPlayer = 1;
             }
         }
@@ -1670,9 +1823,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame8();
             if (currentPlayer == 1) {
                 button95.setText("X");
+                checkGame8Win();
                 currentPlayer = 2;
             } else {
                 button95.setText("O");
+                checkGame8Win();
                 currentPlayer = 1;
             }
         }
@@ -1688,9 +1843,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame9();
             if (currentPlayer == 1) {
                 button96.setText("X");
+                checkGame8Win();
                 currentPlayer = 2;
             } else {
                 button96.setText("O");
+                checkGame8Win();
                 currentPlayer = 1;
             }
         }
@@ -1706,9 +1863,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame7();
             if (currentPlayer == 1) {
                 button97.setText("X");
+                checkGame9Win();
                 currentPlayer = 2;
             } else {
                 button97.setText("O");
+                checkGame9Win();
                 currentPlayer = 1;
             }
         }
@@ -1724,9 +1883,11 @@ public class MainActivity extends AppCompatActivity {
             activeGame8();
             if (currentPlayer == 1) {
                 button98.setText("X");
+                checkGame9Win();
                 currentPlayer = 2;
             } else {
                 button98.setText("O");
+                checkGame9Win();
                 currentPlayer = 1;
             }
         }
@@ -1742,14 +1903,264 @@ public class MainActivity extends AppCompatActivity {
             activeGame9();
             if (currentPlayer == 1) {
                 button99.setText("X");
+                checkGame9Win();
                 currentPlayer = 2;
             } else {
                 button99.setText("O");
+                checkGame9Win();
                 currentPlayer = 1;
             }
         }
     }
 
+
+    //my own method to determine equality between multiple values
+    private boolean allEqual(int a, int b, int c) {
+        //return false if cells empty
+        if (a == 0 || b == 0 || c == 0) return false;
+        //otherwise, return result
+        return (a == b && b == c);
+    }
+
+
+    //todo methods to test individual board win
+    public void checkGame1Win() {
+        // if there is a win, codify current player into main matrix
+        if (allEqual(game1[1][1], game1[1][2], game1[1][3]) || allEqual(game1[2][1], game1[2][2], game1[2][3]) || allEqual(game1[3][1], game1[3][2], game1[3][3]) || allEqual(game1[1][1], game1[2][2], game1[3][3]) || allEqual(game1[1][3], game1[2][2], game1[3][1]) || allEqual(game1[1][1], game1[2][1], game1[3][1]) || allEqual(game1[1][2], game1[2][2], game1[3][2]) || allEqual(game1[1][3], game1[2][3], game1[3][3])) {
+            mainGame[1][1] = currentPlayer;
+            Log.i(TAG, "checkGame1Win: " + currentPlayer);
+
+            // if cursor points to this board, allow all movement
+            if (currentGame == 1) currentGame = 0;
+            disableGame1();
+        }
+    }
+
+    public void checkGame2Win() {
+        // if there is a win, codify current player into main matrix
+        if (allEqual(game2[1][1], game2[1][2], game2[1][3]) || allEqual(game2[2][1], game2[2][2], game2[2][3]) || allEqual(game2[3][1], game2[3][2], game2[3][3]) || allEqual(game2[1][1], game2[2][2], game2[3][3]) || allEqual(game2[1][3], game2[2][2], game2[3][1]) || allEqual(game2[1][1], game2[2][1], game2[3][1]) || allEqual(game2[1][2], game2[2][2], game2[3][2]) || allEqual(game2[1][3], game2[2][3], game2[3][3])) {
+            mainGame[1][2] = currentPlayer;
+            Log.i(TAG, "checkGame2Win: " + currentPlayer);
+
+            // if cursor points to this board, allow all movement
+            if (currentGame == 2) currentGame = 0;
+            disableGame2();
+        }
+    }
+
+    public void checkGame3Win() {
+        // if there is a win, codify current player into main matrix
+        if (allEqual(game3[1][1], game3[1][2], game3[1][3]) || allEqual(game3[2][1], game3[2][2], game3[2][3]) || allEqual(game3[3][1], game3[3][2], game3[3][3]) || allEqual(game3[1][1], game3[2][2], game3[3][3]) || allEqual(game3[1][3], game3[2][2], game3[3][1]) || allEqual(game3[1][1], game3[2][1], game3[3][1]) || allEqual(game3[1][2], game3[2][2], game3[3][2]) || allEqual(game3[1][3], game3[2][3], game3[3][3])) {
+            mainGame[1][3] = currentPlayer;
+            Log.i(TAG, "checkGame3Win: " + currentPlayer);
+
+            // if cursor points to this board, allow all movement
+            if (currentGame == 3) currentGame = 0;
+            disableGame3();
+        }
+    }
+
+    public void checkGame4Win() {
+        // if there is a win, codify current player into main matrix
+        if (allEqual(game4[1][1], game4[1][2], game4[1][3]) || allEqual(game4[2][1], game4[2][2], game4[2][3]) || allEqual(game4[3][1], game4[3][2], game4[3][3]) || allEqual(game4[1][1], game4[2][2], game4[3][3]) || allEqual(game4[1][3], game4[2][2], game4[3][1]) || allEqual(game4[1][1], game4[2][1], game4[3][1]) || allEqual(game4[1][2], game4[2][2], game4[3][2]) || allEqual(game4[1][3], game4[2][3], game4[3][3])) {
+            mainGame[2][1] = currentPlayer;
+            Log.i(TAG, "checkGame4Win: " + currentPlayer);
+
+            // if cursor points to this board, allow all movement
+            if (currentGame == 4) currentGame = 0;
+            disableGame4();
+        }
+    }
+
+    public void checkGame5Win() {
+        // if there is a win, codify current player into main matrix
+        if (allEqual(game5[1][1], game5[1][2], game5[1][3]) || allEqual(game5[2][1], game5[2][2], game5[2][3]) || allEqual(game5[3][1], game5[3][2], game5[3][3]) || allEqual(game5[1][1], game5[2][2], game5[3][3]) || allEqual(game5[1][3], game5[2][2], game5[3][1]) || allEqual(game5[1][1], game5[2][1], game5[3][1]) || allEqual(game5[1][2], game5[2][2], game5[3][2]) || allEqual(game5[1][3], game5[2][3], game5[3][3])) {
+            mainGame[2][2] = currentPlayer;
+            Log.i(TAG, "checkGame5Win: " + currentPlayer);
+
+            // if cursor points to this board, allow all movement
+            if (currentGame == 5) currentGame = 0;
+            disableGame5();
+        }
+    }
+
+    public void checkGame6Win() {
+        // if there is a win, codify current player into main matrix
+        if (allEqual(game6[1][1], game6[1][2], game6[1][3]) || allEqual(game6[2][1], game6[2][2], game6[2][3]) || allEqual(game6[3][1], game6[3][2], game6[3][3]) || allEqual(game6[1][1], game6[2][2], game6[3][3]) || allEqual(game6[1][3], game6[2][2], game6[3][1]) || allEqual(game6[1][1], game6[2][1], game6[3][1]) || allEqual(game6[1][2], game6[2][2], game6[3][2]) || allEqual(game6[1][3], game6[2][3], game6[3][3])) {
+            mainGame[2][3] = currentPlayer;
+            Log.i(TAG, "checkGame6Win: " + currentPlayer);
+
+            // if cursor points to this board, allow all movement
+            if (currentGame == 6) currentGame = 0;
+            disableGame6();
+        }
+    }
+
+    public void checkGame7Win() {
+        // if there is a win, codify current player into main matrix
+        if (allEqual(game7[1][1], game7[1][2], game7[1][3]) || allEqual(game7[2][1], game7[2][2], game7[2][3]) || allEqual(game7[3][1], game7[3][2], game7[3][3]) || allEqual(game7[1][1], game7[2][2], game7[3][3]) || allEqual(game7[1][3], game7[2][2], game7[3][1]) || allEqual(game7[1][1], game7[2][1], game7[3][1]) || allEqual(game7[1][2], game7[2][2], game7[3][2]) || allEqual(game7[1][3], game7[2][3], game7[3][3])) {
+            mainGame[3][1] = currentPlayer;
+            Log.i(TAG, "checkGame7Win: " + currentPlayer);
+
+            // if cursor points to this board, allow all movement
+            if (currentGame == 7) currentGame = 0;
+            disableGame7();
+        }
+    }
+
+    public void checkGame8Win() {
+        // if there is a win, codify current player into main matrix
+        if (allEqual(game8[1][1], game8[1][2], game8[1][3]) || allEqual(game8[2][1], game8[2][2], game8[2][3]) || allEqual(game8[3][1], game8[3][2], game8[3][3]) || allEqual(game8[1][1], game8[2][2], game8[3][3]) || allEqual(game8[1][3], game8[2][2], game8[3][1]) || allEqual(game8[1][1], game8[2][1], game8[3][1]) || allEqual(game8[1][2], game8[2][2], game8[3][2]) || allEqual(game8[1][3], game8[2][3], game8[3][3])) {
+            mainGame[3][2] = currentPlayer;
+            Log.i(TAG, "checkGame8Win: " + currentPlayer);
+
+            // if cursor points to this board, allow all movement
+            if (currentGame == 8) currentGame = 0;
+            disableGame8();
+        }
+    }
+
+    public void checkGame9Win() {
+        // if there is a win, codify current player into main matrix
+        if (allEqual(game9[1][1], game9[1][2], game9[1][3]) || allEqual(game9[2][1], game9[2][2], game9[2][3]) || allEqual(game9[3][1], game9[3][2], game9[3][3]) || allEqual(game9[1][1], game9[2][2], game9[3][3]) || allEqual(game9[1][3], game9[2][2], game9[3][1]) || allEqual(game9[1][1], game9[2][1], game9[3][1]) || allEqual(game9[1][2], game9[2][2], game9[3][2]) || allEqual(game9[1][3], game9[2][3], game9[3][3])) {
+            mainGame[3][3] = currentPlayer;
+            Log.i(TAG, "checkGame9Win: " + currentPlayer);
+
+            // if cursor points to this board, allow all movement
+            if (currentGame == 9) currentGame = 0;
+            disableGame9();
+        }
+    }
+
+    //todo methods for disabling (and highlighting) won boards
+    public void disableGame1() {
+        //disable all buttons on this board
+        button11.setEnabled(false);
+        button12.setEnabled(false);
+        button13.setEnabled(false);
+        button21.setEnabled(false);
+        button22.setEnabled(false);
+        button23.setEnabled(false);
+        button31.setEnabled(false);
+        button32.setEnabled(false);
+        button33.setEnabled(false);
+
+    }
+
+    public void disableGame2() {
+        //disable all buttons on this board
+        button14.setEnabled(false);
+        button15.setEnabled(false);
+        button16.setEnabled(false);
+        button24.setEnabled(false);
+        button25.setEnabled(false);
+        button26.setEnabled(false);
+        button34.setEnabled(false);
+        button35.setEnabled(false);
+        button36.setEnabled(false);
+
+    }
+
+    public void disableGame3() {
+        //disable all buttons on this board
+        button17.setEnabled(false);
+        button18.setEnabled(false);
+        button19.setEnabled(false);
+        button27.setEnabled(false);
+        button28.setEnabled(false);
+        button29.setEnabled(false);
+        button37.setEnabled(false);
+        button38.setEnabled(false);
+        button39.setEnabled(false);
+
+    }
+
+    public void disableGame4() {
+        //disable all buttons on this board
+        button41.setEnabled(false);
+        button42.setEnabled(false);
+        button43.setEnabled(false);
+        button51.setEnabled(false);
+        button52.setEnabled(false);
+        button53.setEnabled(false);
+        button61.setEnabled(false);
+        button62.setEnabled(false);
+        button63.setEnabled(false);
+
+    }
+
+    public void disableGame5() {
+        //disable all buttons on this board
+        button44.setEnabled(false);
+        button45.setEnabled(false);
+        button46.setEnabled(false);
+        button54.setEnabled(false);
+        button55.setEnabled(false);
+        button56.setEnabled(false);
+        button64.setEnabled(false);
+        button65.setEnabled(false);
+        button66.setEnabled(false);
+
+    }
+
+    public void disableGame6() {
+        //disable all buttons on this board
+        button47.setEnabled(false);
+        button48.setEnabled(false);
+        button49.setEnabled(false);
+        button57.setEnabled(false);
+        button58.setEnabled(false);
+        button59.setEnabled(false);
+        button67.setEnabled(false);
+        button68.setEnabled(false);
+        button69.setEnabled(false);
+
+    }
+
+    public void disableGame7() {
+        //disable all buttons on this board
+        button71.setEnabled(false);
+        button72.setEnabled(false);
+        button73.setEnabled(false);
+        button81.setEnabled(false);
+        button82.setEnabled(false);
+        button83.setEnabled(false);
+        button91.setEnabled(false);
+        button92.setEnabled(false);
+        button93.setEnabled(false);
+
+    }
+
+    public void disableGame8() {
+        //disable all buttons on this board
+        button74.setEnabled(false);
+        button75.setEnabled(false);
+        button76.setEnabled(false);
+        button84.setEnabled(false);
+        button85.setEnabled(false);
+        button86.setEnabled(false);
+        button94.setEnabled(false);
+        button95.setEnabled(false);
+        button96.setEnabled(false);
+
+    }
+
+    public void disableGame9() {
+        //disable all buttons on this board
+        button77.setEnabled(false);
+        button78.setEnabled(false);
+        button79.setEnabled(false);
+        button87.setEnabled(false);
+        button88.setEnabled(false);
+        button89.setEnabled(false);
+        button97.setEnabled(false);
+        button98.setEnabled(false);
+        button99.setEnabled(false);
+
+    }
+
+
+    //todo method to test overall board win
 
     //method to remove highlighting by setting a null color filters
     public void resetAllButtons() {
@@ -1838,156 +2249,204 @@ public class MainActivity extends AppCompatActivity {
 
     //methods to set active game
     public void activeGame1() {
+
         //remove all highlighting
         resetAllButtons();
+        //test for already won board and allow movement outside current board
+        if (mainGame[1][1] != 0) {
+            currentGame = 0;
+        } else {
 
-        //highlight buttons you can click using a color filter
-        button11.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button12.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button13.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button21.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button22.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button23.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button31.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button32.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button33.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
 
+            //highlight buttons you can click using a color filter
+            button11.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button12.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button13.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button21.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button22.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button23.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button31.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button32.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button33.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
     }
 
     public void activeGame2() {
+
         //remove all highlighting
         resetAllButtons();
+        //test for already won board and allow movement outside current board
+        if (mainGame[1][2] != 0) {
+            currentGame = 0;
+        } else {
 
-        //highlight buttons you can click
-        button14.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button15.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button16.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button24.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button25.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button26.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button34.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button35.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button36.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-
+            //highlight buttons you can click
+            button14.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button15.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button16.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button24.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button25.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button26.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button34.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button35.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button36.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
     }
 
     public void activeGame3() {
+
         //remove all highlighting
         resetAllButtons();
+        //test for already won board and allow movement outside current board
+        if (mainGame[1][3] != 0) {
+            currentGame = 0;
+        } else {
 
-        //highlight buttons you can click
-        button17.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button18.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button19.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button27.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button28.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button29.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button37.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button38.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button39.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-
+            //highlight buttons you can click
+            button17.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button18.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button19.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button27.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button28.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button29.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button37.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button38.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button39.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
     }
 
     public void activeGame4() {
+
         //remove all highlighting
         resetAllButtons();
+        //test for already won board and allow movement outside current board
+        if (mainGame[2][1] != 0) {
+            currentGame = 0;
+        } else {
 
-        //highlight buttons you can click
-        button41.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button42.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button43.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button51.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button52.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button53.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button61.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button62.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button63.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            //highlight buttons you can click
+            button41.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button42.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button43.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button51.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button52.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button53.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button61.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button62.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button63.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
 
+        }
     }
 
     public void activeGame5() {
+
         //remove all highlighting
         resetAllButtons();
+        //test for already won board and allow movement outside current board
+        if (mainGame[2][2] != 0) {
+            currentGame = 0;
+        } else {
 
-        //highlight buttons you can click
-        button44.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button45.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button46.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button54.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button55.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button56.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button64.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button65.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button66.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-
+            //highlight buttons you can click
+            button44.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button45.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button46.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button54.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button55.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button56.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button64.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button65.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button66.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
     }
 
     public void activeGame6() {
+
         //remove all highlighting
         resetAllButtons();
+        //test for already won board and allow movement outside current board
+        if (mainGame[2][3] != 0) {
+            currentGame = 0;
+        } else {
 
-        //highlight buttons you can click
-        button47.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button48.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button49.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button57.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button58.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button59.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button67.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button68.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button69.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            //highlight buttons you can click
+            button47.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button48.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button49.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button57.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button58.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button59.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button67.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button68.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button69.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
 
+        }
     }
 
     public void activeGame7() {
+
         //remove all highlighting
         resetAllButtons();
+        //test for already won board and allow movement outside current board
+        if (mainGame[3][1] != 0) {
+            currentGame = 0;
+        } else {
 
-        //highlight buttons you can click
-        button71.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button72.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button73.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button81.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button82.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button83.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button91.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button92.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button93.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-
+            //highlight buttons you can click
+            button71.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button72.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button73.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button81.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button82.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button83.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button91.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button92.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button93.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
     }
 
     public void activeGame8() {
         //remove all highlighting
         resetAllButtons();
+        //test for already won board and allow movement outside current board
+        if (mainGame[3][2] != 0) {
+            currentGame = 0;
+        } else {
 
-        //highlight buttons you can click
-        button74.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button75.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button76.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button84.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button85.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button86.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button94.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button95.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button96.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-
+            //highlight buttons you can click
+            button74.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button75.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button76.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button84.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button85.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button86.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button94.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button95.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button96.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
     }
 
     public void activeGame9() {
+
         //remove all highlighting
         resetAllButtons();
+        //test for already won board and allow movement outside current board
+        if (mainGame[3][3] != 0) {
+            currentGame = 0;
+        } else {
 
-        //highlight buttons you can click
-        button77.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button78.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button79.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button87.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button88.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button89.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button97.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button98.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        button99.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
 
+            //highlight buttons you can click
+            button77.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button78.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button79.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button87.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button88.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button89.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button97.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button98.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button99.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
     }
 
     //todo method that checks each game is won

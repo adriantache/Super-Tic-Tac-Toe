@@ -200,111 +200,6 @@ public class MainActivity extends AppCompatActivity {
     //todo remove test tag
     private static final String TAG = "MainActivity";
 
-    public void reset(View view) {
-        //todo implement reset functionality
-
-        //reset variables
-        game1 = new int[4][4];
-        game2 = new int[4][4];
-        game3 = new int[4][4];
-        game4 = new int[4][4];
-        game5 = new int[4][4];
-        game6 = new int[4][4];
-        game7 = new int[4][4];
-        game8 = new int[4][4];
-        game9 = new int[4][4];
-        mainGame = new int[4][4];
-        currentPlayer = 1;
-        currentGame = 0;
-
-        // reset all highlighting
-        resetAllButtons();
-
-        // reenable all buttons
-        button11.setEnabled(true);
-        button12.setEnabled(true);
-        button13.setEnabled(true);
-        button14.setEnabled(true);
-        button15.setEnabled(true);
-        button16.setEnabled(true);
-        button17.setEnabled(true);
-        button18.setEnabled(true);
-        button19.setEnabled(true);
-        button21.setEnabled(true);
-        button22.setEnabled(true);
-        button23.setEnabled(true);
-        button24.setEnabled(true);
-        button25.setEnabled(true);
-        button26.setEnabled(true);
-        button27.setEnabled(true);
-        button28.setEnabled(true);
-        button29.setEnabled(true);
-        button31.setEnabled(true);
-        button32.setEnabled(true);
-        button33.setEnabled(true);
-        button34.setEnabled(true);
-        button35.setEnabled(true);
-        button36.setEnabled(true);
-        button37.setEnabled(true);
-        button38.setEnabled(true);
-        button39.setEnabled(true);
-        button41.setEnabled(true);
-        button42.setEnabled(true);
-        button43.setEnabled(true);
-        button44.setEnabled(true);
-        button45.setEnabled(true);
-        button46.setEnabled(true);
-        button47.setEnabled(true);
-        button48.setEnabled(true);
-        button49.setEnabled(true);
-        button51.setEnabled(true);
-        button52.setEnabled(true);
-        button53.setEnabled(true);
-        button54.setEnabled(true);
-        button55.setEnabled(true);
-        button56.setEnabled(true);
-        button57.setEnabled(true);
-        button58.setEnabled(true);
-        button59.setEnabled(true);
-        button61.setEnabled(true);
-        button62.setEnabled(true);
-        button63.setEnabled(true);
-        button64.setEnabled(true);
-        button65.setEnabled(true);
-        button66.setEnabled(true);
-        button67.setEnabled(true);
-        button68.setEnabled(true);
-        button69.setEnabled(true);
-        button71.setEnabled(true);
-        button72.setEnabled(true);
-        button73.setEnabled(true);
-        button74.setEnabled(true);
-        button75.setEnabled(true);
-        button76.setEnabled(true);
-        button77.setEnabled(true);
-        button78.setEnabled(true);
-        button79.setEnabled(true);
-        button81.setEnabled(true);
-        button82.setEnabled(true);
-        button83.setEnabled(true);
-        button84.setEnabled(true);
-        button85.setEnabled(true);
-        button86.setEnabled(true);
-        button87.setEnabled(true);
-        button88.setEnabled(true);
-        button89.setEnabled(true);
-        button91.setEnabled(true);
-        button92.setEnabled(true);
-        button93.setEnabled(true);
-        button94.setEnabled(true);
-        button95.setEnabled(true);
-        button96.setEnabled(true);
-        button97.setEnabled(true);
-        button98.setEnabled(true);
-        button99.setEnabled(true);
-
-    }
-
     //all 81 methods for the individual buttons
     public void button11(View view) {
         if (currentGame == 0) currentGame = 1;
@@ -327,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button12(View view) {
-        if (currentGame == 0) currentGame = 2;
+        if (currentGame == 0) currentGame = 1;
         if (currentGame != 1) return;
         else {
             game1[1][2] = currentPlayer;
@@ -347,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button13(View view) {
-        if (currentGame == 0) currentGame = 3;
+        if (currentGame == 0) currentGame = 1;
         if (currentGame != 1) return;
         else {
             game1[1][3] = currentPlayer;
@@ -367,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button14(View view) {
-        if (currentGame == 0) currentGame = 1;
+        if (currentGame == 0) currentGame = 2;
         if (currentGame != 2) return;
         else {
             game2[1][1] = currentPlayer;
@@ -407,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button16(View view) {
-        if (currentGame == 0) currentGame = 3;
+        if (currentGame == 0) currentGame = 2;
         if (currentGame != 2) return;
         else {
             game2[1][3] = currentPlayer;
@@ -427,7 +322,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button17(View view) {
-        if (currentGame == 0) currentGame = 1;
+        if (currentGame == 0) currentGame = 3;
         if (currentGame != 3) return;
         else {
             game3[1][1] = currentPlayer;
@@ -447,7 +342,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button18(View view) {
-        if (currentGame == 0) currentGame = 2;
+        if (currentGame == 0) currentGame = 3;
         if (currentGame != 3) return;
         else {
             game3[1][2] = currentPlayer;
@@ -487,7 +382,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button21(View view) {
-        if (currentGame == 0) currentGame = 4;
+        if (currentGame == 0) currentGame = 1;
         if (currentGame != 1) return;
         else {
             game1[2][1] = currentPlayer;
@@ -507,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button22(View view) {
-        if (currentGame == 0) currentGame = 5;
+        if (currentGame == 0) currentGame = 1;
         if (currentGame != 1) return;
         else {
             game1[2][2] = currentPlayer;
@@ -527,7 +422,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button23(View view) {
-        if (currentGame == 0) currentGame = 6;
+        if (currentGame == 0) currentGame = 1;
         if (currentGame != 1) return;
         else {
             game1[2][3] = currentPlayer;
@@ -547,7 +442,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button24(View view) {
-        if (currentGame == 0) currentGame = 4;
+        if (currentGame == 0) currentGame = 2;
         if (currentGame != 2) return;
         else {
             game2[2][1] = currentPlayer;
@@ -567,7 +462,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button25(View view) {
-        if (currentGame == 0) currentGame = 5;
+        if (currentGame == 0) currentGame = 2;
         if (currentGame != 2) return;
         else {
             game2[2][2] = currentPlayer;
@@ -587,7 +482,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button26(View view) {
-        if (currentGame == 0) currentGame = 6;
+        if (currentGame == 0) currentGame = 2;
         if (currentGame != 2) return;
         else {
             game2[2][3] = currentPlayer;
@@ -607,7 +502,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button27(View view) {
-        if (currentGame == 0) currentGame = 4;
+        if (currentGame == 0) currentGame = 3;
         if (currentGame != 3) return;
         else {
             game3[2][1] = currentPlayer;
@@ -627,7 +522,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button28(View view) {
-        if (currentGame == 0) currentGame = 5;
+        if (currentGame == 0) currentGame = 3;
         if (currentGame != 3) return;
         else {
             game3[2][2] = currentPlayer;
@@ -647,7 +542,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button29(View view) {
-        if (currentGame == 0) currentGame = 6;
+        if (currentGame == 0) currentGame = 3;
         if (currentGame != 3) return;
         else {
             game3[2][3] = currentPlayer;
@@ -667,7 +562,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button31(View view) {
-        if (currentGame == 0) currentGame = 7;
+        if (currentGame == 0) currentGame = 1;
         if (currentGame != 1) return;
         else {
             game1[3][1] = currentPlayer;
@@ -687,7 +582,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button32(View view) {
-        if (currentGame == 0) currentGame = 8;
+        if (currentGame == 0) currentGame = 1;
         if (currentGame != 1) return;
         else {
             game1[3][2] = currentPlayer;
@@ -707,7 +602,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button33(View view) {
-        if (currentGame == 0) currentGame = 9;
+        if (currentGame == 0) currentGame = 1;
         if (currentGame != 1) return;
         else {
             game1[3][3] = currentPlayer;
@@ -727,7 +622,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button34(View view) {
-        if (currentGame == 0) currentGame = 7;
+        if (currentGame == 0) currentGame = 2;
         if (currentGame != 2) return;
         else {
             game2[3][1] = currentPlayer;
@@ -747,7 +642,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button35(View view) {
-        if (currentGame == 0) currentGame = 8;
+        if (currentGame == 0) currentGame = 2;
         if (currentGame != 2) return;
         else {
             game2[3][2] = currentPlayer;
@@ -767,7 +662,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button36(View view) {
-        if (currentGame == 0) currentGame = 9;
+        if (currentGame == 0) currentGame = 2;
         if (currentGame != 2) return;
         else {
             game2[3][3] = currentPlayer;
@@ -787,7 +682,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button37(View view) {
-        if (currentGame == 0) currentGame = 7;
+        if (currentGame == 0) currentGame = 3;
         if (currentGame != 3) return;
         else {
             game3[3][1] = currentPlayer;
@@ -807,7 +702,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button38(View view) {
-        if (currentGame == 0) currentGame = 8;
+        if (currentGame == 0) currentGame = 3;
         if (currentGame != 3) return;
         else {
             game3[3][2] = currentPlayer;
@@ -827,7 +722,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button39(View view) {
-        if (currentGame == 0) currentGame = 9;
+        if (currentGame == 0) currentGame = 3;
         if (currentGame != 3) return;
         else {
             game3[3][3] = currentPlayer;
@@ -847,7 +742,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button41(View view) {
-        if (currentGame == 0) currentGame = 1;
+        if (currentGame == 0) currentGame = 4;
         if (currentGame != 4) return;
         else {
             game4[1][1] = currentPlayer;
@@ -867,7 +762,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button42(View view) {
-        if (currentGame == 0) currentGame = 2;
+        if (currentGame == 0) currentGame = 4;
         if (currentGame != 4) return;
         else {
             game4[1][2] = currentPlayer;
@@ -887,7 +782,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button43(View view) {
-        if (currentGame == 0) currentGame = 3;
+        if (currentGame == 0) currentGame = 4;
         if (currentGame != 4) return;
         else {
             game4[1][3] = currentPlayer;
@@ -907,7 +802,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button44(View view) {
-        if (currentGame == 0) currentGame = 1;
+        if (currentGame == 0) currentGame = 5;
         if (currentGame != 5) return;
         else {
             game5[1][1] = currentPlayer;
@@ -927,7 +822,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button45(View view) {
-        if (currentGame == 0) currentGame = 2;
+        if (currentGame == 0) currentGame = 5;
         if (currentGame != 5) return;
         else {
             game5[1][2] = currentPlayer;
@@ -947,7 +842,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button46(View view) {
-        if (currentGame == 0) currentGame = 3;
+        if (currentGame == 0) currentGame = 5;
         if (currentGame != 5) return;
         else {
             game5[1][3] = currentPlayer;
@@ -967,7 +862,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button47(View view) {
-        if (currentGame == 0) currentGame = 1;
+        if (currentGame == 0) currentGame = 6;
         if (currentGame != 6) return;
         else {
             game6[1][1] = currentPlayer;
@@ -987,7 +882,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button48(View view) {
-        if (currentGame == 0) currentGame = 2;
+        if (currentGame == 0) currentGame = 6;
         if (currentGame != 6) return;
         else {
             game6[1][2] = currentPlayer;
@@ -1007,7 +902,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button49(View view) {
-        if (currentGame == 0) currentGame = 3;
+        if (currentGame == 0) currentGame = 6;
         if (currentGame != 6) return;
         else {
             game6[1][3] = currentPlayer;
@@ -1047,7 +942,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button52(View view) {
-        if (currentGame == 0) currentGame = 5;
+        if (currentGame == 0) currentGame = 4;
         if (currentGame != 4) return;
         else {
             game4[2][2] = currentPlayer;
@@ -1067,7 +962,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button53(View view) {
-        if (currentGame == 0) currentGame = 6;
+        if (currentGame == 0) currentGame = 4;
         if (currentGame != 4) return;
         else {
             game4[2][3] = currentPlayer;
@@ -1087,7 +982,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button54(View view) {
-        if (currentGame == 0) currentGame = 4;
+        if (currentGame == 0) currentGame = 5;
         if (currentGame != 5) return;
         else {
             game5[2][1] = currentPlayer;
@@ -1127,7 +1022,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button56(View view) {
-        if (currentGame == 0) currentGame = 6;
+        if (currentGame == 0) currentGame = 5;
         if (currentGame != 5) return;
         else {
             game5[2][3] = currentPlayer;
@@ -1147,7 +1042,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button57(View view) {
-        if (currentGame == 0) currentGame = 4;
+        if (currentGame == 0) currentGame = 6;
         if (currentGame != 6) return;
         else {
             game6[2][1] = currentPlayer;
@@ -1167,7 +1062,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button58(View view) {
-        if (currentGame == 0) currentGame = 5;
+        if (currentGame == 0) currentGame = 6;
         if (currentGame != 6) return;
         else {
             game6[2][2] = currentPlayer;
@@ -1207,7 +1102,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button61(View view) {
-        if (currentGame == 0) currentGame = 7;
+        if (currentGame == 0) currentGame = 4;
         if (currentGame != 4) return;
         else {
             game4[3][1] = currentPlayer;
@@ -1227,7 +1122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button62(View view) {
-        if (currentGame == 0) currentGame = 8;
+        if (currentGame == 0) currentGame = 4;
         if (currentGame != 4) return;
         else {
             game4[3][2] = currentPlayer;
@@ -1247,7 +1142,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button63(View view) {
-        if (currentGame == 0) currentGame = 9;
+        if (currentGame == 0) currentGame = 4;
         if (currentGame != 4) return;
         else {
             game4[3][3] = currentPlayer;
@@ -1267,7 +1162,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button64(View view) {
-        if (currentGame == 0) currentGame = 7;
+        if (currentGame == 0) currentGame = 5;
         if (currentGame != 5) return;
         else {
             game5[3][1] = currentPlayer;
@@ -1287,7 +1182,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button65(View view) {
-        if (currentGame == 0) currentGame = 8;
+        if (currentGame == 0) currentGame = 5;
         if (currentGame != 5) return;
         else {
             game5[3][2] = currentPlayer;
@@ -1307,7 +1202,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button66(View view) {
-        if (currentGame == 0) currentGame = 9;
+        if (currentGame == 0) currentGame = 5;
         if (currentGame != 5) return;
         else {
             game5[3][3] = currentPlayer;
@@ -1327,7 +1222,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button67(View view) {
-        if (currentGame == 0) currentGame = 7;
+        if (currentGame == 0) currentGame = 6;
         if (currentGame != 6) return;
         else {
             game6[3][1] = currentPlayer;
@@ -1347,7 +1242,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button68(View view) {
-        if (currentGame == 0) currentGame = 8;
+        if (currentGame == 0) currentGame = 6;
         if (currentGame != 6) return;
         else {
             game6[3][2] = currentPlayer;
@@ -1367,7 +1262,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button69(View view) {
-        if (currentGame == 0) currentGame = 9;
+        if (currentGame == 0) currentGame = 6;
         if (currentGame != 6) return;
         else {
             game6[3][3] = currentPlayer;
@@ -1387,7 +1282,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button71(View view) {
-        if (currentGame == 0) currentGame = 1;
+        if (currentGame == 0) currentGame = 7;
         if (currentGame != 7) return;
         else {
             game7[1][1] = currentPlayer;
@@ -1407,7 +1302,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button72(View view) {
-        if (currentGame == 0) currentGame = 2;
+        if (currentGame == 0) currentGame = 7;
         if (currentGame != 7) return;
         else {
             game7[1][2] = currentPlayer;
@@ -1427,7 +1322,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button73(View view) {
-        if (currentGame == 0) currentGame = 3;
+        if (currentGame == 0) currentGame = 7;
         if (currentGame != 7) return;
         else {
             game7[1][3] = currentPlayer;
@@ -1447,7 +1342,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button74(View view) {
-        if (currentGame == 0) currentGame = 1;
+        if (currentGame == 0) currentGame = 8;
         if (currentGame != 8) return;
         else {
             game8[1][1] = currentPlayer;
@@ -1467,7 +1362,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button75(View view) {
-        if (currentGame == 0) currentGame = 2;
+        if (currentGame == 0) currentGame = 8;
         if (currentGame != 8) return;
         else {
             game8[1][2] = currentPlayer;
@@ -1487,7 +1382,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button76(View view) {
-        if (currentGame == 0) currentGame = 3;
+        if (currentGame == 0) currentGame = 8;
         if (currentGame != 8) return;
         else {
             game8[1][3] = currentPlayer;
@@ -1507,7 +1402,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button77(View view) {
-        if (currentGame == 0) currentGame = 1;
+        if (currentGame == 0) currentGame = 9;
         if (currentGame != 9) return;
         else {
             game9[1][1] = currentPlayer;
@@ -1527,7 +1422,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button78(View view) {
-        if (currentGame == 0) currentGame = 2;
+        if (currentGame == 0) currentGame = 9;
         if (currentGame != 9) return;
         else {
             game9[1][2] = currentPlayer;
@@ -1547,7 +1442,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button79(View view) {
-        if (currentGame == 0) currentGame = 3;
+        if (currentGame == 0) currentGame = 9;
         if (currentGame != 9) return;
         else {
             game9[1][3] = currentPlayer;
@@ -1567,7 +1462,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button81(View view) {
-        if (currentGame == 0) currentGame = 4;
+        if (currentGame == 0) currentGame = 7;
         if (currentGame != 7) return;
         else {
             game7[2][1] = currentPlayer;
@@ -1587,7 +1482,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button82(View view) {
-        if (currentGame == 0) currentGame = 5;
+        if (currentGame == 0) currentGame = 7;
         if (currentGame != 7) return;
         else {
             game7[2][2] = currentPlayer;
@@ -1607,7 +1502,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button83(View view) {
-        if (currentGame == 0) currentGame = 6;
+        if (currentGame == 0) currentGame = 7;
         if (currentGame != 7) return;
         else {
             game7[2][3] = currentPlayer;
@@ -1627,7 +1522,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button84(View view) {
-        if (currentGame == 0) currentGame = 4;
+        if (currentGame == 0) currentGame = 8;
         if (currentGame != 8) return;
         else {
             game8[2][1] = currentPlayer;
@@ -1647,7 +1542,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button85(View view) {
-        if (currentGame == 0) currentGame = 5;
+        if (currentGame == 0) currentGame = 8;
         if (currentGame != 8) return;
         else {
             game8[2][2] = currentPlayer;
@@ -1667,7 +1562,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button86(View view) {
-        if (currentGame == 0) currentGame = 6;
+        if (currentGame == 0) currentGame = 8;
         if (currentGame != 8) return;
         else {
             game8[2][3] = currentPlayer;
@@ -1687,7 +1582,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button87(View view) {
-        if (currentGame == 0) currentGame = 4;
+        if (currentGame == 0) currentGame = 9;
         if (currentGame != 9) return;
         else {
             game9[2][1] = currentPlayer;
@@ -1707,7 +1602,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button88(View view) {
-        if (currentGame == 0) currentGame = 5;
+        if (currentGame == 0) currentGame = 9;
         if (currentGame != 9) return;
         else {
             game9[2][2] = currentPlayer;
@@ -1727,7 +1622,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button89(View view) {
-        if (currentGame == 0) currentGame = 6;
+        if (currentGame == 0) currentGame = 9;
         if (currentGame != 9) return;
         else {
             game9[2][3] = currentPlayer;
@@ -1767,7 +1662,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button92(View view) {
-        if (currentGame == 0) currentGame = 8;
+        if (currentGame == 0) currentGame = 7;
         if (currentGame != 7) return;
         else {
             game7[3][2] = currentPlayer;
@@ -1787,7 +1682,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button93(View view) {
-        if (currentGame == 0) currentGame = 9;
+        if (currentGame == 0) currentGame = 7;
         if (currentGame != 7) return;
         else {
             game7[3][3] = currentPlayer;
@@ -1807,7 +1702,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button94(View view) {
-        if (currentGame == 0) currentGame = 7;
+        if (currentGame == 0) currentGame = 8;
         if (currentGame != 8) return;
         else {
             game8[3][1] = currentPlayer;
@@ -1847,7 +1742,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button96(View view) {
-        if (currentGame == 0) currentGame = 9;
+        if (currentGame == 0) currentGame = 8;
         if (currentGame != 8) return;
         else {
             game8[3][3] = currentPlayer;
@@ -1867,7 +1762,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button97(View view) {
-        if (currentGame == 0) currentGame = 7;
+        if (currentGame == 0) currentGame = 9;
         if (currentGame != 9) return;
         else {
             game9[3][1] = currentPlayer;
@@ -1887,7 +1782,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button98(View view) {
-        if (currentGame == 0) currentGame = 8;
+        if (currentGame == 0) currentGame = 9;
         if (currentGame != 9) return;
         else {
             game9[3][2] = currentPlayer;
@@ -1926,7 +1821,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     //my own method to determine equality between multiple values
     private boolean allEqual(int a, int b, int c) {
         //return false if cells empty
@@ -1934,7 +1828,6 @@ public class MainActivity extends AppCompatActivity {
         //otherwise, return result
         return (a == b && b == c);
     }
-
 
     //methods to test individual board win
     public void checkGame1Win() {
@@ -2942,4 +2835,191 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void reset(View view) {
+        //todo implement reset functionality
+
+        //reset variables
+        game1 = new int[4][4];
+        game2 = new int[4][4];
+        game3 = new int[4][4];
+        game4 = new int[4][4];
+        game5 = new int[4][4];
+        game6 = new int[4][4];
+        game7 = new int[4][4];
+        game8 = new int[4][4];
+        game9 = new int[4][4];
+        mainGame = new int[4][4];
+        currentPlayer = 1;
+        currentGame = 0;
+
+        // reset all highlighting
+        resetAllButtons();
+
+        // reenable all buttons
+        button11.setEnabled(true);
+        button12.setEnabled(true);
+        button13.setEnabled(true);
+        button14.setEnabled(true);
+        button15.setEnabled(true);
+        button16.setEnabled(true);
+        button17.setEnabled(true);
+        button18.setEnabled(true);
+        button19.setEnabled(true);
+        button21.setEnabled(true);
+        button22.setEnabled(true);
+        button23.setEnabled(true);
+        button24.setEnabled(true);
+        button25.setEnabled(true);
+        button26.setEnabled(true);
+        button27.setEnabled(true);
+        button28.setEnabled(true);
+        button29.setEnabled(true);
+        button31.setEnabled(true);
+        button32.setEnabled(true);
+        button33.setEnabled(true);
+        button34.setEnabled(true);
+        button35.setEnabled(true);
+        button36.setEnabled(true);
+        button37.setEnabled(true);
+        button38.setEnabled(true);
+        button39.setEnabled(true);
+        button41.setEnabled(true);
+        button42.setEnabled(true);
+        button43.setEnabled(true);
+        button44.setEnabled(true);
+        button45.setEnabled(true);
+        button46.setEnabled(true);
+        button47.setEnabled(true);
+        button48.setEnabled(true);
+        button49.setEnabled(true);
+        button51.setEnabled(true);
+        button52.setEnabled(true);
+        button53.setEnabled(true);
+        button54.setEnabled(true);
+        button55.setEnabled(true);
+        button56.setEnabled(true);
+        button57.setEnabled(true);
+        button58.setEnabled(true);
+        button59.setEnabled(true);
+        button61.setEnabled(true);
+        button62.setEnabled(true);
+        button63.setEnabled(true);
+        button64.setEnabled(true);
+        button65.setEnabled(true);
+        button66.setEnabled(true);
+        button67.setEnabled(true);
+        button68.setEnabled(true);
+        button69.setEnabled(true);
+        button71.setEnabled(true);
+        button72.setEnabled(true);
+        button73.setEnabled(true);
+        button74.setEnabled(true);
+        button75.setEnabled(true);
+        button76.setEnabled(true);
+        button77.setEnabled(true);
+        button78.setEnabled(true);
+        button79.setEnabled(true);
+        button81.setEnabled(true);
+        button82.setEnabled(true);
+        button83.setEnabled(true);
+        button84.setEnabled(true);
+        button85.setEnabled(true);
+        button86.setEnabled(true);
+        button87.setEnabled(true);
+        button88.setEnabled(true);
+        button89.setEnabled(true);
+        button91.setEnabled(true);
+        button92.setEnabled(true);
+        button93.setEnabled(true);
+        button94.setEnabled(true);
+        button95.setEnabled(true);
+        button96.setEnabled(true);
+        button97.setEnabled(true);
+        button98.setEnabled(true);
+        button99.setEnabled(true);
+
+        //clear all text from buttons
+        button11.setText("");
+        button12.setText("");
+        button13.setText("");
+        button14.setText("");
+        button15.setText("");
+        button16.setText("");
+        button17.setText("");
+        button18.setText("");
+        button19.setText("");
+        button21.setText("");
+        button22.setText("");
+        button23.setText("");
+        button24.setText("");
+        button25.setText("");
+        button26.setText("");
+        button27.setText("");
+        button28.setText("");
+        button29.setText("");
+        button31.setText("");
+        button32.setText("");
+        button33.setText("");
+        button34.setText("");
+        button35.setText("");
+        button36.setText("");
+        button37.setText("");
+        button38.setText("");
+        button39.setText("");
+        button41.setText("");
+        button42.setText("");
+        button43.setText("");
+        button44.setText("");
+        button45.setText("");
+        button46.setText("");
+        button47.setText("");
+        button48.setText("");
+        button49.setText("");
+        button51.setText("");
+        button52.setText("");
+        button53.setText("");
+        button54.setText("");
+        button55.setText("");
+        button56.setText("");
+        button57.setText("");
+        button58.setText("");
+        button59.setText("");
+        button61.setText("");
+        button62.setText("");
+        button63.setText("");
+        button64.setText("");
+        button65.setText("");
+        button66.setText("");
+        button67.setText("");
+        button68.setText("");
+        button69.setText("");
+        button71.setText("");
+        button72.setText("");
+        button73.setText("");
+        button74.setText("");
+        button75.setText("");
+        button76.setText("");
+        button77.setText("");
+        button78.setText("");
+        button79.setText("");
+        button81.setText("");
+        button82.setText("");
+        button83.setText("");
+        button84.setText("");
+        button85.setText("");
+        button86.setText("");
+        button87.setText("");
+        button88.setText("");
+        button89.setText("");
+        button91.setText("");
+        button92.setText("");
+        button93.setText("");
+        button94.setText("");
+        button95.setText("");
+        button96.setText("");
+        button97.setText("");
+        button98.setText("");
+        button99.setText("");
+
+    }
 }

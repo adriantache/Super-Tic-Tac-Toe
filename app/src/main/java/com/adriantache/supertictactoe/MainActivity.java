@@ -8,6 +8,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    //todo remove test tag and log entries
+    private static final String TAG = "MainActivity";
     //declare all 81 button views
     Button button11;
     Button button12;
@@ -90,6 +92,21 @@ public class MainActivity extends AppCompatActivity {
     Button button97;
     Button button98;
     Button button99;
+    //declare all matrix
+    int[][] game1 = new int[4][4];
+    int[][] game2 = new int[4][4];
+    int[][] game3 = new int[4][4];
+    int[][] game4 = new int[4][4];
+    int[][] game5 = new int[4][4];
+    int[][] game6 = new int[4][4];
+    int[][] game7 = new int[4][4];
+    int[][] game8 = new int[4][4];
+    int[][] game9 = new int[4][4];
+    int[][] mainGame = new int[4][4];
+
+    //declare variables
+    int currentPlayer = 1;
+    int currentGame = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,34 +198,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //declare all matrix
-    int[][] game1 = new int[4][4];
-    int[][] game2 = new int[4][4];
-    int[][] game3 = new int[4][4];
-    int[][] game4 = new int[4][4];
-    int[][] game5 = new int[4][4];
-    int[][] game6 = new int[4][4];
-    int[][] game7 = new int[4][4];
-    int[][] game8 = new int[4][4];
-    int[][] game9 = new int[4][4];
-    int[][] mainGame = new int[4][4];
-
-    //declare variables
-    int currentPlayer = 1;
-    int currentGame = 0;
-
-    //todo remove test tag
-    private static final String TAG = "MainActivity";
-
     //all 81 methods for the individual buttons
     public void button11(View view) {
+        //if the game has just started, or the selected board is not playable, allow player to click this button
         if (currentGame == 0) currentGame = 1;
+        //if the current playable board is not this one, do nothing
         if (currentGame != 1) return;
+
         else {
+            //set matrix to current player
             game1[1][1] = currentPlayer;
+            // set current playable board to the appropriate one
             currentGame = 1;
+            // disable this button
             button11.setEnabled(false);
+            // set background colour for appropriate game board
             activeGame1();
+            // set button text to current player symbol
             if (currentPlayer == 1) {
                 button11.setText("X");
                 checkGame1Win();
@@ -1821,9 +1827,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //my own method to determine equality between multiple values
+    //my own method to determine equality between multiple values because java
     private boolean allEqual(int a, int b, int c) {
-        //return false if cells empty
+        //return false if cells are empty
         if (a == 0 || b == 0 || c == 0) return false;
         //otherwise, return result
         return (a == b && b == c);
@@ -1837,6 +1843,7 @@ public class MainActivity extends AppCompatActivity {
             // if cursor points to this board, allow all movement
             if (currentGame == 1) currentGame = 0;
             disableGame1();
+            checkMainGameWin();
         }
     }
 
@@ -1847,6 +1854,7 @@ public class MainActivity extends AppCompatActivity {
             // if cursor points to this board, allow all movement
             if (currentGame == 2) currentGame = 0;
             disableGame2();
+            checkMainGameWin();
         }
     }
 
@@ -1857,6 +1865,7 @@ public class MainActivity extends AppCompatActivity {
             // if cursor points to this board, allow all movement
             if (currentGame == 3) currentGame = 0;
             disableGame3();
+            checkMainGameWin();
         }
     }
 
@@ -1867,6 +1876,7 @@ public class MainActivity extends AppCompatActivity {
             // if cursor points to this board, allow all movement
             if (currentGame == 4) currentGame = 0;
             disableGame4();
+            checkMainGameWin();
         }
     }
 
@@ -1877,6 +1887,7 @@ public class MainActivity extends AppCompatActivity {
             // if cursor points to this board, allow all movement
             if (currentGame == 5) currentGame = 0;
             disableGame5();
+            checkMainGameWin();
         }
     }
 
@@ -1887,6 +1898,7 @@ public class MainActivity extends AppCompatActivity {
             // if cursor points to this board, allow all movement
             if (currentGame == 6) currentGame = 0;
             disableGame6();
+            checkMainGameWin();
         }
     }
 
@@ -1897,6 +1909,7 @@ public class MainActivity extends AppCompatActivity {
             // if cursor points to this board, allow all movement
             if (currentGame == 7) currentGame = 0;
             disableGame7();
+            checkMainGameWin();
         }
     }
 
@@ -1907,6 +1920,7 @@ public class MainActivity extends AppCompatActivity {
             // if cursor points to this board, allow all movement
             if (currentGame == 8) currentGame = 0;
             disableGame8();
+            checkMainGameWin();
         }
     }
 
@@ -1917,7 +1931,264 @@ public class MainActivity extends AppCompatActivity {
             // if cursor points to this board, allow all movement
             if (currentGame == 9) currentGame = 0;
             disableGame9();
+            checkMainGameWin();
         }
+    }
+
+    //method to test overall board win
+    public void checkMainGameWin() {
+        //first check if game is actually won (forgot to do that first time I wrote this ^^)
+        if (allEqual(mainGame[1][1], mainGame[1][2], mainGame[1][3]) || allEqual(mainGame[2][1], mainGame[2][2], mainGame[2][3]) || allEqual(mainGame[3][1], mainGame[3][2], mainGame[3][3]) || allEqual(mainGame[1][1], mainGame[2][2], mainGame[3][3]) || allEqual(mainGame[1][3], mainGame[2][2], mainGame[3][1]) || allEqual(mainGame[1][1], mainGame[2][1], mainGame[3][1]) || allEqual(mainGame[1][2], mainGame[2][2], mainGame[3][2]) || allEqual(mainGame[1][3], mainGame[2][3], mainGame[3][3])) {
+            // disable all boards
+            disableAllBoards();
+
+
+            // highlight winning board
+            if (allEqual(mainGame[1][1], mainGame[1][2], mainGame[1][3])) {
+                button11.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button12.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button13.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button14.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button15.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button16.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button17.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button18.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button19.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button21.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button22.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button23.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button24.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button25.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button26.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button27.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button28.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button29.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button31.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button32.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button33.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button34.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button35.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button36.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button37.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button38.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button39.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+            }
+            if (allEqual(mainGame[2][1], mainGame[2][2], mainGame[2][3])) {
+                button41.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button42.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button43.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button44.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button45.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button46.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button47.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button48.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button49.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button51.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button52.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button53.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button54.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button55.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button56.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button57.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button58.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button59.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button61.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button62.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button63.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button64.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button65.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button66.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button67.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button68.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button69.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+            }
+            if (allEqual(mainGame[3][1], mainGame[3][2], mainGame[3][3])) {
+                button71.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button72.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button73.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button74.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button75.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button76.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button77.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button78.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button79.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button81.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button82.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button83.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button84.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button85.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button86.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button87.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button88.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button89.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button91.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button92.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button93.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button94.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button95.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button96.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button97.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button98.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button99.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+            }
+            if (allEqual(mainGame[1][1], mainGame[2][2], mainGame[3][3])) {
+                button11.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button12.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button13.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button21.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button22.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button23.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button31.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button32.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button33.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button44.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button45.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button46.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button54.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button55.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button56.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button64.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button65.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button66.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button77.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button78.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button79.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button87.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button88.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button89.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button97.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button98.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button99.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+            }
+            if (allEqual(mainGame[1][3], mainGame[2][2], mainGame[3][1])) {
+                button17.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button18.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button19.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button27.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button28.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button29.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button37.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button38.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button39.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button44.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button45.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button46.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button54.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button55.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button56.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button64.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button65.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button66.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button71.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button72.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button73.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button81.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button82.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button83.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button91.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button92.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button93.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+            }
+            if (allEqual(mainGame[1][1], mainGame[2][1], mainGame[3][1])) {
+                button11.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button12.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button13.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button21.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button22.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button23.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button31.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button32.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button33.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button41.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button42.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button43.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button51.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button52.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button53.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button61.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button62.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button63.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button71.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button72.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button73.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button81.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button82.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button83.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button91.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button92.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button93.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+            }
+            if (allEqual(mainGame[1][2], mainGame[2][2], mainGame[3][2])) {
+                button14.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button15.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button16.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button24.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button25.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button26.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button34.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button35.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button36.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button44.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button45.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button46.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button54.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button55.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button56.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button64.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button65.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button66.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button74.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button75.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button76.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button84.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button85.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button86.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button94.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button95.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button96.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+            }
+            if (allEqual(mainGame[1][3], mainGame[2][3], mainGame[3][3])) {
+                button17.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button18.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button19.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button27.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button28.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button29.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button37.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button38.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button39.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button47.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button48.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button49.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button57.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button58.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button59.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button67.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button68.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button69.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button77.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button78.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button79.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button87.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button88.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button89.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button97.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button98.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+                button99.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+            }
+        }
+    }
+
+    private void disableAllBoards() {
+        disableGame1();
+        disableGame2();
+        disableGame3();
+        disableGame4();
+        disableGame5();
+        disableGame6();
+        disableGame7();
+        disableGame8();
+        disableGame9();
     }
 
     //methods for disabling (and highlighting) won boards
@@ -2444,95 +2715,214 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //todo method to test overall board win
+    //todo highlight won boards with "fancy" highlighting rather than line highlighting
 
+    // todo set @param winningText 
 
-    //method to remove highlighting by setting a null color filters
-    public void resetAllButtons() {
-        button11.getBackground().setColorFilter(null);
-        button12.getBackground().setColorFilter(null);
-        button13.getBackground().setColorFilter(null);
-        button14.getBackground().setColorFilter(null);
-        button15.getBackground().setColorFilter(null);
-        button16.getBackground().setColorFilter(null);
-        button17.getBackground().setColorFilter(null);
-        button18.getBackground().setColorFilter(null);
-        button19.getBackground().setColorFilter(null);
-        button21.getBackground().setColorFilter(null);
-        button22.getBackground().setColorFilter(null);
-        button23.getBackground().setColorFilter(null);
-        button24.getBackground().setColorFilter(null);
-        button25.getBackground().setColorFilter(null);
-        button26.getBackground().setColorFilter(null);
-        button27.getBackground().setColorFilter(null);
-        button28.getBackground().setColorFilter(null);
-        button29.getBackground().setColorFilter(null);
-        button31.getBackground().setColorFilter(null);
-        button32.getBackground().setColorFilter(null);
-        button33.getBackground().setColorFilter(null);
-        button34.getBackground().setColorFilter(null);
-        button35.getBackground().setColorFilter(null);
-        button36.getBackground().setColorFilter(null);
-        button37.getBackground().setColorFilter(null);
-        button38.getBackground().setColorFilter(null);
-        button39.getBackground().setColorFilter(null);
-        button41.getBackground().setColorFilter(null);
-        button42.getBackground().setColorFilter(null);
-        button43.getBackground().setColorFilter(null);
-        button44.getBackground().setColorFilter(null);
-        button45.getBackground().setColorFilter(null);
-        button46.getBackground().setColorFilter(null);
-        button47.getBackground().setColorFilter(null);
-        button48.getBackground().setColorFilter(null);
-        button49.getBackground().setColorFilter(null);
-        button51.getBackground().setColorFilter(null);
-        button52.getBackground().setColorFilter(null);
-        button53.getBackground().setColorFilter(null);
-        button54.getBackground().setColorFilter(null);
-        button55.getBackground().setColorFilter(null);
-        button56.getBackground().setColorFilter(null);
-        button57.getBackground().setColorFilter(null);
-        button58.getBackground().setColorFilter(null);
-        button59.getBackground().setColorFilter(null);
-        button61.getBackground().setColorFilter(null);
-        button62.getBackground().setColorFilter(null);
-        button63.getBackground().setColorFilter(null);
-        button64.getBackground().setColorFilter(null);
-        button65.getBackground().setColorFilter(null);
-        button66.getBackground().setColorFilter(null);
-        button67.getBackground().setColorFilter(null);
-        button68.getBackground().setColorFilter(null);
-        button69.getBackground().setColorFilter(null);
-        button71.getBackground().setColorFilter(null);
-        button72.getBackground().setColorFilter(null);
-        button73.getBackground().setColorFilter(null);
-        button74.getBackground().setColorFilter(null);
-        button75.getBackground().setColorFilter(null);
-        button76.getBackground().setColorFilter(null);
-        button77.getBackground().setColorFilter(null);
-        button78.getBackground().setColorFilter(null);
-        button79.getBackground().setColorFilter(null);
-        button81.getBackground().setColorFilter(null);
-        button82.getBackground().setColorFilter(null);
-        button83.getBackground().setColorFilter(null);
-        button84.getBackground().setColorFilter(null);
-        button85.getBackground().setColorFilter(null);
-        button86.getBackground().setColorFilter(null);
-        button87.getBackground().setColorFilter(null);
-        button88.getBackground().setColorFilter(null);
-        button89.getBackground().setColorFilter(null);
-        button91.getBackground().setColorFilter(null);
-        button92.getBackground().setColorFilter(null);
-        button93.getBackground().setColorFilter(null);
-        button94.getBackground().setColorFilter(null);
-        button95.getBackground().setColorFilter(null);
-        button96.getBackground().setColorFilter(null);
-        button97.getBackground().setColorFilter(null);
-        button98.getBackground().setColorFilter(null);
-        button99.getBackground().setColorFilter(null);
+    //methods to set active game
+    public void activeGame1() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[1][1] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click using a color filter
+            button11.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button12.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button13.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button21.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button22.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button23.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button31.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button32.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button33.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
     }
 
-    //methods to reset each game, for more control
+    public void activeGame2() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[1][2] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button14.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button15.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button16.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button24.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button25.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button26.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button34.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button35.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button36.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+    }
+
+    public void activeGame3() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[1][3] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button17.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button18.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button19.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button27.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button28.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button29.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button37.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button38.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button39.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+    }
+
+    public void activeGame4() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[2][1] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button41.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button42.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button43.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button51.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button52.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button53.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button61.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button62.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button63.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+    }
+
+    public void activeGame5() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[2][2] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button44.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button45.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button46.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button54.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button55.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button56.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button64.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button65.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button66.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+    }
+
+    public void activeGame6() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[2][3] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button47.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button48.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button49.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button57.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button58.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button59.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button67.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button68.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button69.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+    }
+
+    public void activeGame7() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[3][1] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button71.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button72.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button73.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button81.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button82.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button83.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button91.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button92.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button93.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+    }
+
+    public void activeGame8() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[3][2] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button74.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button75.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button76.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button84.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button85.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button86.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button94.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button95.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button96.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+    }
+
+    public void activeGame9() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[3][3] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button77.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button78.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button79.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button87.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button88.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button89.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button97.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button98.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button99.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+    }
+
+    //logic to determine which boards get reset (i.e. all that do not have final scores)
+    public void resetHighlighting() {
+        if (mainGame[1][1] == 0) resetGame1();
+        if (mainGame[1][2] == 0) resetGame2();
+        if (mainGame[1][3] == 0) resetGame3();
+        if (mainGame[2][1] == 0) resetGame4();
+        if (mainGame[2][2] == 0) resetGame5();
+        if (mainGame[2][3] == 0) resetGame6();
+        if (mainGame[3][1] == 0) resetGame7();
+        if (mainGame[3][2] == 0) resetGame8();
+        if (mainGame[3][3] == 0) resetGame9();
+    }
+
+    //methods to reset each individual game, for more control
     public void resetGame1() {
         button11.getBackground().setColorFilter(null);
         button12.getBackground().setColorFilter(null);
@@ -2641,202 +3031,8 @@ public class MainActivity extends AppCompatActivity {
         button99.getBackground().setColorFilter(null);
     }
 
-    //logic to determine which boards get reset (i.e. all that do not have final scores)
-    public void resetHighlighting() {
-        if (mainGame[1][1] == 0) resetGame1();
-        if (mainGame[1][2] == 0) resetGame2();
-        if (mainGame[1][3] == 0) resetGame3();
-        if (mainGame[2][1] == 0) resetGame4();
-        if (mainGame[2][2] == 0) resetGame5();
-        if (mainGame[2][3] == 0) resetGame6();
-        if (mainGame[3][1] == 0) resetGame7();
-        if (mainGame[3][2] == 0) resetGame8();
-        if (mainGame[3][3] == 0) resetGame9();
-    }
-
-    //methods to set active game
-    public void activeGame1() {
-        //test for already won board and allow movement outside current board
-        if (mainGame[1][1] != 0) {
-            currentGame = 0;
-        } else {
-            //reset highlighting
-            resetHighlighting();
-            //highlight buttons you can click using a color filter
-            button11.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button12.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button13.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button21.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button22.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button23.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button31.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button32.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button33.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-    }
-
-    public void activeGame2() {
-        //test for already won board and allow movement outside current board
-        if (mainGame[1][2] != 0) {
-            currentGame = 0;
-        } else {
-            //reset highlighting
-            resetHighlighting();
-            //highlight buttons you can click
-            button14.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button15.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button16.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button24.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button25.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button26.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button34.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button35.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button36.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-    }
-
-    public void activeGame3() {
-        //test for already won board and allow movement outside current board
-        if (mainGame[1][3] != 0) {
-            currentGame = 0;
-        } else {
-            //reset highlighting
-            resetHighlighting();
-            //highlight buttons you can click
-            button17.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button18.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button19.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button27.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button28.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button29.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button37.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button38.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button39.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-    }
-
-    public void activeGame4() {
-        //test for already won board and allow movement outside current board
-        if (mainGame[2][1] != 0) {
-            currentGame = 0;
-        } else {
-            //reset highlighting
-            resetHighlighting();
-            //highlight buttons you can click
-            button41.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button42.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button43.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button51.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button52.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button53.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button61.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button62.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button63.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-    }
-
-    public void activeGame5() {
-        //test for already won board and allow movement outside current board
-        if (mainGame[2][2] != 0) {
-            currentGame = 0;
-        } else {
-            //reset highlighting
-            resetHighlighting();
-            //highlight buttons you can click
-            button44.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button45.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button46.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button54.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button55.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button56.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button64.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button65.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button66.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-    }
-
-    public void activeGame6() {
-        //test for already won board and allow movement outside current board
-        if (mainGame[2][3] != 0) {
-            currentGame = 0;
-        } else {
-            //reset highlighting
-            resetHighlighting();
-            //highlight buttons you can click
-            button47.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button48.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button49.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button57.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button58.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button59.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button67.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button68.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button69.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-    }
-
-    public void activeGame7() {
-        //test for already won board and allow movement outside current board
-        if (mainGame[3][1] != 0) {
-            currentGame = 0;
-        } else {
-            //reset highlighting
-            resetHighlighting();
-            //highlight buttons you can click
-            button71.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button72.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button73.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button81.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button82.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button83.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button91.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button92.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button93.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-    }
-
-    public void activeGame8() {
-        //test for already won board and allow movement outside current board
-        if (mainGame[3][2] != 0) {
-            currentGame = 0;
-        } else {
-            //reset highlighting
-            resetHighlighting();
-            //highlight buttons you can click
-            button74.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button75.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button76.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button84.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button85.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button86.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button94.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button95.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button96.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-    }
-
-    public void activeGame9() {
-        //test for already won board and allow movement outside current board
-        if (mainGame[3][3] != 0) {
-            currentGame = 0;
-        } else {
-            //reset highlighting
-            resetHighlighting();
-            //highlight buttons you can click
-            button77.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button78.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button79.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button87.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button88.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button89.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button97.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button98.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button99.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-    }
-
     public void reset(View view) {
-        //todo implement reset functionality
+        //todo check reset functionality
 
         //reset variables
         game1 = new int[4][4];
@@ -2855,7 +3051,7 @@ public class MainActivity extends AppCompatActivity {
         // reset all highlighting
         resetAllButtons();
 
-        // reenable all buttons
+        // re-enable all buttons
         button11.setEnabled(true);
         button12.setEnabled(true);
         button13.setEnabled(true);
@@ -3022,4 +3218,90 @@ public class MainActivity extends AppCompatActivity {
         button99.setText("");
 
     }
+
+    //method to remove highlighting on all buttons by setting a null color filters
+    public void resetAllButtons() {
+        button11.getBackground().setColorFilter(null);
+        button12.getBackground().setColorFilter(null);
+        button13.getBackground().setColorFilter(null);
+        button14.getBackground().setColorFilter(null);
+        button15.getBackground().setColorFilter(null);
+        button16.getBackground().setColorFilter(null);
+        button17.getBackground().setColorFilter(null);
+        button18.getBackground().setColorFilter(null);
+        button19.getBackground().setColorFilter(null);
+        button21.getBackground().setColorFilter(null);
+        button22.getBackground().setColorFilter(null);
+        button23.getBackground().setColorFilter(null);
+        button24.getBackground().setColorFilter(null);
+        button25.getBackground().setColorFilter(null);
+        button26.getBackground().setColorFilter(null);
+        button27.getBackground().setColorFilter(null);
+        button28.getBackground().setColorFilter(null);
+        button29.getBackground().setColorFilter(null);
+        button31.getBackground().setColorFilter(null);
+        button32.getBackground().setColorFilter(null);
+        button33.getBackground().setColorFilter(null);
+        button34.getBackground().setColorFilter(null);
+        button35.getBackground().setColorFilter(null);
+        button36.getBackground().setColorFilter(null);
+        button37.getBackground().setColorFilter(null);
+        button38.getBackground().setColorFilter(null);
+        button39.getBackground().setColorFilter(null);
+        button41.getBackground().setColorFilter(null);
+        button42.getBackground().setColorFilter(null);
+        button43.getBackground().setColorFilter(null);
+        button44.getBackground().setColorFilter(null);
+        button45.getBackground().setColorFilter(null);
+        button46.getBackground().setColorFilter(null);
+        button47.getBackground().setColorFilter(null);
+        button48.getBackground().setColorFilter(null);
+        button49.getBackground().setColorFilter(null);
+        button51.getBackground().setColorFilter(null);
+        button52.getBackground().setColorFilter(null);
+        button53.getBackground().setColorFilter(null);
+        button54.getBackground().setColorFilter(null);
+        button55.getBackground().setColorFilter(null);
+        button56.getBackground().setColorFilter(null);
+        button57.getBackground().setColorFilter(null);
+        button58.getBackground().setColorFilter(null);
+        button59.getBackground().setColorFilter(null);
+        button61.getBackground().setColorFilter(null);
+        button62.getBackground().setColorFilter(null);
+        button63.getBackground().setColorFilter(null);
+        button64.getBackground().setColorFilter(null);
+        button65.getBackground().setColorFilter(null);
+        button66.getBackground().setColorFilter(null);
+        button67.getBackground().setColorFilter(null);
+        button68.getBackground().setColorFilter(null);
+        button69.getBackground().setColorFilter(null);
+        button71.getBackground().setColorFilter(null);
+        button72.getBackground().setColorFilter(null);
+        button73.getBackground().setColorFilter(null);
+        button74.getBackground().setColorFilter(null);
+        button75.getBackground().setColorFilter(null);
+        button76.getBackground().setColorFilter(null);
+        button77.getBackground().setColorFilter(null);
+        button78.getBackground().setColorFilter(null);
+        button79.getBackground().setColorFilter(null);
+        button81.getBackground().setColorFilter(null);
+        button82.getBackground().setColorFilter(null);
+        button83.getBackground().setColorFilter(null);
+        button84.getBackground().setColorFilter(null);
+        button85.getBackground().setColorFilter(null);
+        button86.getBackground().setColorFilter(null);
+        button87.getBackground().setColorFilter(null);
+        button88.getBackground().setColorFilter(null);
+        button89.getBackground().setColorFilter(null);
+        button91.getBackground().setColorFilter(null);
+        button92.getBackground().setColorFilter(null);
+        button93.getBackground().setColorFilter(null);
+        button94.getBackground().setColorFilter(null);
+        button95.getBackground().setColorFilter(null);
+        button96.getBackground().setColorFilter(null);
+        button97.getBackground().setColorFilter(null);
+        button98.getBackground().setColorFilter(null);
+        button99.getBackground().setColorFilter(null);
+    }
+
 }

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -116,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
     int currentGame = 0;
     boolean musicStop = true;
     MediaPlayer mediaPlayer;
-
+    TextView winText;
+    boolean gameEnd = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -209,11 +211,14 @@ public class MainActivity extends AppCompatActivity {
         //find mute ImageView
         mute = findViewById(R.id.mute);
 
+        //find winning textView
+        winText = findViewById(R.id.winText);
+
         //start music
         musicPlayer();
     }
 
-    //this may not be necessary; stops music on destroy
+    //this may be unnecessary; stops music on destroy
     @Override
     public void onDestroy() {
         mediaPlayer.stop();
@@ -1912,6 +1917,7 @@ public class MainActivity extends AppCompatActivity {
             if (currentGame == 1) currentGame = 0;
             disableGame1();
             checkMainGameWin();
+            setText();
         }
         // if there is no win, check for a draw
         drawCondition1();
@@ -1925,6 +1931,7 @@ public class MainActivity extends AppCompatActivity {
             if (currentGame == 2) currentGame = 0;
             disableGame2();
             checkMainGameWin();
+            setText();
         }
         // if there is no win, check for a draw
         drawCondition2();
@@ -1938,6 +1945,7 @@ public class MainActivity extends AppCompatActivity {
             if (currentGame == 3) currentGame = 0;
             disableGame3();
             checkMainGameWin();
+            setText();
         }
         // if there is no win, check for a draw
         drawCondition3();
@@ -1951,6 +1959,7 @@ public class MainActivity extends AppCompatActivity {
             if (currentGame == 4) currentGame = 0;
             disableGame4();
             checkMainGameWin();
+            setText();
         }
         // if there is no win, check for a draw
         drawCondition4();
@@ -1964,6 +1973,7 @@ public class MainActivity extends AppCompatActivity {
             if (currentGame == 5) currentGame = 0;
             disableGame5();
             checkMainGameWin();
+            setText();
         }
         // if there is no win, check for a draw
         drawCondition5();
@@ -1977,6 +1987,7 @@ public class MainActivity extends AppCompatActivity {
             if (currentGame == 6) currentGame = 0;
             disableGame6();
             checkMainGameWin();
+            setText();
         }
         // if there is no win, check for a draw
         drawCondition6();
@@ -1990,6 +2001,7 @@ public class MainActivity extends AppCompatActivity {
             if (currentGame == 7) currentGame = 0;
             disableGame7();
             checkMainGameWin();
+            setText();
         }
         // if there is no win, check for a draw
         drawCondition7();
@@ -2003,6 +2015,7 @@ public class MainActivity extends AppCompatActivity {
             if (currentGame == 8) currentGame = 0;
             disableGame8();
             checkMainGameWin();
+            setText();
         }
         // if there is no win, check for a draw
         drawCondition8();
@@ -2016,6 +2029,7 @@ public class MainActivity extends AppCompatActivity {
             if (currentGame == 9) currentGame = 0;
             disableGame9();
             checkMainGameWin();
+            setText();
         }
         // if there is no win, check for a draw
         drawCondition9();
@@ -2272,6 +2286,10 @@ public class MainActivity extends AppCompatActivity {
             // disable all boards
             disableAllBoards();
 
+            //generate winning text
+            gameEnd = true;
+            setText();
+
             // highlight winning board
             if (allEqual(mainGame[1][1], mainGame[1][2], mainGame[1][3])) {
                 button11.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
@@ -2516,7 +2534,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //todo decide if we want to keep this
-        //then check for a draw
+        //exit out if main game is not complete
         int i = 0;
         int j = 0;
         while (i < 3) {
@@ -2609,6 +2627,12 @@ public class MainActivity extends AppCompatActivity {
         button97.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button98.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button99.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+
+        //generate winning text for the draw case
+        gameEnd = true;
+        setText();
+        //set special value to set text appropriately for a draw
+        currentPlayer=3;
     }
 
     //method to disable all boards
@@ -3210,8 +3234,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // todo set winningText to display instructions/win
+    // set winText to display instructions/win
+    public void setText() {
+        StringBuilder stringBuilder = new StringBuilder();
 
+        //if game is not finished, display current player and move space
+        if (!gameEnd) {
+            //start with current player
+            if (currentPlayer == 1) stringBuilder.append("O: ");
+            else stringBuilder.append("X: ");
+
+            //append possible move space
+            if (currentGame == 0) stringBuilder.append("Move anywhere.");
+            else {
+                stringBuilder.append("Move within game ");
+                stringBuilder.append(currentGame);
+                stringBuilder.append(".");
+            }
+        } else {
+            if (currentPlayer == 1) stringBuilder.append("X: ");
+            else if (currentPlayer==2) stringBuilder.append("O: ");
+            else stringBuilder.append("No one ");
+
+            stringBuilder.append("has won the game!");
+        }
+
+        winText.setText(stringBuilder.toString());
+    }
 
     //methods to set active game
     public void activeGame1() {
@@ -3233,6 +3282,9 @@ public class MainActivity extends AppCompatActivity {
             button32.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
             button33.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
         }
+
+        //set text to indicate acceptable move space
+        setText();
     }
 
     public void activeGame2() {
@@ -3254,6 +3306,9 @@ public class MainActivity extends AppCompatActivity {
             button35.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
             button36.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
         }
+
+        //set text to indicate acceptable move space
+        setText();
     }
 
     public void activeGame3() {
@@ -3275,6 +3330,9 @@ public class MainActivity extends AppCompatActivity {
             button38.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
             button39.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
         }
+
+        //set text to indicate acceptable move space
+        setText();
     }
 
     public void activeGame4() {
@@ -3296,6 +3354,9 @@ public class MainActivity extends AppCompatActivity {
             button62.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
             button63.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
         }
+
+        //set text to indicate acceptable move space
+        setText();
     }
 
     public void activeGame5() {
@@ -3317,6 +3378,9 @@ public class MainActivity extends AppCompatActivity {
             button65.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
             button66.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
         }
+
+        //set text to indicate acceptable move space
+        setText();
     }
 
     public void activeGame6() {
@@ -3338,6 +3402,9 @@ public class MainActivity extends AppCompatActivity {
             button68.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
             button69.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
         }
+
+        //set text to indicate acceptable move space
+        setText();
     }
 
     public void activeGame7() {
@@ -3359,6 +3426,9 @@ public class MainActivity extends AppCompatActivity {
             button92.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
             button93.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
         }
+
+        //set text to indicate acceptable move space
+        setText();
     }
 
     public void activeGame8() {
@@ -3380,6 +3450,9 @@ public class MainActivity extends AppCompatActivity {
             button95.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
             button96.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
         }
+
+        //set text to indicate acceptable move space
+        setText();
     }
 
     public void activeGame9() {
@@ -3401,6 +3474,9 @@ public class MainActivity extends AppCompatActivity {
             button98.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
             button99.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
         }
+
+        //set text to indicate acceptable move space
+        setText();
     }
 
     //logic to determine which boards get reset (i.e. all that do not have final scores)
@@ -3541,6 +3617,7 @@ public class MainActivity extends AppCompatActivity {
         mainGame = new int[4][4];
         currentPlayer = 1;
         currentGame = 0;
+        gameEnd = false;
 
         // reset all highlighting
         resetAllButtons();

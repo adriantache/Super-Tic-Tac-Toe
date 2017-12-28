@@ -1900,10 +1900,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //my own method to determine equality between multiple values because java
+    //my own method to determine equality between multiple values because java, taking into account game values used
     private boolean allEqual(int a, int b, int c) {
         //return false if cells are empty
         if (a == 0 || b == 0 || c == 0) return false;
+        //return false if cells are 4 (draw)
+        if (a == 4 || b == 4 || c == 4) return false;
         //otherwise, return result
         return (a == b && b == c);
     }
@@ -2041,9 +2043,10 @@ public class MainActivity extends AppCompatActivity {
         if (mainGame[1][1] != 0) return;
 
         // if the current game has empty squares, exit out
-        int i = 0;
-        int j = 0;
+        int i = 1;
+        int j;
         while (i < 4) {
+            j = 1;
             while (j < 4) {
                 if (game1[i][j] == 0) return;
                 j++;
@@ -2061,6 +2064,13 @@ public class MainActivity extends AppCompatActivity {
         button31.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button32.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button33.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+
+        //set maingame so it's not blank
+        mainGame[1][1] = 4;
+
+        //also set current game to something else in order to prevent getting blocked
+        currentGame = 0;
+        setText();
     }
 
     private void drawCondition2() {
@@ -2068,9 +2078,10 @@ public class MainActivity extends AppCompatActivity {
         if (mainGame[1][2] != 0) return;
 
         // if the current game has empty squares, exit out
-        int i = 0;
-        int j = 0;
+        int i = 1;
+        int j;
         while (i < 4) {
+            j = 1;
             while (j < 4) {
                 if (game2[i][j] == 0) return;
                 j++;
@@ -2088,6 +2099,13 @@ public class MainActivity extends AppCompatActivity {
         button34.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button35.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button36.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+
+        //set maingame so it's not blank
+        mainGame[1][2] = 4;
+
+        //also set current game to something else in order to prevent getting blocked
+        currentGame = 0;
+        setText();
     }
 
     private void drawCondition3() {
@@ -2095,9 +2113,10 @@ public class MainActivity extends AppCompatActivity {
         if (mainGame[1][3] != 0) return;
 
         // if the current game has empty squares, exit out
-        int i = 0;
-        int j = 0;
+        int i = 1;
+        int j;
         while (i < 4) {
+            j = 1;
             while (j < 4) {
                 if (game3[i][j] == 0) return;
                 j++;
@@ -2115,6 +2134,13 @@ public class MainActivity extends AppCompatActivity {
         button37.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button38.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button39.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+
+//set maingame so it's not blank
+        mainGame[1][3] = 4;
+
+        //also set current game to something else in order to prevent getting blocked
+        currentGame = 0;
+        setText();
     }
 
     private void drawCondition4() {
@@ -2122,9 +2148,10 @@ public class MainActivity extends AppCompatActivity {
         if (mainGame[2][1] != 0) return;
 
         // if the current game has empty squares, exit out
-        int i = 0;
-        int j = 0;
+        int i = 1;
+        int j;
         while (i < 4) {
+            j = 1;
             while (j < 4) {
                 if (game4[i][j] == 0) return;
                 j++;
@@ -2142,6 +2169,13 @@ public class MainActivity extends AppCompatActivity {
         button61.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button62.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button63.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+
+        //set maingame so it's not blank
+        mainGame[2][1] = 4;
+
+        //also set current game to something else in order to prevent getting blocked
+        currentGame = 0;
+        setText();
     }
 
     private void drawCondition5() {
@@ -2149,9 +2183,10 @@ public class MainActivity extends AppCompatActivity {
         if (mainGame[2][2] != 0) return;
 
         // if the current game has empty squares, exit out
-        int i = 0;
-        int j = 0;
+        int i = 1;
+        int j;
         while (i < 4) {
+            j = 1;
             while (j < 4) {
                 if (game5[i][j] == 0) return;
                 j++;
@@ -2169,6 +2204,13 @@ public class MainActivity extends AppCompatActivity {
         button64.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button65.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button66.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+
+        //set maingame so it's not blank
+        mainGame[2][2] = 4;
+
+        //also set current game to something else in order to prevent getting blocked
+        currentGame = 0;
+        setText();
     }
 
     private void drawCondition6() {
@@ -2176,9 +2218,10 @@ public class MainActivity extends AppCompatActivity {
         if (mainGame[2][3] != 0) return;
 
         // if the current game has empty squares, exit out
-        int i = 0;
-        int j = 0;
+        int i = 1;
+        int j;
         while (i < 4) {
+            j = 1;
             while (j < 4) {
                 if (game6[i][j] == 0) return;
                 j++;
@@ -2196,6 +2239,13 @@ public class MainActivity extends AppCompatActivity {
         button67.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button68.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button69.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+
+        //set maingame so it's not blank
+        mainGame[2][3] = 4;
+
+        //also set current game to something else in order to prevent getting blocked
+        currentGame = 0;
+        setText();
     }
 
     private void drawCondition7() {
@@ -2203,9 +2253,10 @@ public class MainActivity extends AppCompatActivity {
         if (mainGame[3][1] != 0) return;
 
         // if the current game has empty squares, exit out
-        int i = 0;
-        int j = 0;
+        int i = 1;
+        int j;
         while (i < 4) {
+            j = 1;
             while (j < 4) {
                 if (game7[i][j] == 0) return;
                 j++;
@@ -2223,6 +2274,13 @@ public class MainActivity extends AppCompatActivity {
         button91.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button92.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button93.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+
+        //set maingame so it's not blank
+        mainGame[3][1] = 4;
+
+        //also set current game to something else in order to prevent getting blocked
+        currentGame = 0;
+        setText();
     }
 
     private void drawCondition8() {
@@ -2230,9 +2288,10 @@ public class MainActivity extends AppCompatActivity {
         if (mainGame[3][2] != 0) return;
 
         // if the current game has empty squares, exit out
-        int i = 0;
-        int j = 0;
+        int i = 1;
+        int j;
         while (i < 4) {
+            j = 1;
             while (j < 4) {
                 if (game8[i][j] == 0) return;
                 j++;
@@ -2250,6 +2309,13 @@ public class MainActivity extends AppCompatActivity {
         button94.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button95.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button96.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+
+        //set maingame so it's not blank
+        mainGame[3][2] = 4;
+
+        //also set current game to something else in order to prevent getting blocked
+        currentGame = 0;
+        setText();
     }
 
     private void drawCondition9() {
@@ -2257,9 +2323,10 @@ public class MainActivity extends AppCompatActivity {
         if (mainGame[3][3] != 0) return;
 
         // if the current game has empty squares, exit out
-        int i = 0;
-        int j = 0;
+        int i = 1;
+        int j;
         while (i < 4) {
+            j = 1;
             while (j < 4) {
                 if (game9[i][j] == 0) return;
                 j++;
@@ -2277,6 +2344,13 @@ public class MainActivity extends AppCompatActivity {
         button97.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button98.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button99.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+
+        //set maingame so it's not blank
+        mainGame[3][3] = 4;
+
+        //also set current game to something else in order to prevent getting blocked
+        currentGame = 0;
+        setText();
     }
 
     //method to test overall board win
@@ -2534,9 +2608,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //exit out if main game is not complete
-        int i = 0;
-        int j = 0;
+        int i = 1;
+        int j ;
         while (i < 4) {
+            j=1;
             while (j < 4) {
                 if (mainGame[i][j] == 0) return;
                 j++;
@@ -2631,7 +2706,7 @@ public class MainActivity extends AppCompatActivity {
         gameEnd = true;
         setText();
         //set special value to set text appropriately for a draw
-        currentPlayer=3;
+        currentPlayer = 3;
     }
 
     //method to disable all boards
@@ -3252,7 +3327,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             if (currentPlayer == 1) stringBuilder.append("X: ");
-            else if (currentPlayer==2) stringBuilder.append("O: ");
+            else if (currentPlayer == 2) stringBuilder.append("O: ");
             else stringBuilder.append("No one ");
 
             stringBuilder.append("has won the game!");
@@ -3617,6 +3692,9 @@ public class MainActivity extends AppCompatActivity {
         currentPlayer = 1;
         currentGame = 0;
         gameEnd = false;
+
+        //reset text
+        winText.setText("WELCOME TO SUPER TIC TAC TOE!");
 
         // reset all highlighting
         resetAllButtons();

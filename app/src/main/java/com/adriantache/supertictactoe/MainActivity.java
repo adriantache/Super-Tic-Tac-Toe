@@ -1913,6 +1913,8 @@ public class MainActivity extends AppCompatActivity {
             disableGame1();
             checkMainGameWin();
         }
+        // if there is no win, check for a draw
+        drawCondition1();
     }
 
     public void checkGame2Win() {
@@ -1924,6 +1926,8 @@ public class MainActivity extends AppCompatActivity {
             disableGame2();
             checkMainGameWin();
         }
+        // if there is no win, check for a draw
+        drawCondition2();
     }
 
     public void checkGame3Win() {
@@ -1935,6 +1939,8 @@ public class MainActivity extends AppCompatActivity {
             disableGame3();
             checkMainGameWin();
         }
+        // if there is no win, check for a draw
+        drawCondition3();
     }
 
     public void checkGame4Win() {
@@ -1946,6 +1952,8 @@ public class MainActivity extends AppCompatActivity {
             disableGame4();
             checkMainGameWin();
         }
+        // if there is no win, check for a draw
+        drawCondition4();
     }
 
     public void checkGame5Win() {
@@ -1957,6 +1965,8 @@ public class MainActivity extends AppCompatActivity {
             disableGame5();
             checkMainGameWin();
         }
+        // if there is no win, check for a draw
+        drawCondition5();
     }
 
     public void checkGame6Win() {
@@ -1968,6 +1978,8 @@ public class MainActivity extends AppCompatActivity {
             disableGame6();
             checkMainGameWin();
         }
+        // if there is no win, check for a draw
+        drawCondition6();
     }
 
     public void checkGame7Win() {
@@ -1979,6 +1991,8 @@ public class MainActivity extends AppCompatActivity {
             disableGame7();
             checkMainGameWin();
         }
+        // if there is no win, check for a draw
+        drawCondition7();
     }
 
     public void checkGame8Win() {
@@ -1990,6 +2004,8 @@ public class MainActivity extends AppCompatActivity {
             disableGame8();
             checkMainGameWin();
         }
+        // if there is no win, check for a draw
+        drawCondition8();
     }
 
     public void checkGame9Win() {
@@ -2001,6 +2017,252 @@ public class MainActivity extends AppCompatActivity {
             disableGame9();
             checkMainGameWin();
         }
+        // if there is no win, check for a draw
+        drawCondition9();
+    }
+
+    //methods to check draw condition in each game
+    private void drawCondition1() {
+        // if the main Game has a score for this square, exit out
+        if (mainGame[1][1] != 0) return;
+
+        // if the current game has empty squares, exit out
+        int i = 0;
+        int j = 0;
+        while (i < 3) {
+            i++;
+            while (j < 3) {
+                j++;
+                if (game1[i][j] == 0) return;
+            }
+        }
+
+        //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
+        button11.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button12.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button13.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button21.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button22.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button23.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button31.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button32.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button33.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+    }
+
+    private void drawCondition2() {
+        // if the main Game has a score for this square, exit out
+        if (mainGame[1][2] != 0) return;
+
+        // if the current game has empty squares, exit out
+        int i = 0;
+        int j = 0;
+        while (i < 3) {
+            i++;
+            while (j < 3) {
+                j++;
+                if (game2[i][j] == 0) return;
+            }
+        }
+
+        //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
+        button14.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button15.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button16.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button24.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button25.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button26.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button34.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button35.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button36.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+    }
+
+    private void drawCondition3() {
+        // if the main Game has a score for this square, exit out
+        if (mainGame[1][3] != 0) return;
+
+        // if the current game has empty squares, exit out
+        int i = 0;
+        int j = 0;
+        while (i < 3) {
+            i++;
+            while (j < 3) {
+                j++;
+                if (game3[i][j] == 0) return;
+            }
+        }
+
+        //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
+        button17.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button18.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button19.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button27.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button28.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button29.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button37.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button38.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button39.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+    }
+
+    private void drawCondition4() {
+        // if the main Game has a score for this square, exit out
+        if (mainGame[2][1] != 0) return;
+
+        // if the current game has empty squares, exit out
+        int i = 0;
+        int j = 0;
+        while (i < 3) {
+            i++;
+            while (j < 3) {
+                j++;
+                if (game4[i][j] == 0) return;
+            }
+        }
+
+        //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
+        button41.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button42.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button43.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button51.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button52.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button53.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button61.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button62.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button63.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+    }
+
+    private void drawCondition5() {
+        // if the main Game has a score for this square, exit out
+        if (mainGame[2][2] != 0) return;
+
+        // if the current game has empty squares, exit out
+        int i = 0;
+        int j = 0;
+        while (i < 3) {
+            i++;
+            while (j < 3) {
+                j++;
+                if (game5[i][j] == 0) return;
+            }
+        }
+
+        //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
+        button44.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button45.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button46.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button54.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button55.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button56.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button64.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button65.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button66.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+    }
+
+    private void drawCondition6() {
+        // if the main Game has a score for this square, exit out
+        if (mainGame[2][3] != 0) return;
+
+        // if the current game has empty squares, exit out
+        int i = 0;
+        int j = 0;
+        while (i < 3) {
+            i++;
+            while (j < 3) {
+                j++;
+                if (game6[i][j] == 0) return;
+            }
+        }
+
+        //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
+        button47.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button48.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button49.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button57.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button58.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button59.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button67.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button68.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button69.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+    }
+
+    private void drawCondition7() {
+        // if the main Game has a score for this square, exit out
+        if (mainGame[3][1] != 0) return;
+
+        // if the current game has empty squares, exit out
+        int i = 0;
+        int j = 0;
+        while (i < 3) {
+            i++;
+            while (j < 3) {
+                j++;
+                if (game7[i][j] == 0) return;
+            }
+        }
+
+        //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
+        button71.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button72.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button73.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button81.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button82.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button83.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button91.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button92.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button93.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+    }
+
+    private void drawCondition8() {
+        // if the main Game has a score for this square, exit out
+        if (mainGame[3][2] != 0) return;
+
+        // if the current game has empty squares, exit out
+        int i = 0;
+        int j = 0;
+        while (i < 3) {
+            i++;
+            while (j < 3) {
+                j++;
+                if (game8[i][j] == 0) return;
+            }
+        }
+
+        //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
+        button74.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button75.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button76.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button84.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button85.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button86.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button94.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button95.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button96.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+    }
+
+    private void drawCondition9() {
+        // if the main Game has a score for this square, exit out
+        if (mainGame[3][3] != 0) return;
+
+        // if the current game has empty squares, exit out
+        int i = 0;
+        int j = 0;
+        while (i < 3) {
+            i++;
+            while (j < 3) {
+                j++;
+                if (game9[i][j] == 0) return;
+            }
+        }
+
+        //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
+        button77.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button78.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button79.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button87.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button88.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button89.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button97.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button98.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
+        button99.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
     }
 
     //method to test overall board win
@@ -2855,7 +3117,6 @@ public class MainActivity extends AppCompatActivity {
 
     // todo set winningText to display instructions/win
 
-    //todo plan for draw conditions
 
     //methods to set active game
     public void activeGame1() {

@@ -1,15 +1,18 @@
 package com.adriantache.supertictactoe;
 
 import android.graphics.LightingColorFilter;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
     //todo remove test tag and log entries
     private static final String TAG = "MainActivity";
+
     //declare all 81 button views
     Button button11;
     Button button12;
@@ -92,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
     Button button97;
     Button button98;
     Button button99;
+
+    //declare mute imageview
+    ImageView mute;
+
     //declare all matrix
     int[][] game1 = new int[4][4];
     int[][] game2 = new int[4][4];
@@ -107,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
     //declare variables
     int currentPlayer = 1;
     int currentGame = 0;
+    boolean musicStop = true;
+    MediaPlayer mediaPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,6 +206,64 @@ public class MainActivity extends AppCompatActivity {
         button98 = findViewById(R.id.button98);
         button99 = findViewById(R.id.button99);
 
+        //find mute ImageView
+        mute = findViewById(R.id.mute);
+
+        //start music
+        musicPlayer();
+    }
+
+    //this may not be necessary; stops music on destroy
+    @Override
+    public void onDestroy() {
+        mediaPlayer.stop();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+
+        super.onDestroy();
+    }
+
+    //stop music on screen off
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+            musicStop = false;
+
+            //change ImageView icon to allow restarting music
+            mute.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_play));
+        }
+    }
+
+    //method to start music player
+    public void musicPlayer() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.nihilore_bush_week);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
+    }
+
+    //method to mute/restart music
+    public void musicToggle(View view) {
+        if (musicStop && mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+            musicStop = false;
+            //change ImageView icon
+            mute.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_play));
+        } else {
+            mediaPlayer = MediaPlayer.create(this, R.raw.nihilore_bush_week);
+            mediaPlayer.setLooping(true);
+            mediaPlayer.start();
+            musicStop = true;
+            mute.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_lock_silent_mode));
+        }
     }
 
     //all 81 methods for the individual buttons
@@ -2179,6 +2247,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //method to disable all boards
     private void disableAllBoards() {
         disableGame1();
         disableGame2();
@@ -2656,7 +2725,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void disableGame9() {
         //disable all buttons on this board
         button77.setEnabled(false);
@@ -2715,9 +2783,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //todo highlight won boards with "fancy" highlighting rather than line highlighting
-
-    // todo set @param winningText 
+    // todo set winningText to display instructions/win
 
     //methods to set active game
     public void activeGame1() {

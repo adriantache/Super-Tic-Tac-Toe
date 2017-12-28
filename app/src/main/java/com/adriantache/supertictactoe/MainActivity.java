@@ -2043,12 +2043,12 @@ public class MainActivity extends AppCompatActivity {
         // if the current game has empty squares, exit out
         int i = 0;
         int j = 0;
-        while (i < 3) {
-            i++;
-            while (j < 3) {
-                j++;
+        while (i < 4) {
+            while (j < 4) {
                 if (game1[i][j] == 0) return;
+                j++;
             }
+            i++;
         }
 
         //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
@@ -2070,12 +2070,12 @@ public class MainActivity extends AppCompatActivity {
         // if the current game has empty squares, exit out
         int i = 0;
         int j = 0;
-        while (i < 3) {
-            i++;
-            while (j < 3) {
-                j++;
+        while (i < 4) {
+            while (j < 4) {
                 if (game2[i][j] == 0) return;
+                j++;
             }
+            i++;
         }
 
         //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
@@ -2097,12 +2097,12 @@ public class MainActivity extends AppCompatActivity {
         // if the current game has empty squares, exit out
         int i = 0;
         int j = 0;
-        while (i < 3) {
-            i++;
-            while (j < 3) {
-                j++;
+        while (i < 4) {
+            while (j < 4) {
                 if (game3[i][j] == 0) return;
+                j++;
             }
+            i++;
         }
 
         //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
@@ -2124,12 +2124,12 @@ public class MainActivity extends AppCompatActivity {
         // if the current game has empty squares, exit out
         int i = 0;
         int j = 0;
-        while (i < 3) {
-            i++;
-            while (j < 3) {
-                j++;
+        while (i < 4) {
+            while (j < 4) {
                 if (game4[i][j] == 0) return;
+                j++;
             }
+            i++;
         }
 
         //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
@@ -2151,12 +2151,12 @@ public class MainActivity extends AppCompatActivity {
         // if the current game has empty squares, exit out
         int i = 0;
         int j = 0;
-        while (i < 3) {
-            i++;
-            while (j < 3) {
-                j++;
+        while (i < 4) {
+            while (j < 4) {
                 if (game5[i][j] == 0) return;
+                j++;
             }
+            i++;
         }
 
         //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
@@ -2178,12 +2178,12 @@ public class MainActivity extends AppCompatActivity {
         // if the current game has empty squares, exit out
         int i = 0;
         int j = 0;
-        while (i < 3) {
-            i++;
-            while (j < 3) {
-                j++;
+        while (i < 4) {
+            while (j < 4) {
                 if (game6[i][j] == 0) return;
+                j++;
             }
+            i++;
         }
 
         //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
@@ -2205,12 +2205,12 @@ public class MainActivity extends AppCompatActivity {
         // if the current game has empty squares, exit out
         int i = 0;
         int j = 0;
-        while (i < 3) {
-            i++;
-            while (j < 3) {
-                j++;
+        while (i < 4) {
+            while (j < 4) {
                 if (game7[i][j] == 0) return;
+                j++;
             }
+            i++;
         }
 
         //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
@@ -2232,12 +2232,12 @@ public class MainActivity extends AppCompatActivity {
         // if the current game has empty squares, exit out
         int i = 0;
         int j = 0;
-        while (i < 3) {
-            i++;
-            while (j < 3) {
-                j++;
+        while (i < 4) {
+            while (j < 4) {
                 if (game8[i][j] == 0) return;
+                j++;
             }
+            i++;
         }
 
         //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
@@ -2259,12 +2259,12 @@ public class MainActivity extends AppCompatActivity {
         // if the current game has empty squares, exit out
         int i = 0;
         int j = 0;
-        while (i < 3) {
-            i++;
-            while (j < 3) {
-                j++;
+        while (i < 4) {
+            while (j < 4) {
                 if (game9[i][j] == 0) return;
+                j++;
             }
+            i++;
         }
 
         //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
@@ -2533,16 +2533,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        //todo decide if we want to keep this
         //exit out if main game is not complete
         int i = 0;
         int j = 0;
-        while (i < 3) {
-            i++;
-            while (j < 3) {
-                j++;
+        while (i < 4) {
+            while (j < 4) {
                 if (mainGame[i][j] == 0) return;
+                j++;
             }
+            i++;
         }
 
         //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly

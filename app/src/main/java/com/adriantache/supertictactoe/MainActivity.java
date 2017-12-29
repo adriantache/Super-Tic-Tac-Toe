@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -216,16 +217,19 @@ public class MainActivity extends AppCompatActivity {
 
         //start music
         musicPlayer();
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     //this may be unnecessary; stops music on destroy
     @Override
     public void onDestroy() {
-        mediaPlayer.stop();
-        if (mediaPlayer != null) {
+        if(mediaPlayer!=null) {
+            if(mediaPlayer.isPlaying())
+                mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
-            mediaPlayer = null;
+            mediaPlayer=null;
         }
 
         super.onDestroy();
@@ -236,12 +240,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        if (mediaPlayer != null) {
-            mediaPlayer.stop();
+        if(mediaPlayer!=null) {
+            if(mediaPlayer.isPlaying())
+                mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
-            mediaPlayer = null;
-            musicStop = false;
+            mediaPlayer=null;
 
             //change ImageView icon to allow restarting music
             mute.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_play));
@@ -257,11 +261,14 @@ public class MainActivity extends AppCompatActivity {
 
     //method to mute/restart music
     public void musicToggle(View view) {
-        if (musicStop && mediaPlayer != null) {
-            mediaPlayer.stop();
-            mediaPlayer.reset();
-            mediaPlayer.release();
-            mediaPlayer = null;
+        if (musicStop) {
+            if(mediaPlayer!=null) {
+                if(mediaPlayer.isPlaying())
+                    mediaPlayer.stop();
+                mediaPlayer.reset();
+                mediaPlayer.release();
+                mediaPlayer=null;
+            }
             musicStop = false;
             //change ImageView icon
             mute.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_play));
@@ -1903,6 +1910,223 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //methods to set active game
+    public void activeGame1() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[1][1] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click using a color filter
+            button11.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button12.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button13.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button21.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button22.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button23.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button31.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button32.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button33.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+
+        //set text to indicate acceptable move space
+        setText();
+    }
+
+    public void activeGame2() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[1][2] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button14.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button15.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button16.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button24.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button25.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button26.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button34.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button35.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button36.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+
+        //set text to indicate acceptable move space
+        setText();
+    }
+
+    public void activeGame3() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[1][3] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button17.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button18.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button19.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button27.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button28.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button29.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button37.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button38.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button39.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+
+        //set text to indicate acceptable move space
+        setText();
+    }
+
+    public void activeGame4() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[2][1] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button41.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button42.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button43.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button51.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button52.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button53.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button61.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button62.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button63.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+
+        //set text to indicate acceptable move space
+        setText();
+    }
+
+    public void activeGame5() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[2][2] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button44.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button45.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button46.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button54.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button55.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button56.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button64.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button65.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button66.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+
+        //set text to indicate acceptable move space
+        setText();
+    }
+
+    public void activeGame6() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[2][3] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button47.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button48.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button49.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button57.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button58.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button59.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button67.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button68.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button69.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+
+        //set text to indicate acceptable move space
+        setText();
+    }
+
+    public void activeGame7() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[3][1] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button71.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button72.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button73.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button81.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button82.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button83.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button91.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button92.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button93.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+
+        //set text to indicate acceptable move space
+        setText();
+    }
+
+    public void activeGame8() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[3][2] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button74.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button75.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button76.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button84.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button85.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button86.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button94.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button95.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button96.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+
+        //set text to indicate acceptable move space
+        setText();
+    }
+
+    public void activeGame9() {
+        //reset highlighting for all boards not won
+        resetHighlighting();
+
+        //test for already won board and allow movement outside current board
+        if (mainGame[3][3] != 0) {
+            currentGame = 0;
+        } else {
+            //highlight buttons you can click
+            button77.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button78.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button79.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button87.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button88.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button89.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button97.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button98.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button99.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+        }
+
+        //set text to indicate acceptable move space
+        setText();
+    }
+
     //my own method to determine equality between multiple values because java, taking into account game values used
     private boolean allEqual(int a, int b, int c) {
         //return false if cells are empty
@@ -3355,223 +3579,6 @@ public class MainActivity extends AppCompatActivity {
         winText.setText(stringBuilder.toString());
     }
 
-    //methods to set active game
-    public void activeGame1() {
-        //reset highlighting for all boards not won
-        resetHighlighting();
-
-        //test for already won board and allow movement outside current board
-        if (mainGame[1][1] != 0) {
-            currentGame = 0;
-        } else {
-            //highlight buttons you can click using a color filter
-            button11.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button12.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button13.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button21.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button22.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button23.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button31.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button32.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button33.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-
-        //set text to indicate acceptable move space
-        setText();
-    }
-
-    public void activeGame2() {
-        //reset highlighting for all boards not won
-        resetHighlighting();
-
-        //test for already won board and allow movement outside current board
-        if (mainGame[1][2] != 0) {
-            currentGame = 0;
-        } else {
-            //highlight buttons you can click
-            button14.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button15.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button16.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button24.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button25.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button26.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button34.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button35.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button36.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-
-        //set text to indicate acceptable move space
-        setText();
-    }
-
-    public void activeGame3() {
-        //reset highlighting for all boards not won
-        resetHighlighting();
-
-        //test for already won board and allow movement outside current board
-        if (mainGame[1][3] != 0) {
-            currentGame = 0;
-        } else {
-            //highlight buttons you can click
-            button17.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button18.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button19.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button27.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button28.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button29.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button37.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button38.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button39.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-
-        //set text to indicate acceptable move space
-        setText();
-    }
-
-    public void activeGame4() {
-        //reset highlighting for all boards not won
-        resetHighlighting();
-
-        //test for already won board and allow movement outside current board
-        if (mainGame[2][1] != 0) {
-            currentGame = 0;
-        } else {
-            //highlight buttons you can click
-            button41.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button42.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button43.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button51.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button52.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button53.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button61.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button62.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button63.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-
-        //set text to indicate acceptable move space
-        setText();
-    }
-
-    public void activeGame5() {
-        //reset highlighting for all boards not won
-        resetHighlighting();
-
-        //test for already won board and allow movement outside current board
-        if (mainGame[2][2] != 0) {
-            currentGame = 0;
-        } else {
-            //highlight buttons you can click
-            button44.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button45.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button46.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button54.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button55.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button56.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button64.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button65.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button66.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-
-        //set text to indicate acceptable move space
-        setText();
-    }
-
-    public void activeGame6() {
-        //reset highlighting for all boards not won
-        resetHighlighting();
-
-        //test for already won board and allow movement outside current board
-        if (mainGame[2][3] != 0) {
-            currentGame = 0;
-        } else {
-            //highlight buttons you can click
-            button47.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button48.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button49.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button57.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button58.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button59.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button67.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button68.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button69.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-
-        //set text to indicate acceptable move space
-        setText();
-    }
-
-    public void activeGame7() {
-        //reset highlighting for all boards not won
-        resetHighlighting();
-
-        //test for already won board and allow movement outside current board
-        if (mainGame[3][1] != 0) {
-            currentGame = 0;
-        } else {
-            //highlight buttons you can click
-            button71.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button72.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button73.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button81.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button82.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button83.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button91.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button92.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button93.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-
-        //set text to indicate acceptable move space
-        setText();
-    }
-
-    public void activeGame8() {
-        //reset highlighting for all boards not won
-        resetHighlighting();
-
-        //test for already won board and allow movement outside current board
-        if (mainGame[3][2] != 0) {
-            currentGame = 0;
-        } else {
-            //highlight buttons you can click
-            button74.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button75.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button76.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button84.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button85.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button86.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button94.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button95.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button96.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-
-        //set text to indicate acceptable move space
-        setText();
-    }
-
-    public void activeGame9() {
-        //reset highlighting for all boards not won
-        resetHighlighting();
-
-        //test for already won board and allow movement outside current board
-        if (mainGame[3][3] != 0) {
-            currentGame = 0;
-        } else {
-            //highlight buttons you can click
-            button77.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button78.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button79.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button87.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button88.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button89.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button97.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button98.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button99.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-        }
-
-        //set text to indicate acceptable move space
-        setText();
-    }
-
     //logic to determine which boards get reset (i.e. all that do not have final scores)
     public void resetHighlighting() {
         if (mainGame[1][1] == 0) resetGame1();
@@ -3694,8 +3701,8 @@ public class MainActivity extends AppCompatActivity {
         button99.getBackground().setColorFilter(null);
     }
 
+    //method to reset the game
     public void reset(View view) {
-        //todo check reset functionality
 
         //reset variables
         game1 = new int[4][4];

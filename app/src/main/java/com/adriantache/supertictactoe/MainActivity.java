@@ -1,8 +1,10 @@
 package com.adriantache.supertictactoe;
 
+import android.content.DialogInterface;
 import android.graphics.LightingColorFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
@@ -119,7 +121,9 @@ public class MainActivity extends AppCompatActivity {
     boolean musicStop = true;
     MediaPlayer mediaPlayer;
     TextView winText;
+    TextView instructionsText;
     boolean gameEnd = false;
+    boolean showInstructions = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -212,8 +216,9 @@ public class MainActivity extends AppCompatActivity {
         //find mute ImageView
         mute = findViewById(R.id.mute);
 
-        //find winning textView
+        //find winning and instructions textView
         winText = findViewById(R.id.winText);
+        instructionsText = findViewById(R.id.instructionsText);
 
         //start music
         musicPlayer();
@@ -3891,6 +3896,9 @@ public class MainActivity extends AppCompatActivity {
         button98.setText("");
         button99.setText("");
 
+        //hide instructions if they are on screen
+        showInstructions=true;
+        instructions(instructionsText);
     }
 
     //method to remove highlighting on all buttons by setting a null color filters
@@ -3976,6 +3984,18 @@ public class MainActivity extends AppCompatActivity {
         button97.getBackground().setColorFilter(null);
         button98.getBackground().setColorFilter(null);
         button99.getBackground().setColorFilter(null);
+    }
+
+    //method to display/hide instructions
+    public void instructions(View view){
+        if (!showInstructions) {
+            instructionsText.setVisibility(View.VISIBLE);
+            showInstructions=true;
+        }
+        else {
+            instructionsText.setVisibility(View.INVISIBLE);
+            showInstructions=false;
+        }
     }
 
 }

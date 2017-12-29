@@ -1270,4 +1270,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- instructions button -->
+    <ImageView
+        android:id="@+id/instructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:onClick="instructions"
+        android:src="@android:drawable/ic_menu_help"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- instructions textbox -->
+    <TextView
+        android:id="@+id/instructionsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/layout_bg"
+        android:elevation="8dp"
+        android:padding="8dp"
+        android:text="The point of the game is to win a Super Tic Tac Toe by making a row, column or diagonal match from the games you have won, while preventing the opponent to do the same.\n\nThe first move can be anywhere. Any move after that is restricted to the board corresponding to the square the last player moved in. If the move is restricted to an unplayable board, you can move anywhere. The game highlights the restricted space to play in with a light green colour."
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/instructions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

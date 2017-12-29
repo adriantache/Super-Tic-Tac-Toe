@@ -1,11 +1,10 @@
 package com.adriantache.supertictactoe;
 
-import android.content.DialogInterface;
 import android.graphics.LightingColorFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -129,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //keep screen on and fullscreen
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         //find all 81 button views
         button11 = findViewById(R.id.button11);
@@ -223,18 +224,17 @@ public class MainActivity extends AppCompatActivity {
         //start music
         musicPlayer();
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     //this may be unnecessary; stops music on destroy
     @Override
     public void onDestroy() {
-        if(mediaPlayer!=null) {
-            if(mediaPlayer.isPlaying())
+        if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying())
                 mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
-            mediaPlayer=null;
+            mediaPlayer = null;
         }
 
         super.onDestroy();
@@ -245,12 +245,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        if(mediaPlayer!=null) {
-            if(mediaPlayer.isPlaying())
+        if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying())
                 mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
-            mediaPlayer=null;
+            mediaPlayer = null;
 
             //change ImageView icon to allow restarting music
             mute.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_play));
@@ -267,12 +267,12 @@ public class MainActivity extends AppCompatActivity {
     //method to mute/restart music
     public void musicToggle(View view) {
         if (musicStop) {
-            if(mediaPlayer!=null) {
-                if(mediaPlayer.isPlaying())
+            if (mediaPlayer != null) {
+                if (mediaPlayer.isPlaying())
                     mediaPlayer.stop();
                 mediaPlayer.reset();
                 mediaPlayer.release();
-                mediaPlayer=null;
+                mediaPlayer = null;
             }
             musicStop = false;
             //change ImageView icon
@@ -2587,7 +2587,32 @@ public class MainActivity extends AppCompatActivity {
 
     //method to test overall board win
     public void checkMainGameWin() {
-        //first check if game is actually won (forgot to do that first time I wrote this ^^)
+        //first check if the game can be won by either player, best case scenario
+        //only testing this for main match, since smaller unwinnable boards can be used for tactics
+        //copy the current state of the main game into two identical matrices
+        int[][] gameWinX = new int[4][4];
+        int[][] gameWinO = new int[4][4];
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                gameWinX[i][j] = mainGame[i][j];
+                gameWinO[i][j] = mainGame[i][j];
+            }
+        }
+        //then fill any empty (!1, !2, !4) spaces with either symbol
+        for (int i = 1; i < 4; i++) {
+            for (int j = 1; j < 4; j++) {
+                if (gameWinO[i][j] == 0) gameWinO[i][j] = 2;
+                if (gameWinX[i][j] == 0) gameWinX[i][j] = 1;
+            }
+        }
+        //if no win is possible for X or O, trigger an early game end
+        if (allEqual(gameWinX[1][1], gameWinX[1][2], gameWinX[1][3]) || allEqual(gameWinX[2][1], gameWinX[2][2], gameWinX[2][3]) || allEqual(gameWinX[3][1], gameWinX[3][2], gameWinX[3][3]) || allEqual(gameWinX[1][1], gameWinX[2][2], gameWinX[3][3]) || allEqual(gameWinX[1][3], gameWinX[2][2], gameWinX[3][1]) || allEqual(gameWinX[1][1], gameWinX[2][1], gameWinX[3][1]) || allEqual(gameWinX[1][2], gameWinX[2][2], gameWinX[3][2]) || allEqual(gameWinX[1][3], gameWinX[2][3], gameWinX[3][3]) || allEqual(gameWinO[1][1], gameWinO[1][2], gameWinO[1][3]) || allEqual(gameWinO[2][1], gameWinO[2][2], gameWinO[2][3]) || allEqual(gameWinO[3][1], gameWinO[3][2], gameWinO[3][3]) || allEqual(gameWinO[1][1], gameWinO[2][2], gameWinO[3][3]) || allEqual(gameWinO[1][3], gameWinO[2][2], gameWinO[3][1]) || allEqual(gameWinO[1][1], gameWinO[2][1], gameWinO[3][1]) || allEqual(gameWinO[1][2], gameWinO[2][2], gameWinO[3][2]) || allEqual(gameWinO[1][3], gameWinO[2][3], gameWinO[3][3])) {
+        } else {
+            mainGameDraw();
+            return;
+        }
+
+        //then check if game is actually won (forgot to do that first time I wrote this ^^)
         if (allEqual(mainGame[1][1], mainGame[1][2], mainGame[1][3]) || allEqual(mainGame[2][1], mainGame[2][2], mainGame[2][3]) || allEqual(mainGame[3][1], mainGame[3][2], mainGame[3][3]) || allEqual(mainGame[1][1], mainGame[2][2], mainGame[3][3]) || allEqual(mainGame[1][3], mainGame[2][2], mainGame[3][1]) || allEqual(mainGame[1][1], mainGame[2][1], mainGame[3][1]) || allEqual(mainGame[1][2], mainGame[2][2], mainGame[3][2]) || allEqual(mainGame[1][3], mainGame[2][3], mainGame[3][3])) {
             // disable all boards
             disableAllBoards();
@@ -2844,9 +2869,9 @@ public class MainActivity extends AppCompatActivity {
 
         //exit out if main game is not complete
         int i = 1;
-        int j ;
+        int j;
         while (i < 4) {
-            j=1;
+            j = 1;
             while (j < 4) {
                 if (mainGame[i][j] == 0) return;
                 j++;
@@ -2854,7 +2879,16 @@ public class MainActivity extends AppCompatActivity {
             i++;
         }
 
-        //otherwise, the game must be full but no score means there is a draw, so colour buttons accordingly
+        //otherwise, the game must be full but no score means there is a draw, so trigger that method
+        mainGameDraw();
+    }
+
+    //method to end game in case of draw or anticipated draw
+    public void mainGameDraw() {
+        //disable all buttons
+        disableAllBoards();
+
+        //recolor all boards for a draw
         button11.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button12.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
         button13.getBackground().setColorFilter(new LightingColorFilter(0xff00BCD4, 0x000000));
@@ -2945,7 +2979,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //method to recolour all draw conditions on game win
-    private void allDrawConditions(){
+    private void allDrawConditions() {
         drawCondition1();
         drawCondition2();
         drawCondition3();
@@ -2988,51 +3022,51 @@ public class MainActivity extends AppCompatActivity {
 
         //set highlighting to winning line
         if (allEqual(game1[1][1], game1[1][2], game1[1][3])) {
-            button11.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button12.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button13.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button11.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button12.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button13.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game1[2][1], game1[2][2], game1[2][3])) {
-            button21.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button22.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button23.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button21.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button22.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button23.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game1[3][1], game1[3][2], game1[3][3])) {
-            button31.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button32.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button33.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button31.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button32.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button33.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game1[1][1], game1[2][2], game1[3][3])) {
-            button11.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button22.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button33.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button11.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button22.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button33.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game1[1][3], game1[2][2], game1[3][1])) {
-            button13.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button22.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button31.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button13.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button22.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button31.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game1[1][1], game1[2][1], game1[3][1])) {
-            button11.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button21.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button31.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button11.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button21.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button31.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game1[1][2], game1[2][2], game1[3][2])) {
-            button12.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button22.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button32.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button12.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button22.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button32.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game1[1][3], game1[2][3], game1[3][3])) {
-            button13.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button23.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button33.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button13.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button23.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button33.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
         }
     }
 
@@ -3053,51 +3087,51 @@ public class MainActivity extends AppCompatActivity {
 
         //set highlighting to winning line
         if (allEqual(game2[1][1], game2[1][2], game2[1][3])) {
-            button14.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button15.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button16.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button14.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button15.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button16.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game2[2][1], game2[2][2], game2[2][3])) {
-            button24.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button25.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button26.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button24.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button25.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button26.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game2[3][1], game2[3][2], game2[3][3])) {
-            button34.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button35.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button36.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button34.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button35.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button36.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game2[1][1], game2[2][2], game2[3][3])) {
-            button14.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button25.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button36.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button14.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button25.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button36.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game2[1][3], game2[2][2], game2[3][1])) {
-            button16.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button25.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button34.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button16.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button25.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button34.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game2[1][1], game2[2][1], game2[3][1])) {
-            button14.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button24.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button34.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button14.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button24.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button34.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game2[1][2], game2[2][2], game2[3][2])) {
-            button15.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button25.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button35.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button15.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button25.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button35.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game2[1][3], game2[2][3], game2[3][3])) {
-            button16.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button26.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button36.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button16.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button26.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button36.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
         }
     }
 
@@ -3118,51 +3152,51 @@ public class MainActivity extends AppCompatActivity {
 
         //set highlighting to winning line
         if (allEqual(game3[1][1], game3[1][2], game3[1][3])) {
-            button17.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button18.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button19.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button17.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button18.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button19.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game3[2][1], game3[2][2], game3[2][3])) {
-            button27.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button28.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button29.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button27.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button28.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button29.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game3[3][1], game3[3][2], game3[3][3])) {
-            button37.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button38.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button39.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button37.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button38.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button39.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game3[1][1], game3[2][2], game3[3][3])) {
-            button17.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button28.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button39.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button17.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button28.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button39.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game3[1][3], game3[2][2], game3[3][1])) {
-            button28.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button19.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button37.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button28.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button19.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button37.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game3[1][1], game3[2][1], game3[3][1])) {
-            button17.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button27.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button37.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button17.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button27.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button37.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game3[1][2], game3[2][2], game3[3][2])) {
-            button18.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button28.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button38.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button18.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button28.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button38.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game3[1][3], game3[2][3], game3[3][3])) {
-            button19.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button29.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button39.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button19.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button29.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button39.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
         }
     }
 
@@ -3183,51 +3217,51 @@ public class MainActivity extends AppCompatActivity {
 
         //set highlighting to winning line
         if (allEqual(game4[1][1], game4[1][2], game4[1][3])) {
-            button41.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button42.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button43.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button41.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button42.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button43.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game4[2][1], game4[2][2], game4[2][3])) {
-            button51.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button52.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button53.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button51.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button52.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button53.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game4[3][1], game4[3][2], game4[3][3])) {
-            button61.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button62.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button63.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button61.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button62.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button63.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game4[1][1], game4[2][2], game4[3][3])) {
-            button41.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button52.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button63.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button41.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button52.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button63.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game4[1][3], game4[2][2], game4[3][1])) {
-            button52.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button43.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button61.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button52.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button43.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button61.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game4[1][1], game4[2][1], game4[3][1])) {
-            button41.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button51.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button61.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button41.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button51.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button61.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game4[1][2], game4[2][2], game4[3][2])) {
-            button42.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button52.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button62.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button42.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button52.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button62.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game4[1][3], game4[2][3], game4[3][3])) {
-            button43.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button53.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button63.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button43.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button53.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button63.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
         }
     }
 
@@ -3248,51 +3282,51 @@ public class MainActivity extends AppCompatActivity {
 
         //set highlighting to winning line
         if (allEqual(game5[1][1], game5[1][2], game5[1][3])) {
-            button44.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button45.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button46.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button44.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button45.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button46.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game5[2][1], game5[2][2], game5[2][3])) {
-            button54.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button55.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button56.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button54.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button55.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button56.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game5[3][1], game5[3][2], game5[3][3])) {
-            button64.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button65.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button66.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button64.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button65.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button66.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game5[1][1], game5[2][2], game5[3][3])) {
-            button44.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button55.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button66.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button44.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button55.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button66.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game5[1][3], game5[2][2], game5[3][1])) {
-            button55.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button46.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button64.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button55.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button46.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button64.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game5[1][1], game5[2][1], game5[3][1])) {
-            button44.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button54.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button64.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button44.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button54.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button64.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game5[1][2], game5[2][2], game5[3][2])) {
-            button45.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button55.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button65.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button45.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button55.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button65.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game5[1][3], game5[2][3], game5[3][3])) {
-            button46.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button56.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button66.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button46.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button56.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button66.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
         }
     }
 
@@ -3313,51 +3347,51 @@ public class MainActivity extends AppCompatActivity {
 
         //set highlighting to winning line
         if (allEqual(game6[1][1], game6[1][2], game6[1][3])) {
-            button47.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button48.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button49.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button47.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button48.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button49.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game6[2][1], game6[2][2], game6[2][3])) {
-            button57.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button58.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button59.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button57.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button58.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button59.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game6[3][1], game6[3][2], game6[3][3])) {
-            button67.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button68.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button69.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button67.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button68.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button69.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game6[1][1], game6[2][2], game6[3][3])) {
-            button47.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button58.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button69.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button47.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button58.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button69.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game6[1][3], game6[2][2], game6[3][1])) {
-            button58.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button49.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button67.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button58.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button49.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button67.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game6[1][1], game6[2][1], game6[3][1])) {
-            button47.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button57.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button67.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button47.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button57.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button67.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game6[1][2], game6[2][2], game6[3][2])) {
-            button48.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button58.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button68.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button48.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button58.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button68.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game6[1][3], game6[2][3], game6[3][3])) {
-            button49.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button59.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button69.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button49.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button59.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button69.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
         }
     }
 
@@ -3378,51 +3412,51 @@ public class MainActivity extends AppCompatActivity {
 
         //set highlighting to winning line
         if (allEqual(game7[1][1], game7[1][2], game7[1][3])) {
-            button71.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button72.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button73.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button71.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button72.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button73.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game7[2][1], game7[2][2], game7[2][3])) {
-            button81.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button82.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button83.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button81.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button82.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button83.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game7[3][1], game7[3][2], game7[3][3])) {
-            button91.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button92.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button93.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button91.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button92.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button93.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game7[1][1], game7[2][2], game7[3][3])) {
-            button71.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button82.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button93.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button71.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button82.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button93.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game7[1][3], game7[2][2], game7[3][1])) {
-            button82.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button73.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button91.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button82.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button73.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button91.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game7[1][1], game7[2][1], game7[3][1])) {
-            button71.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button81.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button91.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button71.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button81.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button91.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game7[1][2], game7[2][2], game7[3][2])) {
-            button72.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button82.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button92.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button72.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button82.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button92.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game7[1][3], game7[2][3], game7[3][3])) {
-            button73.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button83.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button93.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button73.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button83.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button93.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
         }
     }
 
@@ -3443,51 +3477,51 @@ public class MainActivity extends AppCompatActivity {
 
         //set highlighting to winning line
         if (allEqual(game8[1][1], game8[1][2], game8[1][3])) {
-            button74.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button75.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button76.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button74.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button75.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button76.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game8[2][1], game8[2][2], game8[2][3])) {
-            button84.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button85.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button86.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button84.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button85.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button86.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game8[3][1], game8[3][2], game8[3][3])) {
-            button94.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button95.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button96.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button94.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button95.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button96.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game8[1][1], game8[2][2], game8[3][3])) {
-            button74.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button85.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button96.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button74.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button85.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button96.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game8[1][3], game8[2][2], game8[3][1])) {
-            button85.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button76.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button94.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button85.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button76.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button94.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game8[1][1], game8[2][1], game8[3][1])) {
-            button74.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button84.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button94.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button74.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button84.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button94.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game8[1][2], game8[2][2], game8[3][2])) {
-            button75.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button85.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button95.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button75.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button85.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button95.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game8[1][3], game8[2][3], game8[3][3])) {
-            button76.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button86.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button96.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button76.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button86.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button96.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
         }
     }
 
@@ -3508,51 +3542,51 @@ public class MainActivity extends AppCompatActivity {
 
         //set highlighting to winning line
         if (allEqual(game9[1][1], game9[1][2], game9[1][3])) {
-            button77.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button78.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button79.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button77.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button78.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button79.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game9[2][1], game9[2][2], game9[2][3])) {
-            button87.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button88.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button89.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button87.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button88.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button89.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game9[3][1], game9[3][2], game9[3][3])) {
-            button97.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button98.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button99.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button97.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button98.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button99.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game9[1][1], game9[2][2], game9[3][3])) {
-            button77.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button88.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button99.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button77.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button88.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button99.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game9[1][3], game9[2][2], game9[3][1])) {
-            button88.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button79.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button97.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button88.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button79.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button97.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game9[1][1], game9[2][1], game9[3][1])) {
-            button77.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button87.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button97.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button77.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button87.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button97.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game9[1][2], game9[2][2], game9[3][2])) {
-            button78.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button88.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button98.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button78.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button88.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button98.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
             return;
         }
         if (allEqual(game9[1][3], game9[2][3], game9[3][3])) {
-            button79.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button89.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
-            button99.getBackground().setColorFilter(new LightingColorFilter(0xffC5E1A5, 0x000000));
+            button79.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button89.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
+            button99.getBackground().setColorFilter(new LightingColorFilter(0xffFF9800, 0x000000));
         }
     }
 
@@ -3897,7 +3931,7 @@ public class MainActivity extends AppCompatActivity {
         button99.setText("");
 
         //hide instructions if they are on screen
-        showInstructions=true;
+        showInstructions = true;
         instructions(instructionsText);
     }
 
@@ -3987,14 +4021,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //method to display/hide instructions
-    public void instructions(View view){
+    public void instructions(View view) {
         if (!showInstructions) {
             instructionsText.setVisibility(View.VISIBLE);
-            showInstructions=true;
-        }
-        else {
+            showInstructions = true;
+        } else {
             instructionsText.setVisibility(View.INVISIBLE);
-            showInstructions=false;
+            showInstructions = false;
         }
     }
 

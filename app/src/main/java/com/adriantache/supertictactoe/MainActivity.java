@@ -223,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         mediaPlayer.stop();
         if (mediaPlayer != null) {
+            mediaPlayer.reset();
             mediaPlayer.release();
             mediaPlayer = null;
         }
@@ -237,6 +238,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (mediaPlayer != null) {
             mediaPlayer.stop();
+            mediaPlayer.reset();
             mediaPlayer.release();
             mediaPlayer = null;
             musicStop = false;
@@ -257,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
     public void musicToggle(View view) {
         if (musicStop && mediaPlayer != null) {
             mediaPlayer.stop();
+            mediaPlayer.reset();
             mediaPlayer.release();
             mediaPlayer = null;
             musicStop = false;

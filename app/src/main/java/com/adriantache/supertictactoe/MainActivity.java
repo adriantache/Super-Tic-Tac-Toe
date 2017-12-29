@@ -2043,7 +2043,7 @@ public class MainActivity extends AppCompatActivity {
     //methods to check draw condition in each game
     private void drawCondition1() {
         // if the main Game has a score for this square, exit out
-        if (mainGame[1][1] != 0) return;
+        if (mainGame[1][1] != 0 && !gameEnd) return;
 
         // if the current game has empty squares, exit out
         int i = 1;
@@ -2078,7 +2078,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void drawCondition2() {
         // if the main Game has a score for this square, exit out
-        if (mainGame[1][2] != 0) return;
+        if (mainGame[1][2] != 0 && !gameEnd) return;
 
         // if the current game has empty squares, exit out
         int i = 1;
@@ -2113,7 +2113,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void drawCondition3() {
         // if the main Game has a score for this square, exit out
-        if (mainGame[1][3] != 0) return;
+        if (mainGame[1][3] != 0 && !gameEnd) return;
 
         // if the current game has empty squares, exit out
         int i = 1;
@@ -2148,7 +2148,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void drawCondition4() {
         // if the main Game has a score for this square, exit out
-        if (mainGame[2][1] != 0) return;
+        if (mainGame[2][1] != 0 && !gameEnd) return;
 
         // if the current game has empty squares, exit out
         int i = 1;
@@ -2183,7 +2183,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void drawCondition5() {
         // if the main Game has a score for this square, exit out
-        if (mainGame[2][2] != 0) return;
+        if (mainGame[2][2] != 0 && !gameEnd) return;
 
         // if the current game has empty squares, exit out
         int i = 1;
@@ -2218,7 +2218,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void drawCondition6() {
         // if the main Game has a score for this square, exit out
-        if (mainGame[2][3] != 0) return;
+        if (mainGame[2][3] != 0 && !gameEnd) return;
 
         // if the current game has empty squares, exit out
         int i = 1;
@@ -2253,7 +2253,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void drawCondition7() {
         // if the main Game has a score for this square, exit out
-        if (mainGame[3][1] != 0) return;
+        if (mainGame[3][1] != 0 && !gameEnd) return;
 
         // if the current game has empty squares, exit out
         int i = 1;
@@ -2288,7 +2288,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void drawCondition8() {
         // if the main Game has a score for this square, exit out
-        if (mainGame[3][2] != 0) return;
+        if (mainGame[3][2] != 0 && !gameEnd) return;
 
         // if the current game has empty squares, exit out
         int i = 1;
@@ -2323,7 +2323,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void drawCondition9() {
         // if the main Game has a score for this square, exit out
-        if (mainGame[3][3] != 0) return;
+        if (mainGame[3][3] != 0 && !gameEnd) return;
 
         // if the current game has empty squares, exit out
         int i = 1;
@@ -2366,6 +2366,9 @@ public class MainActivity extends AppCompatActivity {
             //generate winning text
             gameEnd = true;
             setText();
+
+            //recolour all draw boards
+            allDrawConditions();
 
             // highlight winning board
             if (allEqual(mainGame[1][1], mainGame[1][2], mainGame[1][3])) {
@@ -2710,6 +2713,19 @@ public class MainActivity extends AppCompatActivity {
         setText();
         //set special value to set text appropriately for a draw
         currentPlayer = 3;
+    }
+
+    //method to recolour all draw conditions on game win
+    private void allDrawConditions(){
+        drawCondition1();
+        drawCondition2();
+        drawCondition3();
+        drawCondition4();
+        drawCondition5();
+        drawCondition6();
+        drawCondition7();
+        drawCondition8();
+        drawCondition9();
     }
 
     //method to disable all boards

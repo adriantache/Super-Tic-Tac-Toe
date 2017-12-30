@@ -4,12 +4,12 @@ import android.graphics.LightingColorFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -240,21 +240,32 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    //stop music on screen off
+    //pause music on screen off, app switch etc.
     @Override
     protected void onPause() {
         super.onPause();
 
         if (mediaPlayer != null) {
             if (mediaPlayer.isPlaying())
-                mediaPlayer.stop();
-            mediaPlayer.reset();
-            mediaPlayer.release();
-            mediaPlayer = null;
+                mediaPlayer.pause();
 
             //change ImageView icon to allow restarting music
             mute.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_play));
         }
+    }
+
+    //restart music when coming back to app
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+
+            //change ImageView icon to allow stopping music
+            mute.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_lock_silent_mode));
+        }
+
     }
 
     //method to start music player
@@ -2614,9 +2625,6 @@ public class MainActivity extends AppCompatActivity {
 
         //then check if game is actually won (forgot to do that first time I wrote this ^^)
         if (allEqual(mainGame[1][1], mainGame[1][2], mainGame[1][3]) || allEqual(mainGame[2][1], mainGame[2][2], mainGame[2][3]) || allEqual(mainGame[3][1], mainGame[3][2], mainGame[3][3]) || allEqual(mainGame[1][1], mainGame[2][2], mainGame[3][3]) || allEqual(mainGame[1][3], mainGame[2][2], mainGame[3][1]) || allEqual(mainGame[1][1], mainGame[2][1], mainGame[3][1]) || allEqual(mainGame[1][2], mainGame[2][2], mainGame[3][2]) || allEqual(mainGame[1][3], mainGame[2][3], mainGame[3][3])) {
-            // disable all boards
-            disableAllBoards();
-
             //generate winning text
             gameEnd = true;
             setText();
@@ -2653,6 +2661,10 @@ public class MainActivity extends AppCompatActivity {
                 button37.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button38.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button39.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+
+                // disable all boards
+                disableAllBoards();
+
                 return;
             }
             if (allEqual(mainGame[2][1], mainGame[2][2], mainGame[2][3])) {
@@ -2683,6 +2695,10 @@ public class MainActivity extends AppCompatActivity {
                 button67.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button68.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button69.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+
+                // disable all boards
+                disableAllBoards();
+
                 return;
             }
             if (allEqual(mainGame[3][1], mainGame[3][2], mainGame[3][3])) {
@@ -2713,6 +2729,10 @@ public class MainActivity extends AppCompatActivity {
                 button97.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button98.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button99.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+
+                // disable all boards
+                disableAllBoards();
+
                 return;
             }
             if (allEqual(mainGame[1][1], mainGame[2][2], mainGame[3][3])) {
@@ -2743,6 +2763,10 @@ public class MainActivity extends AppCompatActivity {
                 button97.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button98.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button99.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+
+                // disable all boards
+                disableAllBoards();
+
                 return;
             }
             if (allEqual(mainGame[1][3], mainGame[2][2], mainGame[3][1])) {
@@ -2773,6 +2797,10 @@ public class MainActivity extends AppCompatActivity {
                 button91.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button92.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button93.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+
+                // disable all boards
+                disableAllBoards();
+
                 return;
             }
             if (allEqual(mainGame[1][1], mainGame[2][1], mainGame[3][1])) {
@@ -2803,6 +2831,10 @@ public class MainActivity extends AppCompatActivity {
                 button91.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button92.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button93.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+
+                // disable all boards
+                disableAllBoards();
+
                 return;
             }
             if (allEqual(mainGame[1][2], mainGame[2][2], mainGame[3][2])) {
@@ -2833,6 +2865,10 @@ public class MainActivity extends AppCompatActivity {
                 button94.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button95.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button96.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+
+                // disable all boards
+                disableAllBoards();
+
                 return;
             }
             if (allEqual(mainGame[1][3], mainGame[2][3], mainGame[3][3])) {
@@ -2863,6 +2899,10 @@ public class MainActivity extends AppCompatActivity {
                 button97.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button98.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
                 button99.getBackground().setColorFilter(new LightingColorFilter(0xff4CAF50, 0x000000));
+
+                // disable all boards
+                disableAllBoards();
+
                 return;
             }
         }
@@ -3018,7 +3058,7 @@ public class MainActivity extends AppCompatActivity {
         button33.setEnabled(false);
 
         //reset highlighting for this board
-        resetGame1();
+        if (!gameEnd) resetGame1();
 
         //set highlighting to winning line
         if (allEqual(game1[1][1], game1[1][2], game1[1][3])) {
@@ -3083,7 +3123,7 @@ public class MainActivity extends AppCompatActivity {
         button36.setEnabled(false);
 
         //reset highlighting for this board
-        resetGame2();
+        if (!gameEnd) resetGame2();
 
         //set highlighting to winning line
         if (allEqual(game2[1][1], game2[1][2], game2[1][3])) {
@@ -3148,7 +3188,7 @@ public class MainActivity extends AppCompatActivity {
         button39.setEnabled(false);
 
         //reset highlighting for this board
-        resetGame3();
+        if (!gameEnd) resetGame3();
 
         //set highlighting to winning line
         if (allEqual(game3[1][1], game3[1][2], game3[1][3])) {
@@ -3213,7 +3253,7 @@ public class MainActivity extends AppCompatActivity {
         button63.setEnabled(false);
 
         //reset highlighting for this board
-        resetGame4();
+        if (!gameEnd) resetGame4();
 
         //set highlighting to winning line
         if (allEqual(game4[1][1], game4[1][2], game4[1][3])) {
@@ -3278,7 +3318,7 @@ public class MainActivity extends AppCompatActivity {
         button66.setEnabled(false);
 
         //reset highlighting for this board
-        resetGame5();
+        if (!gameEnd) resetGame5();
 
         //set highlighting to winning line
         if (allEqual(game5[1][1], game5[1][2], game5[1][3])) {
@@ -3343,7 +3383,7 @@ public class MainActivity extends AppCompatActivity {
         button69.setEnabled(false);
 
         //reset highlighting for this board
-        resetGame6();
+        if (!gameEnd) resetGame6();
 
         //set highlighting to winning line
         if (allEqual(game6[1][1], game6[1][2], game6[1][3])) {
@@ -3408,7 +3448,7 @@ public class MainActivity extends AppCompatActivity {
         button93.setEnabled(false);
 
         //reset highlighting for this board
-        resetGame7();
+        if (!gameEnd) resetGame7();
 
         //set highlighting to winning line
         if (allEqual(game7[1][1], game7[1][2], game7[1][3])) {
@@ -3473,7 +3513,7 @@ public class MainActivity extends AppCompatActivity {
         button96.setEnabled(false);
 
         //reset highlighting for this board
-        resetGame8();
+        if (!gameEnd) resetGame8();
 
         //set highlighting to winning line
         if (allEqual(game8[1][1], game8[1][2], game8[1][3])) {
@@ -3538,7 +3578,7 @@ public class MainActivity extends AppCompatActivity {
         button99.setEnabled(false);
 
         //reset highlighting for this board
-        resetGame9();
+        if (!gameEnd) resetGame9();
 
         //set highlighting to winning line
         if (allEqual(game9[1][1], game9[1][2], game9[1][3])) {
@@ -3616,6 +3656,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         winText.setText(stringBuilder.toString());
+        double density;
+        density = getResources().getDisplayMetrics().density;
+        if (density < 2) {
+            Toast toast = Toast.makeText(MainActivity.this, stringBuilder, Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     //logic to determine which boards get reset (i.e. all that do not have final scores)

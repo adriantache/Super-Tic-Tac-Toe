@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -3616,6 +3617,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         winText.setText(stringBuilder.toString());
+        double density = 0;
+        density = getResources().getDisplayMetrics().density;
+        if (density<2) {
+            Toast toast = Toast.makeText(MainActivity.this,stringBuilder,Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     //logic to determine which boards get reset (i.e. all that do not have final scores)

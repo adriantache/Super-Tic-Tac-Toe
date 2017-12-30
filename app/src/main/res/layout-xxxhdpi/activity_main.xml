@@ -1280,7 +1280,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- instructions textbox -->
+    <!-- instructions text box -->
     <TextView
         android:id="@+id/instructionsText"
         android:layout_width="match_parent"

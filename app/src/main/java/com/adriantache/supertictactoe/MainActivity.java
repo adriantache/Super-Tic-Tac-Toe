@@ -3057,8 +3057,8 @@ public class MainActivity extends AppCompatActivity {
         button32.setEnabled(false);
         button33.setEnabled(false);
 
-        //reset highlighting for this board
-        if (!gameEnd) resetGame1();
+        //reset highlighting for this board unless game end and no score (to preserve won lines)
+        if (!gameEnd || mainGame[1][1]==0) resetGame1();
 
         //set highlighting to winning line
         if (allEqual(game1[1][1], game1[1][2], game1[1][3])) {
@@ -3122,8 +3122,8 @@ public class MainActivity extends AppCompatActivity {
         button35.setEnabled(false);
         button36.setEnabled(false);
 
-        //reset highlighting for this board
-        if (!gameEnd) resetGame2();
+        //reset highlighting for this board unless game end and no score (to preserve won lines)
+        if (!gameEnd || mainGame[1][2]==0) resetGame2();
 
         //set highlighting to winning line
         if (allEqual(game2[1][1], game2[1][2], game2[1][3])) {
@@ -3187,8 +3187,8 @@ public class MainActivity extends AppCompatActivity {
         button38.setEnabled(false);
         button39.setEnabled(false);
 
-        //reset highlighting for this board
-        if (!gameEnd) resetGame3();
+        //reset highlighting for this board unless game end and no score (to preserve won lines)
+        if (!gameEnd || mainGame[1][3]==0) resetGame3();
 
         //set highlighting to winning line
         if (allEqual(game3[1][1], game3[1][2], game3[1][3])) {
@@ -3252,8 +3252,8 @@ public class MainActivity extends AppCompatActivity {
         button62.setEnabled(false);
         button63.setEnabled(false);
 
-        //reset highlighting for this board
-        if (!gameEnd) resetGame4();
+        //reset highlighting for this board unless game end and no score (to preserve won lines)
+        if (!gameEnd || mainGame[2][1]==0) resetGame4();
 
         //set highlighting to winning line
         if (allEqual(game4[1][1], game4[1][2], game4[1][3])) {
@@ -3317,8 +3317,8 @@ public class MainActivity extends AppCompatActivity {
         button65.setEnabled(false);
         button66.setEnabled(false);
 
-        //reset highlighting for this board
-        if (!gameEnd) resetGame5();
+        //reset highlighting for this board unless game end and no score (to preserve won lines)
+        if (!gameEnd || mainGame[2][2]==0) resetGame5();
 
         //set highlighting to winning line
         if (allEqual(game5[1][1], game5[1][2], game5[1][3])) {
@@ -3382,8 +3382,8 @@ public class MainActivity extends AppCompatActivity {
         button68.setEnabled(false);
         button69.setEnabled(false);
 
-        //reset highlighting for this board
-        if (!gameEnd) resetGame6();
+        //reset highlighting for this board unless game end and no score (to preserve won lines)
+        if (!gameEnd || mainGame[2][3]==0) resetGame6();
 
         //set highlighting to winning line
         if (allEqual(game6[1][1], game6[1][2], game6[1][3])) {
@@ -3447,8 +3447,8 @@ public class MainActivity extends AppCompatActivity {
         button92.setEnabled(false);
         button93.setEnabled(false);
 
-        //reset highlighting for this board
-        if (!gameEnd) resetGame7();
+        //reset highlighting for this board unless game end and no score (to preserve won lines)
+        if (!gameEnd || mainGame[3][1]==0) resetGame7();
 
         //set highlighting to winning line
         if (allEqual(game7[1][1], game7[1][2], game7[1][3])) {
@@ -3512,8 +3512,8 @@ public class MainActivity extends AppCompatActivity {
         button95.setEnabled(false);
         button96.setEnabled(false);
 
-        //reset highlighting for this board
-        if (!gameEnd) resetGame8();
+        //reset highlighting for this board unless game end and no score (to preserve won lines)
+        if (!gameEnd || mainGame[3][2]==0) resetGame8();
 
         //set highlighting to winning line
         if (allEqual(game8[1][1], game8[1][2], game8[1][3])) {
@@ -3577,8 +3577,8 @@ public class MainActivity extends AppCompatActivity {
         button98.setEnabled(false);
         button99.setEnabled(false);
 
-        //reset highlighting for this board
-        if (!gameEnd) resetGame9();
+        //reset highlighting for this board unless game end and no score (to preserve won lines)
+        if (!gameEnd || mainGame[3][3]==0) resetGame9();
 
         //set highlighting to winning line
         if (allEqual(game9[1][1], game9[1][2], game9[1][3])) {

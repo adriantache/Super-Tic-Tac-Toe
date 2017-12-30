@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Super Tic Tac Toe</string>
+    <string name="instructionsText">The point of the game is to win a Super Tic Tac Toe (imagine the whole game is one tic-tac-toe board, and each game is a square) by making a row, column or diagonal match from the games you have won, while preventing the opponent to do the same. The winner is not the person who wins the most games. \u0020The first move can be anywhere. Any move after that is restricted to the board corresponding to the square the last player moved in. If the move is restricted to an unplayable board, you can move anywhere. The game highlights the restricted space to play in with a light green colour.</string>
 </resources>

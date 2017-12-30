@@ -1290,7 +1290,7 @@
         android:background="@drawable/layout_bg"
         android:elevation="8dp"
         android:padding="8dp"
-        android:text="The point of the game is to win a Super Tic Tac Toe by making a row, column or diagonal match from the games you have won, while preventing the opponent to do the same.\n\nThe first move can be anywhere. Any move after that is restricted to the board corresponding to the square the last player moved in. If the move is restricted to an unplayable board, you can move anywhere. The game highlights the restricted space to play in with a light green colour."
+        android:text="@string/instructionsText"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/instructions"
         app:layout_constraintEnd_toEndOf="parent"

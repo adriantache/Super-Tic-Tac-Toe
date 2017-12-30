@@ -3617,7 +3617,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         winText.setText(stringBuilder.toString());
-        double density = 0;
+        double density;
         density = getResources().getDisplayMetrics().density;
         if (density<2) {
             Toast toast = Toast.makeText(MainActivity.this,stringBuilder,Toast.LENGTH_SHORT);

@@ -240,21 +240,32 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    //stop music on screen off
+    //pause music on screen off, app switch etc.
     @Override
     protected void onPause() {
         super.onPause();
 
         if (mediaPlayer != null) {
             if (mediaPlayer.isPlaying())
-                mediaPlayer.stop();
-            mediaPlayer.reset();
-            mediaPlayer.release();
-            mediaPlayer = null;
+                mediaPlayer.pause();
 
             //change ImageView icon to allow restarting music
             mute.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_play));
         }
+    }
+
+    //restart music when coming back to app
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+
+            //change ImageView icon to allow stopping music
+            mute.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_lock_silent_mode));
+        }
+
     }
 
     //method to start music player

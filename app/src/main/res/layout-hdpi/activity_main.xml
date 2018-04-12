@@ -1266,7 +1266,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:onClick="musicToggle"
-        android:src="@android:drawable/ic_lock_silent_mode"
+        android:src="@android:drawable/ic_media_play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

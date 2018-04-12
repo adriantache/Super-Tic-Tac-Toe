@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     //declare variables
     int currentPlayer = 1;
     int currentGame = 0;
-    boolean musicStop = true;
+    boolean musicStop = false;
     MediaPlayer mediaPlayer;
     TextView winText;
     TextView instructionsText;
@@ -220,10 +220,6 @@ public class MainActivity extends AppCompatActivity {
         //find winning and instructions textView
         winText = findViewById(R.id.winText);
         instructionsText = findViewById(R.id.instructionsText);
-
-        //start music
-        musicPlayer();
-
     }
 
     //this may be unnecessary; stops music on destroy

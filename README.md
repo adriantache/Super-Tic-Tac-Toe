@@ -16,9 +16,8 @@ _App contains music by [Nihilore](https://soundcloud.com/nihilore/bush-week)._
 **Features I'd like to implement:** Please see the [Issues section](https://github.com/adriantache/Super-Tic-Tac-Toe/issues)
 
 **Known issues:**
-* _app is still in development_
 * scoring mechanism is missing
 
 **Screenshot:**
 
-![Screenshot](https://github.com/adriantache/Super-Tic-Tac-Toe/blob/master/_DESIGN/screenshot.png)
+![Screenshot](https://thumbs.gfycat.com/UnevenPeacefulAfricanjacana-size_restricted.gif)
